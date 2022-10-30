@@ -8,3 +8,9 @@
 1. React.js
 2. Less (https://lesscss.org/)
 3. Tailwind (https://tailwindui.com/documentation)
+
+## Run instruction
+To run the backend:
+```
+docker-compose -f backend/docker-compose.yaml up
+```
