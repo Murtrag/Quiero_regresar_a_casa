@@ -4,7 +4,7 @@ year_choice = [
         (r,r) for r in range(1984, date.today().year+1)
         ]
 
-hair_colours = (
+hair_colors = (
         (0, "Black",),
         (1, "Very Dark Brown",),
         (2, "Dark Brown",),
@@ -24,6 +24,14 @@ hair_length = (
         )
 
 sex_choice = (
-        (0, "male"),
-        (1, "female"),
+        ('m', "male"),
+        ('f', "female"),
+        )
+
+eye_color = (
+        (0, "Blue"),
+        (1, "Brown"),
+        (2, "Gray"),
+        (3, "Hazel"),
+        (4, "Red"),
         )

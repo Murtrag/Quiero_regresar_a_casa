@@ -1,13 +1,36 @@
 import datetime
+from uuid import uuid4
+from os import path
 from django.db import models
-from .choices import (year_choice, hair_colours, hair_length, sex_choice)
+from .choices import (
+        year_choice,
+        hair_colors,
+        hair_length,
+        sex_choice,
+        eye_color
+                      )
 from django.core.validators import MinValueValidator, MaxValueValidator 
 
 
 
 
+def image_custom_path(*args, **kwargs):
+    _, ext = path.splitext(args[1])
+    return f'missing_person/{str(uuid4())}{ext}'
+
+class Image(models.Model):
+    image = models.ImageField(
+            upload_to = image_custom_path
+            )
+
+    def __str__(self):
+        return path.basename(self.image.name)
+    
 class MissingPerson(models.Model):
 
+    origin = models.CharField(
+            max_length=150
+            )
     calling_name = models.CharField(
             max_length=50
             )
@@ -28,14 +51,16 @@ class MissingPerson(models.Model):
             )
 
     hair_colour = models.SmallIntegerField(
-            choices=hair_colours
+            choices= hair_colors
             )
 
     hair_length =  models.SmallIntegerField(
-            choices=hair_length
+            choices= hair_length
             )
 
-    eye_colour = models.SmallIntegerField()
+    eye_colour = models.SmallIntegerField(
+            choices = eye_color
+            )
 
     sex = models.CharField(
             max_length = 2,
@@ -43,6 +68,15 @@ class MissingPerson(models.Model):
             )
 
     description = models.TextField()
+    images = models.ManyToManyField(
+            Image,
+            )
+    is_founded = models.BooleanField(
+            default = False
+            )
+    is_active = models.BooleanField(
+            default = False
+            )
 
     @property
     def age(self):
