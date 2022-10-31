@@ -3,6 +3,8 @@
 ### BackEnd
 1. Python 3.11
 2. Django 4.1.2 (https://docs.djangoproject.com/en/4.1/)
+   - Django rest framework (https://www.django-rest-framework.org/)
+   - Django-phonenumber (https://django-phonenumber-field.readthedocs.io/en/latest/)
 
 ### FrontEnd
 1. React.js
