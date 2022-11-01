@@ -28,6 +28,8 @@ class Image(models.Model):
     
 class MissingPerson(models.Model):
 
+    owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
+
     origin = models.CharField(
             max_length=150
             )
@@ -70,12 +72,13 @@ class MissingPerson(models.Model):
     description = models.TextField()
     images = models.ManyToManyField(
             Image,
+            blank = True
             )
     is_founded = models.BooleanField(
             default = False
             )
     is_active = models.BooleanField(
-            default = False
+            default = False,
             )
 
     @property
