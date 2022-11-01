@@ -4,14 +4,14 @@ from os import path
 
 def product_custom_path(*args, **kwargs):
     _, ext = path.splitext(args[1])
-    return f'store/product/{args[0].category.name}/{args[0].name}_{str(uuid4())}{ext}'
+    return f'media/store/product/{args[0].category.name}/{args[0].name}_{str(uuid4())}{ext}'
 
 class Category(models.Model):
     name = models.CharField(
             max_length=250
             )
     image = models.ImageField(
-            upload_to="store/category",
+            upload_to="media/store/category",
             )
 
     class Meta:

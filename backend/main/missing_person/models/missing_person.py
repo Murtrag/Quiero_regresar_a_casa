@@ -16,7 +16,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 def image_custom_path(*args, **kwargs):
     _, ext = path.splitext(args[1])
-    return f'missing_person/{str(uuid4())}{ext}'
+    return f'media/missing_person/{str(uuid4())}{ext}'
 
 class Image(models.Model):
     image = models.ImageField(
