@@ -8,7 +8,7 @@
 
 ### FrontEnd
 1. React.js
-2. Less (https://lesscss.org/)
+2. Sass (https://sass-lang.com/documentation/)
 3. Tailwind (https://tailwindui.com/documentation)
 
 ## Run instruction
