@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = PhoneNumberField(blank=True)
-    iternal_currency = models.DecimalField(default=0, max_digits=5, decimal_places=2)
+    internal_currency = models.DecimalField(default=0, max_digits=5, decimal_places=2)
 
     # class Meta:
     #     app_label = 'Authentication and Authorization'
