@@ -24,7 +24,7 @@ class Image(models.Model):
     
 class MissingPerson(models.Model):
 
-    owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
+    owner = models.ForeignKey('auth.User', related_name='owner', on_delete=models.CASCADE)
 
     origin = models.CharField(
             max_length=150
@@ -83,10 +83,7 @@ class MissingPerson(models.Model):
             )
     
     create_date = models.DateTimeField(auto_now_add=True)
-    # znaki szczegolne
     # gdzie ostatnio widziany
-
-    
 
     @property
     def age(self):
