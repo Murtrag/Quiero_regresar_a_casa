@@ -17,6 +17,12 @@ class Category(models.Model):
     class Meta:
         ordering = ['name']
 
+
+class ProductImage(models.Model):
+    image = models.ImageField(
+        upload_to = product_custom_path
+    )
+    
 class Product(models.Model):
 
     name = models.CharField(
@@ -25,8 +31,17 @@ class Product(models.Model):
 
     description = models.TextField()
 
-    image = models.ImageField(
-            upload_to=product_custom_path
+    #image = models.ImageField(
+    #        upload_to=product_custom_path
+    #)
+    image = models.ManyToManyField(
+        ProductImage,
+        blank = True
+    )
+    
+    price = models.DecimalField(
+        max_digits=5, 
+        decimal_places=2
     )
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
