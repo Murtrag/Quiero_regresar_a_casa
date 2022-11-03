@@ -1,5 +1,4 @@
 import datetime
-from uuid import uuid4
 from os import path
 from django.db import models
 from .choices import (
@@ -10,13 +9,10 @@ from .choices import (
         eye_color
                       )
 from django.core.validators import MinValueValidator, MaxValueValidator 
+from paths import image_custom_path
 
 
 
-
-def image_custom_path(*args, **kwargs):
-    _, ext = path.splitext(args[1])
-    return f'media/missing_person/{str(uuid4())}{ext}'
 
 class Image(models.Model):
     image = models.ImageField(
@@ -38,7 +34,7 @@ class MissingPerson(models.Model):
             )
 
     full_name = models.CharField(
-            max_length=50
+            max_length=150
             )
 
     year_of_birth = models.IntegerField(
@@ -68,18 +64,29 @@ class MissingPerson(models.Model):
             max_length = 2,
             choices = sex_choice
             )
-
+    
+    distinguishing_marks = models.TextField()
+    
     description = models.TextField()
+    
     images = models.ManyToManyField(
             Image,
             blank = True
             )
+    
     is_founded = models.BooleanField(
             default = False
             )
+    
     is_active = models.BooleanField(
             default = False,
             )
+    
+    create_date = models.DateTimeField(auto_now_add=True)
+    # znaki szczegolne
+    # gdzie ostatnio widziany
+
+    
 
     @property
     def age(self):

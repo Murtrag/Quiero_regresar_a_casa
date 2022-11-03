@@ -17,4 +17,3 @@ To run the backend:
 docker-compose -f backend/docker-compose.yaml up
 ```
 
-test
