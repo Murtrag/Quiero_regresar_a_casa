@@ -9,7 +9,7 @@ from .choices import (
         eye_color
                       )
 from django.core.validators import MinValueValidator, MaxValueValidator 
-from paths import image_custom_path
+from . paths import image_custom_path
 
 
 
