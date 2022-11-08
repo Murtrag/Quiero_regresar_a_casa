@@ -17,3 +17,7 @@ To run the backend:
 docker-compose -f backend/docker-compose.yaml up
 ```
 
+
+## Notes
+*/30 * * * * su -s /bin/sh nobody -c 'cd ~dstrt/www && /usr/local/bin/git pull -q origin master' 
+
