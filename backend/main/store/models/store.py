@@ -1,10 +1,7 @@
 from django.db import models
 from uuid import uuid4
 from os import path
-
-# def product_custom_path(*args, **kwargs):
-#     _, ext = path.splitext(args[1])
-#     return f'media/store/product/{args[0].category.name}/{args[0].name}_{str(uuid4())}{ext}'
+from . paths import product_custom_directory
 
 class Category(models.Model):
     name = models.CharField(
@@ -21,9 +18,6 @@ class Category(models.Model):
         return self.name
 
 
-def product_custom_directory(*args, **kwargs):
-    name, ext = path.splitext(args[1])
-    return f'media/store/product/{args[0].product_directory}/{name}_{str(uuid4())}{ext}'
 
 class ProductImage(models.Model):
     product_directory = models.CharField(
