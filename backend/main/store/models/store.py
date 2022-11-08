@@ -5,7 +5,8 @@ from .paths import (product_custom_directory, category_custom_directory)
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
-    image = models.ImageField(upload_to=category_custom_directory)
+    image = 
+    models.ImageField(upload_to=category_custom_directory)
 
     class Meta:
         ordering = ['name']

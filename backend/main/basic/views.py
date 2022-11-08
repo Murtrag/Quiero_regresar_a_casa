@@ -13,6 +13,7 @@ def under_construction_view(request):
 class ArticleDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    multiple_lookup_fields = ('language', 'country',)
 
     def get(self, request, *args, **kwargs):
         if self.request.data
