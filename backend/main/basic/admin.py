@@ -3,10 +3,9 @@ from .models import Article
 
 
 class ArticleAdmin(admin.ModelAdmin):
-
-    class Meta:
-        model = Article
-        fields = (
+    model = Article
+    list_display = (
+            'title',
             'language',
             'country',
         )

@@ -17,14 +17,13 @@ class ProfileAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 
 class CountryAdmin(admin.ModelAdmin):
-    class Meta:
-        model = Country
-        fields = ('country_code', 'country_name', 'flag',)
+    model = Country
+    list_display = ('country_code', 'country_name', 'flag',)
     
 admin.site.register(Country, CountryAdmin)
 
 class LanguageyAdmin(admin.ModelAdmin):
-            model = Country
-        fields = ('country_code', 'country_name', 'flag',)
+    model = Country
+    list_display = ('country_code', 'country_name', 'flag',)
     
 admin.site.register(Language, LanguageyAdmin)

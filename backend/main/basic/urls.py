@@ -3,6 +3,6 @@ from .views import (under_construction_view, ArticleDetail)
 
 urlpatterns = [
     path('', under_construction_view),
-    path(r'<int:country_pk>/<int:language_pk>/<str:title>',
+    path(r'article/<int:language>/<int:country>/<str:title>',
          ArticleDetail.as_view())
 ]

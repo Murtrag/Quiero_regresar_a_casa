@@ -8,16 +8,18 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Country(models.Model):
     country_code = models.CharField(max_length=5)
     country_name = models.CharField(max_length=80)
+    active = models.BooleanField()
     flag = models.CharField(max_length=10,
                             help_text='https://emojipedia.org/flags/')
 
     def __str__(self):
-        return self.country_codel
+        return self.country_code
 
 
 class Language(models.Model):
     country_code = models.CharField(max_length=5)
     country_name = models.CharField(max_length=80)
+    active = models.BooleanField()
     flag = models.CharField(max_length=10,
                             help_text='https://emojipedia.org/flags/')
 
