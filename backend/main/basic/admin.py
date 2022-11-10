@@ -15,7 +15,7 @@ class ArticleAdmin(admin.ModelAdmin):
     }
     ordering = ('country', 'title', 'language',)
     search_fields = ('title',)
-    list_filter = ('country','language',)
+    list_filter = ('country', 'language',)
 
 
 admin.site.register(Article, ArticleAdmin)

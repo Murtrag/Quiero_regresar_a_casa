@@ -13,7 +13,7 @@ class Country(models.Model):
                             help_text='https://emojipedia.org/flags/')
 
     def __str__(self):
-        return self.country_code
+        return f'{self.country_code} {self.flag} '
 
 
 class Language(models.Model):
@@ -24,7 +24,7 @@ class Language(models.Model):
                             help_text='https://emojipedia.org/flags/')
 
     def __str__(self):
-        return self.country_code
+        return f'{self.country_code} {self.flag} '
 
 
 class Profile(models.Model):

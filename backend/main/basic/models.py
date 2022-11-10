@@ -13,7 +13,6 @@ class Article(models.Model):
         return self.title
 
     class Meta:
-        order_with_respect_to = ('country', 'language',)
         ordering = ('title',)
 
         
