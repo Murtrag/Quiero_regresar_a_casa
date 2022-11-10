@@ -11,3 +11,9 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        order_with_respect_to = ('country', 'language',)
+        ordering = ('title',)
+
+        
