@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Profile 
+from . models import (Profile, Country, Language)
 
 class ProfileAdmin(admin.ModelAdmin):
     ordering = ['user']
@@ -15,3 +15,20 @@ class ProfileAdmin(admin.ModelAdmin):
         return obj.user.last_name
 
 admin.site.register(Profile, ProfileAdmin)
+
+class CountryAdmin(admin.ModelAdmin):
+    model = Country
+    list_display = ('country_code', 'country_name', 'flag',)
+    search_fields = ('country_name','country_code',)
+    ordering = ('country_name',)
+    
+    
+admin.site.register(Country, CountryAdmin)
+
+class LanguageyAdmin(admin.ModelAdmin):
+    model = Country
+    list_display = ('country_code', 'country_name', 'flag',)
+    search_fields = ('country_name','country_code',)
+    ordering = ('country_name',)
+    
+admin.site.register(Language, LanguageyAdmin)

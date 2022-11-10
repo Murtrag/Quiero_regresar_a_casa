@@ -2,14 +2,17 @@ from django.contrib import admin
 from . models import Category, Product, ProductImage
 
 class CategoryAdmin(admin.ModelAdmin):
-    ordering = ('name')
+    ordering = ('name',)
     list_display = ('name',)
+    search = ('name',)
+    
 admin.site.register(Category)
 
 class ProductAdmin(admin.ModelAdmin):
-    ordering = ['category', 'name']
-    search_fields = ['name']
-    list_display = ('name','category_name')
+    ordering = ('category', 'name',)
+    search_fields = ('name',)
+    list_display = ('name','category_name',)
+    list_filter = ('category',)
 
     def category_name(self, obj):
         return obj.category.name
