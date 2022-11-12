@@ -8,7 +8,6 @@ from utils.rest_framework import mixins as custom_mixins
 def under_construction_view(request):
     return render(request, 'errors/under_construction.html', {})
 
-
 class ArticleDetail(
         mixins.RetrieveModelMixin,
         custom_mixins.MultipleFieldLookupMixin,

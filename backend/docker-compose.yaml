@@ -1,15 +1,14 @@
 version: "3"
 
 services:
-  db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - DB:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=postgres
-
+  # db:
+  #   image: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - DB:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_PASSWORD=postgres
   app:
     build: .
     ports:
@@ -18,7 +17,7 @@ services:
       - .:/code/:Z
     tty: true
     stdin_open: true
-    depends_on:
-      - db
-volumes:
-  DB:
+    # depends_on:
+    #   - db
+# volumes:
+#   DB:
