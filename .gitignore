@@ -130,5 +130,4 @@ dmypy.json
 
 
 # Custom
-frontend/main/node_modules
 frontend/main/node_modules/*
