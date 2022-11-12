@@ -130,4 +130,5 @@ dmypy.json
 
 
 # Custom
-/home/murtrag/Projects/Quiero_regresar_a_casa/frontend/main/node_modules
+frontend/main/node_modules
+frontend/main/node_modules/*
