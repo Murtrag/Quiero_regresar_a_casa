@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Custom
+/home/murtrag/Projects/Quiero_regresar_a_casa/frontend/main/node_modules
