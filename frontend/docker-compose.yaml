@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   app:
-    # container_name: frontend
+    container_name: frontend_app_1
     build:
       context: .
       dockerfile: Dockerfile
