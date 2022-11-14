@@ -30,7 +30,9 @@ const Context = createContext();
 const MKPagination = forwardRef(
   ({ item, variant, color, size, active, children, placement, ...rest }, ref) => {
     // const context = item ? useContext(Context) : null;  @TOFIX
-    const context = null;
+	  console.log(Context)
+	  console.log(item)
+     const context = useContext(Context)
     const paginationSize = context ? context.size : null;
     let placementValue = "flex-end";
 
