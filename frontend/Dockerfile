@@ -1,20 +1,21 @@
 # pull official base image
 FROM node:14.21.1-alpine
+# FROM node:16.18.1-alpine
+# FROM node:19.0.1-alpine
 
-# set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
+COPY main/ ./app
+
 COPY main/package.json ./
 COPY main/package-lock.json ./
-RUN npm install
+RUN npm install 
 
 # add app
-COPY main/ ./
 
 # start app
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD npm start --host 0.0.0.0 --port 3000 --disableHostCheck true
 
