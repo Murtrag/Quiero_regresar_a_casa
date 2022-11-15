@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import mixins, generics
-from .models import Article, ArticleListSerializer
-from .serializers import ArticleSerializer
+from .models import Article
+from .serializers import ArticleSerializer, ArticleListSerializer
 from utils.rest_framework import mixins as custom_mixins
 
 def under_construction_view(request):
@@ -14,10 +14,10 @@ class ArticleList(
 ):
     queryset = Article.objects.all()
     serializer_class = ArticleListSerializer
-    lookup_field = ('country', 'language')
+    lookup_fields = ('country_pk', 'language_pk',)
     
     def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
 
     
 class ArticleDetail(
@@ -27,7 +27,7 @@ class ArticleDetail(
         ):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    lookup_fields = ('language', 'country', 'title')
+    lookup_fields = ('country', 'language', 'title',)
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
