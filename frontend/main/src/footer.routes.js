@@ -14,7 +14,7 @@ const date = new Date().getFullYear();
 
 export default {
   brand: {
-    name: "Material Kit 2",
+    name: "Quiero-Regresar",
     image: logoCT,
     route: "/",
   },
@@ -26,10 +26,6 @@ export default {
     {
       icon: <TwitterIcon />,
       link: "https://twitter.com/creativetim",
-    },
-    {
-      icon: <GitHubIcon />,
-      link: "https://github.com/creativetimofficial",
     },
     {
       icon: <YouTubeIcon />,

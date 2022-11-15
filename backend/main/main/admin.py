@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . models import (Profile, Country, Language)
+from . models import (Profile, Country, Language, Header, Link)
+
 
 class ProfileAdmin(admin.ModelAdmin):
     ordering = ['user']
@@ -32,3 +33,12 @@ class LanguageyAdmin(admin.ModelAdmin):
     ordering = ('country_name',)
     
 admin.site.register(Language, LanguageyAdmin)
+
+class HeaderAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    
+admin.site.register(Header, HeaderAdmin)
+
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('name','url',)
+admin.site.register(Link, LinkAdmin)
