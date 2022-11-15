@@ -14,7 +14,7 @@ class ArticleList(
 ):
     queryset = Article.objects.all()
     serializer_class = ArticleListSerializer
-    lookup_fields = ('country_pk', 'language_pk',)
+    lookup_fields = ('country', 'language',)
     
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
