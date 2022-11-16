@@ -25,7 +25,6 @@ class MultipleFieldLookupMixin:
         queryset = self.filter_queryset(self.get_queryset())
 
         filters = self._get_filter()
-
         queryset = queryset.filter(**filters)
         page = self.paginate_queryset(queryset)
         if page is not None:
