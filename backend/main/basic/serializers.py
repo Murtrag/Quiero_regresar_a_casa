@@ -9,8 +9,8 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = ('text_html', 'text_css', 'title')
         
 
-class ArticleListSerializer(serializers.ModelSerializer)
+class ArticleListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('title', 'country', 'language')
+        fields = ('country', 'language', 'title',)
