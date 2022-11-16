@@ -24,6 +24,7 @@ class LinkSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
         
 class FooterSerializer(serializers.HyperlinkedModelSerializer):
+    links = LinkSerializer(queryset=Link.objects.all())
     class Meta:
         model = Header
         fields = '__all__'

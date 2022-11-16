@@ -24,3 +24,11 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
             # custom_permissions.IsOwnerOrReadOnly
             ]
+
+class FooterList(mixins.ListModelMixin,
+                  generics.GenericAPIView):
+    queryset = Footer.objects.all()
+    serializer_class = FooterSerialize
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
