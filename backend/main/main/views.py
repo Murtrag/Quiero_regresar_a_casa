@@ -1,13 +1,12 @@
-from . models import Profile
 from . import custom_permissions
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework import permissions
-from . serializers import ProfileSerializer
+from . serializers import ProfileSerializer, FooterSerializer
+from . models import Profile, Header
 
 
-class ProfileList(mixins.ListModelMixin,
-                  generics.GenericAPIView):
+class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [
@@ -25,10 +24,10 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             # custom_permissions.IsOwnerOrReadOnly
             ]
 
-#class FooterList(mixins.ListModelMixin,
- #                 generics.GenericAPIView):
- #   queryset = Footer.objects.all()
- #   serializer_class = FooterSerialize
 
-  #  def get(self, request, *args, **kwargs):
-   #     return self.list(request, *args, **kwargs)
+class FooterList(mixins.ListModelMixin, generics.GenericAPIView):
+    queryset = Header.objects.all()
+    serializer_class = FooterSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)

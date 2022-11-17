@@ -2,7 +2,7 @@ from django.db import models
 
 class Header(models.Model):
     name = models.CharField(max_length = 150)
-    liks = models.ManyToManyField("link")
+    links = models.ManyToManyField("link")
 
     def __str__(self):
         return self.name

@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 
-from . import views
+from .views import (ProfileList, ProfileDetail, FooterList)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,8 +12,11 @@ urlpatterns = [
     path('', include('basic.urls')),
 
     # User api
-    path(r'profile/', views.ProfileList.as_view()),
-    path(r'profile/<int:pk>/', views.ProfileDetail.as_view())
+    path(r'profile/', ProfileList.as_view()),
+    path(r'profile/<int:pk>/', ProfileDetail.as_view()),
+
+    # Footer api
+    path(r'footer/', FooterList.as_view()),
 ]
 
 if settings.DEBUG:
