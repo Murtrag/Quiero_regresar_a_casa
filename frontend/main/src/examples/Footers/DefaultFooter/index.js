@@ -17,7 +17,7 @@ import configData from "projectconfig.json"
 
 
 function DefaultFooter({ content }) {
-	console.log(configData.SERVER_URL);
+	const serverUrl = configData.SERVER_URL;
 	let [state, setState] = useState({
 		brand: [],
 		socials: [],
@@ -26,7 +26,7 @@ function DefaultFooter({ content }) {
 	}) ;
 
 	useEffect(()=>{
-		fetch('http://localhost:8000/footer/').then(response=>response.json())
+		fetch(serverUrl + 'footer/').then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
@@ -45,7 +45,7 @@ function DefaultFooter({ content }) {
 		<Grid item xs={12} md={3} sx={{ ml: "auto", mb: 3 }}>
 		<MKBox>
 		<Link to={brand.route}>
-		<MKBox component="img" src={configData.SERVER_URL + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
+		<MKBox component="img" src={serverUrl + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
 		</Link>
 		<MKTypography variant="h6">{brand.name}</MKTypography>
 		</MKBox>
