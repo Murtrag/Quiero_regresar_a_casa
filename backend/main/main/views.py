@@ -1,10 +1,11 @@
-from . import custom_permissions
 from rest_framework import mixins
 from rest_framework import generics
+from django.http import JsonResponse
 from rest_framework import permissions
-from . serializers import ProfileSerializer, FooterSerializer
-from . models import Profile, Header
-
+from rest_framework.views import APIView
+from . serializers import ProfileSerializer, FooterSerializer #MenuSerializer
+from . models import Profile, Header, Footer
+from . import custom_permissions
 
 class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
@@ -25,9 +26,20 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             ]
 
 
-class FooterList(mixins.ListModelMixin, generics.GenericAPIView):
-    queryset = Header.objects.all()
-    serializer_class = FooterSerializer
+# class MenuList(mixins.ListModelMixin, generics.GenericAPIView):
+#     queryset = Header.objects.all()
+#     serializer_class = MenuSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+
+class FooterView(APIView):
+    def get(self, request, format=None):
+        try:
+            footer = Footer.objects.last()
+        except Footer.DoesNotExist:
+            return HttpResponse(status=404)
+        
+        serializer = FooterSerializer(footer, many=False)
+        return JsonResponse(serializer.data)
+
