@@ -11,7 +11,7 @@ COPY main/ ./app
 
 COPY main/package.json ./
 COPY main/package-lock.json ./
-RUN npm install 
+RUN npm install --no-audit
 
 # add app
 
