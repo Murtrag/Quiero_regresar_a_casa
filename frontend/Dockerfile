@@ -11,6 +11,7 @@ COPY main/ ./app
 
 COPY main/package.json ./
 COPY main/package-lock.json ./
+RUN npm config set timeout 6000000
 RUN npm install --no-audit
 
 # add app
