@@ -6,5 +6,9 @@ COPY main/package.json ./
 COPY main/package-lock.json ./
 RUN npm config set timeout 6000000
 RUN npm install --no-audit
-CMD npm start --host 0.0.0.0 --port 3000 --disableHostCheck true
+RUN npm run build
 
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 3000
+CMD ["nginx", "-g", "daemon off;"]
