@@ -1,13 +1,11 @@
 version: '3.7'
 
 services:
-
   app:
     container_name: frontend_app_prod
     build:
       context: .
       dockerfile: Dockerfile.prod
-
     ports:
       - 3000:80
     environment:

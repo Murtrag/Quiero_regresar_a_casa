@@ -1,21 +1,11 @@
 FROM node:14.21.1-alpine
-# WORKDIR /app
-# ENV PATH /app/node_modules/.bin:$PATH
-# COPY main/ ./app
-# COPY main/package.json ./
-# COPY main/package-lock.json ./
-# COPY main/build ./app
-# COPY main/build /usr/share/nginx/html
-# RUN npm config set timeout 6000000
-# RUN npm install --no-audit
-# RUN npm run build
-
 FROM nginx:stable-alpine
 WORKDIR /usr/share/nginx/html
 COPY main/build ./
+RUN rm /etc/nginx/conf.d/default.conf
 RUN mkdir material-kit-react
 RUN mv static material-kit-react/
-# COPY --from=build ./js material-kit-react
+COPY nginx.conf /etc/nginx/conf.d
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
