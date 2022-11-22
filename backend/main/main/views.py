@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-from . import custom_permissions
-=======
->>>>>>> origin/main
 from rest_framework import mixins
 from rest_framework import generics
 from django.http import JsonResponse
 from rest_framework import permissions
-<<<<<<< HEAD
-from . serializers import ProfileSerializer, FooterSerializer
-from . models import Profile, Header
-
-=======
 from rest_framework.views import APIView
 from . serializers import ProfileSerializer, FooterSerializer #MenuSerializer
-from . models import Profile, Header, Footer
+from . models import Tab
 from . import custom_permissions
->>>>>>> origin/main
+
 
 class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
@@ -35,15 +26,6 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             # custom_permissions.IsOwnerOrReadOnly
             ]
 
-
-<<<<<<< HEAD
-class FooterList(mixins.ListModelMixin, generics.GenericAPIView):
-    queryset = Header.objects.all()
-    serializer_class = FooterSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-=======
 # class MenuList(mixins.ListModelMixin, generics.GenericAPIView):
 #     queryset = Header.objects.all()
 #     serializer_class = MenuSerializer
@@ -61,4 +43,15 @@ class FooterView(APIView):
         serializer = FooterSerializer(footer, many=False)
         return JsonResponse(serializer.data)
 
->>>>>>> origin/main
+
+class NavBarList(mixins.ListModelMixin, generics.GenericAPIView):
+    queryset = Tab.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
