@@ -1,4 +1,6 @@
+import os
 from pathlib import Path
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,6 +23,7 @@ INSTALLED_APPS = [
     'missing_person',
 
     # Third party apps
+    'corsheaders',
     'rest_framework',
     'phonenumber_field',
 ]
@@ -33,6 +36,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -57,6 +61,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
+<<<<<<< HEAD
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
@@ -73,6 +78,28 @@ DATABASES = {
          'PORT': '5432',
      }
  }
+=======
+
+server_type = os.environ['SERVER_TYPE']
+if server_type == 'development':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+elif server_type == 'production':
+    DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.postgresql',
+             'NAME': 'quiero_volver',
+             'USER': 'postgres',
+             'PASSWORD': '123PoStGrEs!',
+             'HOST': '192.168.1.2',
+             'PORT': '5432',
+         }
+     }
+>>>>>>> origin/main
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -92,6 +119,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#   'http://localhost:8000',
+# )
 
 LANGUAGE_CODE = 'en-us'
 

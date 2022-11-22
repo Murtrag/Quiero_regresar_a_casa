@@ -17,6 +17,8 @@ services:
       - .:/code/:Z
     tty: true
     stdin_open: true
+    environment:
+      SERVER_TYPE: 'development'
     # depends_on:
     #   - db
 # volumes:
