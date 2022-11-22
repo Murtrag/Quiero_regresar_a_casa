@@ -72,7 +72,7 @@ import Typography from "layouts/sections/elements/typography";
 const routes = [
   {
     name: "Panel:",
-    icon: <Icon>dashboard</Icon>,
+    icon: <Icon>apps</Icon>,
     columns: 1,
     rowsPerColumn: 2,
     collapse: [
@@ -241,7 +241,7 @@ const routes = [
   },
   {
     name: "organization",
-    icon: <Icon>article</Icon>,
+    icon: <Icon>business</Icon>,
     collapse: [
       {
         name: "getting started",

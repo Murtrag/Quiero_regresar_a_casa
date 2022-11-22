@@ -6,7 +6,10 @@ from . models import (
         Header,
         Link,
         Brand,
-        Footer
+        Footer,
+        Tab,
+        SubTab,
+        SubElement
         )
 
 
@@ -58,3 +61,14 @@ admin.site.register(Brand, BrandAdmin)
 class FooterAdmin(admin.ModelAdmin):
     list_display = ('brand', ) #social, copyright
 admin.site.register(Footer, FooterAdmin)
+
+# Tabs
+class TabAdmin(admin.ModelAdmin):
+    list_display = ('name', 'href' ) #social, copyright
+admin.site.register(Tab, TabAdmin)
+class SubTabAdmin(admin.ModelAdmin):
+    list_display = ('name', 'href' ) #social, copyright
+admin.site.register(SubTab, SubTabAdmin)
+class SubElementAdmin(admin.ModelAdmin):
+    list_display = ('name', 'href' ) #social, copyright
+admin.site.register(SubElement, SubElementAdmin)

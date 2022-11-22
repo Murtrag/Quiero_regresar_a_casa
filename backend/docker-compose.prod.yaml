@@ -18,7 +18,7 @@ services:
     tty: true
     stdin_open: true
     environment:
-      SERVER_TYPE: 'development'
+      SERVER_TYPE: 'production'
     # depends_on:
     #   - db
 # volumes:
