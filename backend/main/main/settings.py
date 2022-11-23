@@ -61,7 +61,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-
 server_type = os.environ['SERVER_TYPE']
 if server_type == 'development':
     DATABASES = {

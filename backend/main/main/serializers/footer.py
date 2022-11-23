@@ -2,7 +2,6 @@ from rest_framework import serializers
 from main.models import Brand, Link, Header, Footer
 
 
-
 class BrandSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Brand

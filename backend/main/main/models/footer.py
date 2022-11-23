@@ -15,6 +15,7 @@ class Link(models.Model):
     def __str__(self):
         return self.name
 
+
 # class Social(models.Model):
 #     icon = 
 #     link = models.CharField(max_length = 500)
@@ -29,3 +30,4 @@ class Footer(models.Model):
     # socials
     menus = models.ManyToManyField(Header)
     # copyright
+

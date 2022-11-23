@@ -10,6 +10,7 @@ class Tab(models.Model):
     columns = models.SmallIntegerField(blank=True, null=True)
     rows_per_column = models.SmallIntegerField(blank=True, null=True)
     href = models.CharField(max_length=250, blank=True)
+    route = models.CharField(max_length=200, blank=True)
     collapse = models.ManyToManyField('SubTab', blank=True)
     
     def __str__(self):
@@ -19,6 +20,7 @@ class SubTab(models.Model):
     name = models.CharField(max_length=35)
     description = models.CharField(max_length=100, blank=True)
     href = models.CharField(max_length=250, blank=True)
+    route = models.CharField(max_length=200, blank=True)
     dropdown = models.BooleanField()
     collapse = models.ManyToManyField('SubElement', blank=True)
 
@@ -29,6 +31,7 @@ class SubElement(models.Model):
     name = models.CharField(max_length=35)
     description = models.CharField(max_length=100, blank=True)
     href = models.CharField(max_length=250, blank=True)
+    route = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return f'{self.name}'

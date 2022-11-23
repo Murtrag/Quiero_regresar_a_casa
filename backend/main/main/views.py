@@ -3,9 +3,10 @@ from rest_framework import generics
 from django.http import JsonResponse
 from rest_framework import permissions
 from rest_framework.views import APIView
-from . serializers import ProfileSerializer, FooterSerializer #MenuSerializer
-from . models import Profile, Header, Footer
+from . serializers import ProfileSerializer, FooterSerializer, TabSerializer #MenuSerializer
+from . models import Profile, Tab
 from . import custom_permissions
+
 
 class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
@@ -25,7 +26,6 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             # custom_permissions.IsOwnerOrReadOnly
             ]
 
-
 # class MenuList(mixins.ListModelMixin, generics.GenericAPIView):
 #     queryset = Header.objects.all()
 #     serializer_class = MenuSerializer
@@ -42,4 +42,16 @@ class FooterView(APIView):
         
         serializer = FooterSerializer(footer, many=False)
         return JsonResponse(serializer.data)
+
+
+class NavBarList(mixins.ListModelMixin, generics.GenericAPIView):
+    queryset = Tab.objects.all()
+    serializer_class = TabSerializer
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
 

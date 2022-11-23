@@ -1,17 +1,23 @@
 from rest_framework import serializers
 from main.models import (Tab, SubTab, SubElement)
+from utils.rest_framework.serializers import NonEmptySerializer
 
-class Tab(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Tab
-        fields = ('name', 'icon', 'columns', 'rows_per_column', 'href', 'collapse',)
 
-class SubTab(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = SubTab
-        fields = ('name', 'description', 'href', 'collapse', 'dropdown', 'collapse',)
 
-class SubElement(serializers.HyperlinkedModelSerializer):
+class SubElementSerializer(NonEmptySerializer):
     class Meta:
         model = SubElement
-        fields = ('name', 'description', 'href',)
+        fields = ('name', 'description','route', 'href',)
+
+class SubTabSerializer(NonEmptySerializer):
+    collapse = SubElementSerializer(read_only=True, many=True)
+    class Meta:
+        model = SubTab
+        fields = ('name', 'description','route', 'href','dropdown', 'collapse', )
+
+class TabSerializer(NonEmptySerializer):
+    rowsPerColumn = serializers.IntegerField(source = 'rows_per_column')
+    collapse = SubTabSerializer(read_only=True, many=True)
+    class Meta:
+        model = Tab
+        fields = ('name', 'icon', 'columns', 'rowsPerColumn','route', 'href', 'collapse',)

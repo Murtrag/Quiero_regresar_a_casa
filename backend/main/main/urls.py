@@ -2,9 +2,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
+from .views import (ProfileList, ProfileDetail, FooterView, NavBarList)
 
-# from .views import (ProfileList, ProfileDetail, FooterList)
-from .views import (ProfileList, ProfileDetail, FooterView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,8 +16,10 @@ urlpatterns = [
     path(r'profile/<int:pk>/', ProfileDetail.as_view()),
 
     # Footer api
-    # path(r'footer/', FooterList.as_view()),
     path(r'footer/', FooterView.as_view()),
+
+    # Nav bar api
+    path(r'nav-bar/', NavBarList.as_view()),
 ]
 
 if settings.DEBUG:

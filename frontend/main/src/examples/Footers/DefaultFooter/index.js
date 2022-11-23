@@ -12,6 +12,15 @@ import Grid from "@mui/material/Grid";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
+<<<<<<< HEAD
+import {useEffect} from 'react';
+
+function DefaultFooter({ content }) {
+  useEffect(async ()=>{
+      const menus = await fetch(main.footer)
+  })
+  const { brand, socials, menus, copyright } = content;
+=======
 import {useEffect, useState} from 'react';
 import configData from "projectconfig.json"
 
@@ -37,6 +46,7 @@ function DefaultFooter({ content }) {
 
 	const { socials, copyright } = content;
 	let { menus, brand } = state;
+>>>>>>> origin/main
 
 	return (
 		<MKBox component="footer">
