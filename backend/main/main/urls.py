@@ -4,11 +4,15 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from .views import (ProfileList, ProfileDetail, FooterView, NavBarList)
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-auth/', include('rest_framework.urls',
+                              namespace='rest_framework')),
+
+    # Missing person api
     path('missing-person/', include('missing_person.urls')),
+
+    # Basic api
     path('', include('basic.urls')),
 
     # User api
@@ -22,7 +26,7 @@ urlpatterns = [
     path(r'nav-bar/', NavBarList.as_view()),
 ]
 
+# Static files debug configuration
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
-

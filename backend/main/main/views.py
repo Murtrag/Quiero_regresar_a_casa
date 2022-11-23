@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from rest_framework import permissions
 from rest_framework.views import APIView
 from . serializers import ProfileSerializer, FooterSerializer, TabSerializer #MenuSerializer
-from . models import Profile, Tab
+from . models import Profile, Tab, Footer
 from . import custom_permissions
 
 
@@ -25,13 +25,6 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
             # custom_permissions.IsOwnerOrReadOnly
             ]
-
-# class MenuList(mixins.ListModelMixin, generics.GenericAPIView):
-#     queryset = Header.objects.all()
-#     serializer_class = MenuSerializer
-
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, *args, **kwargs)
 
 class FooterView(APIView):
     def get(self, request, format=None):
