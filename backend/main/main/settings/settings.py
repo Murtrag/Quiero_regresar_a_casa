@@ -1,23 +1,8 @@
-import os
+from os import environ
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = 'django-insecure-vi69mux$#t1c_jxyvc%psmrm%@#a9n&6-tqs3$u^^$+h+hatb$'
-DEBUG = True
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-]
-
-ROOT_URLCONF = 'main.urls'
+DEBUG = environ['SERVER_TYPE'] == 'development'
 
 # TEMPLATES = [
 #    {
@@ -37,8 +22,6 @@ ROOT_URLCONF = 'main.urls'
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-ALLOWED_HOSTS = ['*', 'quiero-volver.mx']
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
@@ -57,20 +40,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = (
-#   'http://localhost:8000',
-# )
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-
-
-STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

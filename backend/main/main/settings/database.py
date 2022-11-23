@@ -1,9 +1,6 @@
-from os import environ
-from main.settings import BASE_DIR
+from main.settings import BASE_DIR, DEBUG
 
-server_type = environ['SERVER_TYPE']
-
-if server_type == 'development':
+if DEBUG is True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -11,7 +8,7 @@ if server_type == 'development':
         }
     }
 
-elif server_type == 'production':
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
