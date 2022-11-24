@@ -1,4 +1,4 @@
-from main.settings import BASE_DIR, DEBUG
+from main.settings.core import BASE_DIR, DEBUG
 
 if DEBUG is True:
     DATABASES = {
