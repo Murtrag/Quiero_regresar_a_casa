@@ -460,6 +460,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
         borderRadius="xl"
         shadow={transparent ? "none" : "md"}
         color={light ? "white" : "dark"}
+const mySecret = process.env['SERVER_TYPE']
         position={relative ? "relative" : "absolute"}
         left={0}
         zIndex={3}

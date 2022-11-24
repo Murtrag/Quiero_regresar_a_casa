@@ -14,9 +14,6 @@ class Profile(models.Model):
                                             max_digits=5,
                                             decimal_places=2)
 
-    # class Meta:
-    #     app_label = 'Authentication and Authorization'
-
     def __str__(self):
         return f'{self.user.pk}: {self.user.username}'
 

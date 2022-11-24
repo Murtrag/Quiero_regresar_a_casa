@@ -1,18 +1,17 @@
 from rest_framework import mixins
 from rest_framework import generics
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from rest_framework import permissions
 from rest_framework.views import APIView
 from .serializers import (
-ProfileSerializer, 
-FooterSerializer, 
-TabSerializer,  
-#MenuSerializer,
-MottoSerializer
-)
+    ProfileSerializer,
+    FooterSerializer,
+    TabSerializer,
+    #MenuSerializer,
+    MottoSerializer)
 
 from .models import Profile, Tab, Footer, Motto
-from . import custom_permissions
+# from . import custom_permissions
 
 
 class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
@@ -35,6 +34,7 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FooterView(APIView):
+
     def get(self, request, format=None):
         try:
             footer = Footer.objects.last()
@@ -44,15 +44,18 @@ class FooterView(APIView):
         serializer = FooterSerializer(footer, many=False)
         return JsonResponse(serializer.data)
 
+
 class MottoView(APIView):
-    def get(self, request, format=None):
+    #lookup_field = 'language'
+
+    def get(self, request, format=None, **kwargs):
         try:
-            motto = Motto.objects.last()
+            motto = Motto.objects.get(languages__pk=kwargs.get('language_pk'))
         except Motto.DoesNotExist:
             return HttpResponse(status=404)
-
         serializer = MottoSerializer(motto, many=False)
         return JsonResponse(serializer.data)
+
 
 class NavBarList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Tab.objects.all()
