@@ -1,6 +1,6 @@
 from main.settings.core import DEBUG
 
-ALLOWED_HOSTS = ['quiero-volver.mx']
+ALLOWED_HOSTS = ['*']
 
 # This should be removed later on
 # ALLOWED_HOSTS.append('*')
