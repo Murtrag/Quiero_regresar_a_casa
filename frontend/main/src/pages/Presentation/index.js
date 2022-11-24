@@ -46,7 +46,24 @@ import footerRoutes from "footer.routes";
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
+import {useEffect, useState} from 'react';
+
 function Presentation() {
+  let [state, setState] = useState({
+     header: "",
+     description: ""
+  });
+    
+	useEffect(()=>{
+		fetch(serverUrl + 'header/').then(response=>response.json())
+		.then((state)=>{
+			setState({
+				...state,
+				state
+			})
+		})
+	}, [])
+    
   return (
     <>
       <DefaultNavbar
@@ -83,7 +100,7 @@ function Presentation() {
                 },
               })}
             >
-              Material Kit 2 React{" "}
+              { state.header + " " }
             </MKTypography>
             <MKTypography
               variant="body1"
@@ -92,8 +109,7 @@ function Presentation() {
               px={{ xs: 6, lg: 12 }}
               mt={1}
             >
-              Free & Open Source Web UI Kit built over ReactJS &amp; MUI. Join over 1.6 million
-              developers around the world.
+                { state.description }
             </MKTypography>
           </Grid>
         </Container>

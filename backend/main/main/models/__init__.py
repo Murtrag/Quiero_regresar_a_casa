@@ -1,4 +1,6 @@
-from .main import *
+from .user import *
+from .motto import *
 from .footer import *
 from .navbar import *
 from .country import *
+

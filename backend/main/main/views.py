@@ -3,8 +3,15 @@ from rest_framework import generics
 from django.http import JsonResponse
 from rest_framework import permissions
 from rest_framework.views import APIView
-from .serializers import ProfileSerializer, FooterSerializer, TabSerializer  #MenuSerializer
-from .models import Profile, Tab, Footer
+from .serializers import (
+ProfileSerializer, 
+FooterSerializer, 
+TabSerializer,  
+#MenuSerializer,
+MottoSerializer
+)
+
+from .models import Profile, Tab, Footer, Motto
 from . import custom_permissions
 
 
@@ -28,7 +35,6 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FooterView(APIView):
-
     def get(self, request, format=None):
         try:
             footer = Footer.objects.last()
@@ -38,6 +44,15 @@ class FooterView(APIView):
         serializer = FooterSerializer(footer, many=False)
         return JsonResponse(serializer.data)
 
+class MottoView(APIView):
+    def get(self, request, format=None):
+        try:
+            motto = Motto.objects.last()
+        except Motto.DoesNotExist:
+            return HttpResponse(status=404)
+
+        serializer = MottoSerializer(motto, many=False)
+        return JsonResponse(serializer.data)
 
 class NavBarList(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = Tab.objects.all()

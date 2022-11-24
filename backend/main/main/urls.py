@@ -2,7 +2,13 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
-from .views import (ProfileList, ProfileDetail, FooterView, NavBarList)
+from .views import (
+ProfileList, 
+ProfileDetail, 
+FooterView, 
+NavBarList,
+MottoView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,6 +27,9 @@ urlpatterns = [
 
     # Footer api
     path(r'footer/', FooterView.as_view()),
+
+    # Motto api
+    path(r'motto/', MottoView.as_view()),
 
     # Nav bar api
     path(r'nav-bar/', NavBarList.as_view()),
