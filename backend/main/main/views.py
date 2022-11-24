@@ -46,11 +46,12 @@ class FooterView(APIView):
 
 
 class MottoView(APIView):
-    #lookup_field = 'language'
+    lookup_field = 'language_pk'
 
     def get(self, request, format=None, **kwargs):
         try:
-            motto = Motto.objects.get(languages__pk=kwargs.get('language_pk'))
+            motto = Motto.objects.get(
+                languages__pk=kwargs.get(MottoView.lookup_field))
         except Motto.DoesNotExist:
             return HttpResponse(status=404)
         serializer = MottoSerializer(motto, many=False)
