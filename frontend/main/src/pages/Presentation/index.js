@@ -47,8 +47,10 @@ import footerRoutes from "footer.routes";
 import bgImage from "assets/images/bg-presentation.jpg";
 
 import {useEffect, useState} from 'react';
+import configData from "projectconfig.json"
 
 function Presentation() {
+  const serverUrl = configData.SERVER_URL;
   let [state, setState] = useState({
      header: "",
      description: ""
