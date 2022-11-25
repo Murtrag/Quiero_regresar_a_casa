@@ -5,8 +5,14 @@ ArticleDetail,
 ArticleList)
 
 urlpatterns = [
-    path('', under_construction_view),
-    path(r'articles/<int:language>/<int:country>/', ArticleList.as_view()),
+    # Under construction page
+    path('', under_construction_view, name='under_construction'),
+
+    # List of all articles
+    path(r'articles/<int:language>/<int:country>/', 
+         ArticleList.as_view(), name='article_list'),
+
+    # Detail article
     path(r'article/<int:language>/<int:country>/<str:title>/',
-         ArticleDetail.as_view())
+         ArticleDetail.as_view(), name='detail_article')
 ]

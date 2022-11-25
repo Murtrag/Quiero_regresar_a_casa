@@ -6,12 +6,16 @@ from .views import (ProfileList, ProfileDetail, FooterView, NavBarList,
                     MottoView)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # Admin view
+    path('admin/', admin.site.urls, name='admin'),
+    
+    # Api authentication view
     path('api-auth/', include('rest_framework.urls',
-                              namespace='rest_framework')),
+                              namespace='rest_framework')
+        name='api_auth'),
 
     # Missing person api
-    path('missing-person/', include('missing_person.urls')),
+    path('missing-person/', include('missing_person.urls'),),
 
     # Basic api
     path('', include('basic.urls')),
