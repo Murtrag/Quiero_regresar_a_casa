@@ -11,7 +11,7 @@ urlpatterns = [
     
     # Api authentication view
     path('api-auth/', include('rest_framework.urls',
-                              namespace='rest_framework')
+                              namespace='rest_framework'),
         name='api_auth'),
 
     # Missing person api
