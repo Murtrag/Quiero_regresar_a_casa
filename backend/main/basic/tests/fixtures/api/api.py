@@ -5,7 +5,6 @@ from pytest_lambda import lambda_fixture
 from tests.settings.conftest import article_set
 # Internal modules
 # from main.settings.fixtures import env
-from tests.settings.fixtures import env
 
 class TestArticleList(
     APIViewTest,
