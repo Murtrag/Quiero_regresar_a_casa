@@ -13,6 +13,6 @@ urlpatterns = [
     ArticleList.as_view(), name='article_list'),
 
     # Detail article
-    path(r'article/<int:language>/<int:country>/<str:title>/',
+    path(r'article/<int:language>/<int:country>/<str:pk>/',
     ArticleDetail.as_view(), name='detail_article')
 ]

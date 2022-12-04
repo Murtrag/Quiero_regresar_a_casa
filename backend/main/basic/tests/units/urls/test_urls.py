@@ -1,15 +1,15 @@
 import pytest
-from django.urls import reverse
+from django.urls import reverse, resolve
 
 @pytest.mark.basic
-@pytest.mark.urls
-@pytest.mark.xfail
-def test_article_detail_if_return_correct_url(article_set):
+# @pytest.mark.urls
+def test_article_detail_if_return_correct_url(db, article_set):
     ''' Test if reverse returns expected url'''
-    reverse('article_detail', kwargs={
-        'language': 1,
-        'country': 1
-        'title':
-
-    })
-    pass
+    url_name = 'detail_article'
+    for article in article_set:
+        path = reverse(url_name, kwargs={
+            'language': article.language.pk,
+            'country': article.country.pk,
+            'pk': article.pk
+        })
+        assert resolve(path).view_name == url_name
