@@ -5,13 +5,20 @@ from faker import Faker
 from basic.models import Article
 
 # Factory imports
-from tests.settings.factories.main import LanguageFactory, CountryFactory
+from main.tests.factories import LanguageFactory, CountryFactory
+
+#from pytest_factoryboy import register
+# register(ArticleFactory) # --> article_factory
+
+
 
 fake = Faker()
 
 class ArticleFactory(factory.django.DjangoModelFactory):
+    ''' Class creates a sample record in Article ''' 
+
     language = factory.SubFactory(LanguageFactory)
-    Country = factory.SubFactory(CountryFactory)
+    country = factory.SubFactory(CountryFactory)
     # title = fake.title()
     title = "fake.title()"
     text_html = fake.text()
@@ -19,3 +26,4 @@ class ArticleFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = Article
+# register(ArticleFactory) # --> article_factory
