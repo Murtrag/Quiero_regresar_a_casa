@@ -7,3 +7,5 @@ env/
 .git
 .pre-commit-config.yaml
 readme.md
+**/__pycache__
+**/*.pyc

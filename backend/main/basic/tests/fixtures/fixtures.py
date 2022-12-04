@@ -9,6 +9,7 @@ import pytest
 @pytest.fixture
 @pytest.mark.django_db
 def article_set(article_factory):
-    for _ in range(0,10):
-        yield article_factory()
-    print('created some articles')
+    yield (article_factory() for _ in range(0,10))
+    # for _ in range(0,10):
+    #     yield article_factory()
+    # print('created some articles')
