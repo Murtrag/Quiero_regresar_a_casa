@@ -1,6 +1,5 @@
 import factory
 from faker import Faker
-from pytest_factoryboy import register
 
 # Model imports
 from main.models import (
@@ -23,7 +22,6 @@ class LinkFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Link
 
-register(LinkFactory)
 class HeaderFactory(factory.django.DjangoModelFactory):
     name = fake.word()
 
@@ -47,7 +45,6 @@ class BrandFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Brand
 
-register(HeaderFactory)
 class FooterFactory(factory.django.DjangoModelFactory):
     ''' Class creates a sample record in Footer '''
     brand = factory.SubFactory(BrandFactory)
@@ -60,8 +57,8 @@ class FooterFactory(factory.django.DjangoModelFactory):
         if not create:
             return
         if extracted:
-            # for menu in extracted:
-            #     self.groups.add(menu)
-            for menu in range(0,10):
-                breakpoint()
-                self.menus.add(header_factory())
+            for menu in extracted:
+                self.menus.add(menu)
+            # for menu in range(0,10):
+            #     breakpoint()
+            #     self.menus.add(header_factory())
