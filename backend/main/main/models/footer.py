@@ -1,12 +1,6 @@
 from django.db import models
 
     
-class Header(models.Model):
-    name = models.CharField(max_length = 150)
-    items = models.ManyToManyField("link")
-
-    def __str__(self):
-        return self.name
 
 class Link(models.Model):
     name = models.CharField(max_length = 150)
@@ -15,6 +9,12 @@ class Link(models.Model):
     def __str__(self):
         return self.name
 
+class Header(models.Model):
+    name = models.CharField(max_length = 150)
+    items = models.ManyToManyField(Link)
+
+    def __str__(self):
+        return self.name
 
 # class Social(models.Model):
 #     icon = 

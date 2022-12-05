@@ -5,11 +5,12 @@ import pytest
 # from basic.tests.factories import ArticleFactory
 
 # from tests.conftest import article_factory
+from pytest_factoryboy import register
+from basic.tests.factories import ArticleFactory
 
-@pytest.fixture
-@pytest.mark.django_db
+
+register(ArticleFactory) # --> article_factory
+
+@pytest.fixture() # --> generator
 def article_set(article_factory):
-    yield (article_factory() for _ in range(0,10))
-    # for _ in range(0,10):
-    #     yield article_factory()
-    # print('created some articles')
+    return (article_factory() for _ in range(0,10))
