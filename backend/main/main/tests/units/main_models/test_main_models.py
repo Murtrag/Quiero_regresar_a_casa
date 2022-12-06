@@ -5,9 +5,7 @@ from main.models import (
 
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
 def test_footer_check_header(db, footer_factory):
-    pass
     for _ in range(0, 10):
         footer = footer_factory()
         assert Footer.objects.filter(pk=footer.pk)
@@ -15,30 +13,18 @@ def test_footer_check_header(db, footer_factory):
 
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
-def test_footer_check_link():
-    pass
+def test_footer_check_link(db, link_factory):
     for _ in range(0, 10):
-        footer = footer_factory()
-        assert Footer.objects.filter(pk=footer.pk)
+        link = link_factory()
+        assert Link.objects.filter(pk=link.pk)
 
 
 @pytest.mark.main
 @pytest.mark.models
 @pytest.mark.xfail
 def test_footer_check_brand():
-    pass
     for _ in range(0, 10):
-        footer = footer_factory()
-        assert Footer.objects.filter(pk=footer.pk)
+        brand = brand_factory()
+        assert Brand.objects.filter(pk=brand.pk)
 
-
-@pytest.mark.main
-@pytest.mark.models
-@pytest.mark.xfail
-def test_footer_check_footer():
-    pass
-    for _ in range(0, 10):
-        footer = footer_factory()
-        assert Footer.objects.filter(pk=footer.pk)
 

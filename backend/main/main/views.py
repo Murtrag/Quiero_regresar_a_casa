@@ -34,10 +34,19 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FooterView(APIView):
+    '''
+    Returns json for botton part of the website
+    *tested
+    '''
 
     def get(self, request, format=None):
         try:
-            footer = Footer.objects.last()
+            language =  request.get('language')
+            country =  request.get('country')
+            footer = Footer.objects.get(
+                    language=language,
+                    country=country
+                    )
         except Footer.DoesNotExist:
             return HttpResponse(status=404)
 
@@ -58,9 +67,14 @@ class MottoView(APIView):
         return JsonResponse(serializer.data)
 
 
-class NavBarList(mixins.ListModelMixin, generics.GenericAPIView):
+class NavBarList(
+        mixins.ListModelMixin,
+        generics.GenericAPIView
+        # custom_mixins.MultipleFieldLookupMixin,
+        ):
     queryset = Tab.objects.all()
     serializer_class = TabSerializer
+    lookup_fields = ['language', 'country']
     permission_classes = [
         permissions.IsAuthenticated,
     ]
