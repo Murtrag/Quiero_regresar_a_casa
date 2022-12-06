@@ -10,7 +10,10 @@ from main.models import (
 )
 
 # Facotry imports
-# ...
+from .country import (
+    LanguageFactory,
+    CountryFactory
+)
 
 fake = Faker()
 
@@ -33,8 +36,9 @@ class HeaderFactory(factory.django.DjangoModelFactory):
         if not create:
             return
         if extracted:
-            for item in range(0,10):
-                self.menus.add(link_factory())
+            for item in extracted:
+                self.items.add(item)
+        self.save()
 
 
 class BrandFactory(factory.django.DjangoModelFactory):
@@ -48,6 +52,8 @@ class BrandFactory(factory.django.DjangoModelFactory):
 class FooterFactory(factory.django.DjangoModelFactory):
     ''' Class creates a sample record in Footer '''
     brand = factory.SubFactory(BrandFactory)
+    language = factory.SubFactory(LanguageFactory)
+    country = factory.SubFactory(CountryFactory)
 
     class Meta:
         model = Footer
@@ -59,6 +65,7 @@ class FooterFactory(factory.django.DjangoModelFactory):
         if extracted:
             for menu in extracted:
                 self.menus.add(menu)
+        self.save()
             # for menu in range(0,10):
             #     breakpoint()
             #     self.menus.add(header_factory())

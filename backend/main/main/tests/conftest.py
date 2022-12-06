@@ -1,8 +1,7 @@
 import pytest
 from pytest_factoryboy import register
 
-from main.tests.fixtures import menu_set
-from main.tests.fixtures import footer_set
+from main.tests.fixtures import *
 from main.tests.factories import (
     FooterFactory,
     HeaderFactory,

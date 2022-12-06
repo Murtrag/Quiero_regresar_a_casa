@@ -1,4 +1,8 @@
 from django.db import models
+from .country import (
+    Language,
+    Country
+)
 
     
 
@@ -26,6 +30,8 @@ class Brand(models.Model):
     route = models.CharField(max_length = 150)
 
 class Footer(models.Model):
+    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     brand =  models.OneToOneField(Brand, on_delete=models.CASCADE)
     # socials
     menus = models.ManyToManyField(Header)
