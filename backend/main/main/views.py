@@ -11,6 +11,7 @@ from .serializers import (
     MottoSerializer)
 
 from .models import Profile, Tab, Footer, Motto
+from utils.rest_framework import mixins as custom_mixins
 # from . import custom_permissions
 
 
@@ -39,10 +40,8 @@ class FooterView(APIView):
     *tested
     '''
 
-    def get(self, request, format=None):
+    def get(self, request, language, country, format=None):
         try:
-            language =  request.get('language')
-            country =  request.get('country')
             footer = Footer.objects.get(
                     language=language,
                     country=country
@@ -68,16 +67,16 @@ class MottoView(APIView):
 
 
 class NavBarList(
-        mixins.ListModelMixin,
-        generics.GenericAPIView
-        # custom_mixins.MultipleFieldLookupMixin,
+        custom_mixins.MultipleFieldLookupMixin,
+        # mixins.ListModelMixin,
+        generics.GenericAPIView,
         ):
     queryset = Tab.objects.all()
     serializer_class = TabSerializer
-    lookup_fields = ['language', 'country']
-    permission_classes = [
-        permissions.IsAuthenticated,
-    ]
+    lookup_fields = ('language', 'country')
+    # permission_classes = [
+    #     permissions.IsAuthenticated,
+    # ]
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)

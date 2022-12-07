@@ -1,6 +1,8 @@
 import pytest
 from main.models import (
-        Footer
+        Footer,
+        Link,
+        Brand
         )
 
 @pytest.mark.main

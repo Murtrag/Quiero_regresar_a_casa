@@ -25,7 +25,7 @@ urlpatterns = [
     path(r'profile/<int:pk>/', ProfileDetail.as_view()),
 
     # Footer api
-    path(r'footer/<int:language>/<int:country>/', FooterView.as_view()),
+    path(r'footer/<int:language>/<int:country>/', FooterView.as_view(), name="footer"),
 
     # Motto api
     path(r'motto/<int:language_pk>/', MottoView.as_view()),
