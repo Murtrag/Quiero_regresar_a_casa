@@ -4,13 +4,15 @@ from pytest_factoryboy import register
 from main.tests.factories import (
     FooterFactory,
     HeaderFactory,
-    LinkFactory
+    LinkFactory,
+    BrandFactory
     )
 
 
 register(FooterFactory) # --> footer_factory
 register(HeaderFactory) # --> header_factory
 register(LinkFactory) # --> item_factory
+register(BrandFactory) # --> brand_factory
 
 @pytest.fixture()
 def items_set(link_factory): # --> generator

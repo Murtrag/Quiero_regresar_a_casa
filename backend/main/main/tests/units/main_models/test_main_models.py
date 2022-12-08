@@ -23,8 +23,7 @@ def test_footer_check_link(db, link_factory):
 
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
-def test_footer_check_brand():
+def test_footer_check_brand(db, brand_factory):
     for _ in range(0, 10):
         brand = brand_factory()
         assert Brand.objects.filter(pk=brand.pk)
