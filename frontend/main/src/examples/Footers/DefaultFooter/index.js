@@ -26,7 +26,7 @@ function DefaultFooter({ content }) {
 	}) ;
 
 	useEffect(()=>{
-		fetch(serverUrl + 'footer/').then(response=>response.json())
+		fetch(serverUrl + 'footer/1/1/').then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
