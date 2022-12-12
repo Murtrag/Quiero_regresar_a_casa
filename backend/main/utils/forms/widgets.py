@@ -13,9 +13,8 @@ class HrefWidget(Widget):
         if attrs:
             default_attrs.update(attrs)
 
-        if related_objects is None:
-            related_objects = list
-        self.options = self.render_option(elated_objects)
+        if related_objects is None: related_objects = list
+        self.options = self._render_option(related_objects)
 
         super().__init__(default_attrs)
 
@@ -23,23 +22,30 @@ class HrefWidget(Widget):
         if value is None: value = ''
         final_attrs = self.build_attrs(attrs)#, name=name)
         # return format_html('<textarea{0}>\r\n{1}</textarea><b>test</b>',
-        return format_html('
-                <input list="browsers"{0} value="{1}">
+        return format_html('''
+                <input list="browsers" value="{}">
                 <datalist id="browsers">
-                    {2}
+                    {}
                 </datalist> 
-                ',
-                           flatatt(final_attrs),
+                ''',
+                           # flatatt(final_attrs),
                            force_str(value),
-                           self.options()
+                           self.options
                            )
 
     # def render_option(self, selected_choices, option_value, option_label):
-    def render_option(self, related_objects):
-        option_values =  (obj.objects.all().prefetch('pk', 'href', 'name') in related_objects)
+    def _render_option(self, related_objects):
+        option_values =  (list(obj.objects.all()) for obj in related_objects)
+        option_values = list()
+        for obj in related_objects:
+            option_values.extend(
+                    tuple(obj.objects.all())
+                    )
+            # breakpoint()
         # Probably I need to nest one more list comprehension
+        print([x.url for x in option_values])
         return "\n".join([
-            format_html('<option value="{0}"{1}>{2}</option>', option_value.id, option_value.href, option_value.name )
+            format_html('<option value="{}">', option_value.url)
             for option_value in option_values
             ])
 

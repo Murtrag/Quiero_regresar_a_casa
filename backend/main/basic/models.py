@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse_lazy
+from django.urls import reverse
 from main.models import (Country, Language)
 
 from django.template.defaultfilters import slugify
@@ -16,12 +16,12 @@ class Article(models.Model):
 
     @property
     def url(self):
-        return reverse_lazy('article_detail' kwargs={
-            'language': self.language,
-            'country': self.country,
-            'pk': self.pk
-            })
-        pass
+         return f'article/{self.language.pk}/{self.country.pk}/{self.pk}/'
+         # return reverse('detail_article', kwargs={
+         #    'language': self.language.pk,
+         #    'country': self.country.pk,
+         #    'pk': self.pk
+         #    })
 
     def save(self, *args, **kwargs):
         self.url_title = slugify(self.title)
