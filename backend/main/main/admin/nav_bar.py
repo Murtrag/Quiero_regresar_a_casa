@@ -7,13 +7,16 @@ from main.models import (
         SubElement
         )
 from utils.forms.widgets import HrefWidget
+from basic.models import Articles
 
 
 class HrefForm(forms.ModelForm):
     class Meta:
         model = SubElement
         widgets = {
-                'href': HrefWidget(),
+                'href': HrefWidget(related_objects=(
+                    Articles
+                    )),
                 }
         fields = '__all__'
 

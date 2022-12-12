@@ -36,7 +36,7 @@ class HrefWidget(Widget):
 
     # def render_option(self, selected_choices, option_value, option_label):
     def render_option(self, related_objects):
-        option_values =  (obj.objects.all().values_list('id', 'href', 'name') in related_objects)
+        option_values =  (obj.objects.all().prefetch('pk', 'href', 'name') in related_objects)
         # Probably I need to nest one more list comprehension
         return "\n".join([
             format_html('<option value="{0}"{1}>{2}</option>', option_value.id, option_value.href, option_value.name )
