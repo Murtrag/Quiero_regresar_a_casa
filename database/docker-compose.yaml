@@ -6,7 +6,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - DB:/var/lib/postgresql/data
+      # - DB:/var/lib/postgresql/data
+      - DB:/home/malvern/www/Quiero_regresar_a_casa/database/db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123PoStGrEs!
