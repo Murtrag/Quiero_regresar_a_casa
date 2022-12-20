@@ -3,9 +3,9 @@ from faker import Faker
 
 # Model imports
 from main.models import (
-    Link,
-    Header,
-    Brand,
+    FooterLink,
+    FooterHeader,
+    FooterBrand,
     Footer
 )
 

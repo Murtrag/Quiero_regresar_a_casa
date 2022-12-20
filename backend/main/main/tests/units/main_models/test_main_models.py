@@ -1,8 +1,8 @@
 import pytest
 from main.models import (
         Footer,
-        Link,
-        Brand
+        FooterLink,
+        FooterBrand
         )
 
 @pytest.mark.main
@@ -18,7 +18,7 @@ def test_footer_check_header(db, footer_factory):
 def test_footer_check_link(db, link_factory):
     for _ in range(0, 10):
         link = link_factory()
-        assert Link.objects.filter(pk=link.pk)
+        assert FooterLink.objects.filter(pk=link.pk)
 
 
 @pytest.mark.main
@@ -26,6 +26,6 @@ def test_footer_check_link(db, link_factory):
 def test_footer_check_brand(db, brand_factory):
     for _ in range(0, 10):
         brand = brand_factory()
-        assert Brand.objects.filter(pk=brand.pk)
+        assert FooterBrand.objects.filter(pk=brand.pk)
 
 

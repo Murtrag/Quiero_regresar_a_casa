@@ -15,7 +15,7 @@ class FooterLink(models.Model):
 
 class FooterHeader(models.Model):
     name = models.CharField(max_length = 150)
-    items = models.ManyToManyField(Link)
+    items = models.ManyToManyField(FooterLink)
 
     def __str__(self):
         return self.name
@@ -32,8 +32,8 @@ class FooterBrand(models.Model):
 class Footer(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    brand =  models.OneToOneField(Brand, on_delete=models.CASCADE)
+    brand =  models.OneToOneField(FooterBrand, on_delete=models.CASCADE)
     # socials
-    menus = models.ManyToManyField(Header)
+    menus = models.ManyToManyField(FooterHeader)
     # copyright
 

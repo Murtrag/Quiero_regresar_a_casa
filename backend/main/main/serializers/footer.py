@@ -1,21 +1,21 @@
 from rest_framework import serializers
-from main.models import Brand, Link, Header, Footer
+from main.models import FooterBrand, FooterLink, FooterHeader, Footer
 
 
 class BrandSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Brand
+        model = FooterBrand
         fields = ('name','image', 'route',)
 
 class LinkSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Link
+        model = FooterLink
         fields = ('name', 'href',)
         
 class MenuSerializer(serializers.ModelSerializer):
     items = LinkSerializer(read_only=False, many=True)
     class Meta:
-        model = Header
+        model = FooterHeader
         fields = ('name','items' )
 
 class FooterSerializer(serializers.HyperlinkedModelSerializer):
