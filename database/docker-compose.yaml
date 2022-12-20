@@ -1,16 +1,21 @@
 version: "3"
 
+volumes:
+  DB:
+
 services:
   db:
     image: postgres
+    # user:  "murtrag:murtrag"
     ports:
       - "5432:5432"
+    restart: always
     volumes:
-      # - DB:/var/lib/postgresql/data
-      - /home/malvern/www/Quiero_regresar_a_casa/database/db:/var/lib/postgresql/data
+      - DB:/var/lib/postgresql/data
+      # - /home/malvern/www/Quiero_regresar_a_casa/database/db:/var/lib/postgresql/data
+      # - /media/database/data:/home/murtrag/Quiero_regresar_a_casa/database/db:Z
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123PoStGrEs!
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123PoStGrEs!
+      PGDATA: /home/murtrag/Quiero_regresar_a_casa/database/db
 
-volumes:
-  DB:
