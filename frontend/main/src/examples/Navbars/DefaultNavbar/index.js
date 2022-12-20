@@ -43,8 +43,13 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
-  let [routes, setRoutes] = useState({})
+import configData from "projectconfig.json"
+
+function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center }) {
+
+  let [routes, setRoutes] = useState([])
+
+  const serverUrl = configData.SERVER_URL;
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
   const [dropdownName, setDropdownName] = useState("");
@@ -59,12 +64,13 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
 
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
-	fetch(serverUrl + 'routes/1/1/').then(response=>response.json())
+	// fetch(serverUrl + 'routes/1/1/').then(response=>response.json())
+	fetch('http://127.0.0.1:8000/' + 'nav-bar/1/1/').then(response=>response.json())
 	.then((newRoute)=>{
-		setRoutes({
-			...route,
-			...newRout
-		})
+		setRoutes([
+			...routes,
+			...newRoute
+		])
 	})
     function displayMobileNavbar() {
       if (window.innerWidth < breakpoints.values.lg) {
@@ -468,7 +474,6 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
         borderRadius="xl"
         shadow={transparent ? "none" : "md"}
         color={light ? "white" : "dark"}
-const mySecret = process.env['SERVER_TYPE']
         position={relative ? "relative" : "absolute"}
         left={0}
         zIndex={3}

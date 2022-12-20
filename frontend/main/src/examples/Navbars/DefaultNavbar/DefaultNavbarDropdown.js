@@ -70,7 +70,7 @@ function DefaultNavbarDropdown({
           color="inherit"
           sx={{ alignSelf: "center", "& *": { verticalAlign: "middle" } }}
         >
-          {icon}
+          <Icon>{icon}</Icon>
         </MKTypography>
         <MKTypography
           variant="button"
