@@ -12,7 +12,7 @@ from basic.models import Article
 
 class HrefForm(forms.ModelForm):
     class Meta:
-        model = SubElement
+        model = NavBarSubElement
         widgets = {
                 'href': HrefWidget(related_objects=(
                     Article,

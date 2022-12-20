@@ -29,7 +29,7 @@ class FooterBrand(models.Model):
     image = models.ImageField()
     route = models.CharField(max_length = 150)
 
-class FooterFooter(models.Model):
+class Footer(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     brand =  models.OneToOneField(Brand, on_delete=models.CASCADE)

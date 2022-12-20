@@ -10,7 +10,7 @@ from .serializers import (
     #MenuSerializer,
     MottoSerializer)
 
-from .models import Profile, Tab, Footer, Motto
+from .models import Profile, NavBarTab, Footer, Motto
 from utils.rest_framework import mixins as custom_mixins
 # from . import custom_permissions
 
@@ -71,7 +71,7 @@ class NavBarList(
         # mixins.ListModelMixin,
         generics.GenericAPIView,
         ):
-    queryset = Tab.objects.all()
+    queryset = NavBarTab.objects.all()
     serializer_class = TabSerializer
     lookup_fields = ('language_pk', 'country_pk')
     # permission_classes = [
