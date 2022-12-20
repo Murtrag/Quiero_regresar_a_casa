@@ -1,26 +1,26 @@
 from django.contrib import admin
 from main.models import (
-        Header,
-        Link,
-        Brand,
-        Footer
+        NavBarHeader,
+        NavBarLink,
+        NavBarBrand,
+        NavBarFooter
         )
 
 class HeaderAdmin(admin.ModelAdmin):
     list_display = ('name',)
     
-admin.site.register(Header, HeaderAdmin)
+admin.site.register(NavBarHeader, HeaderAdmin)
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('name','href',)
-admin.site.register(Link, LinkAdmin)
+admin.site.register(NavBarLink, LinkAdmin)
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name','image','route',)
-admin.site.register(Brand, BrandAdmin)
+admin.site.register(NavBarBrand, BrandAdmin)
 
 class FooterAdmin(admin.ModelAdmin):
     list_display = ('brand', ) #social, copyright
-admin.site.register(Footer, FooterAdmin)
+admin.site.register(NavBarFooter, FooterAdmin)
 
 

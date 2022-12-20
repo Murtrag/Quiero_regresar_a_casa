@@ -6,14 +6,14 @@ from .country import (
 
     
 
-class Link(models.Model):
+class FooterLink(models.Model):
     name = models.CharField(max_length = 150)
     href = models.CharField(max_length = 500)
     
     def __str__(self):
         return self.name
 
-class Header(models.Model):
+class FooterHeader(models.Model):
     name = models.CharField(max_length = 150)
     items = models.ManyToManyField(Link)
 
@@ -24,12 +24,12 @@ class Header(models.Model):
 #     icon = 
 #     link = models.CharField(max_length = 500)
 
-class Brand(models.Model):
+class FooterBrand(models.Model):
     name = models.CharField(max_length = 150)
     image = models.ImageField()
     route = models.CharField(max_length = 150)
 
-class Footer(models.Model):
+class FooterFooter(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     brand =  models.OneToOneField(Brand, on_delete=models.CASCADE)

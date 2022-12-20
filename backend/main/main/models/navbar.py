@@ -1,6 +1,6 @@
 from django.db import models
 
-class Tab(models.Model):
+class NavBarTab(models.Model):
     name = models.CharField(max_length=35)
     icon = models.CharField(
             max_length=100,
@@ -16,7 +16,7 @@ class Tab(models.Model):
     def __str__(self):
         return f'{self.name} (country)'
 
-class SubTab(models.Model):
+class NavBarSubTab(models.Model):
     name = models.CharField(max_length=35)
     description = models.CharField(max_length=100, blank=True)
     href = models.CharField(max_length=250, blank=True)
@@ -27,7 +27,7 @@ class SubTab(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-class SubElement(models.Model):
+class NavBarSubElement(models.Model):
     name = models.CharField(max_length=35)
     description = models.CharField(max_length=100, blank=True)
     href = models.CharField(max_length=250, blank=True)
