@@ -142,4 +142,4 @@ function Presentation() {
   );
 }
 
-export default Article;
+export default Presentation;
