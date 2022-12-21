@@ -31,7 +31,7 @@ urlpatterns = [
     path(r'motto/<int:language_pk>/', MottoView.as_view()),
 
     # Nav bar api
-    path(r'nav-bar/<int:language>/<int:country>/', NavBarList.as_view()),
+    path(r'nav-bar/<int:language>/<int:country>/', NavBarList.as_view(), name='nav_bar'),
 ]
 
 # Static files debug configuration
