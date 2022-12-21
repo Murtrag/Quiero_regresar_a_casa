@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from main.models import Brand, Link, Header, Footer, Profile
+from main.models import Profile
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.ReadOnlyField()

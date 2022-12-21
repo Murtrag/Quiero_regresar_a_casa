@@ -11,7 +11,7 @@ class NavBarTab(models.Model):
     rows_per_column = models.SmallIntegerField(blank=True, null=True)
     href = models.CharField(max_length=250, blank=True)
     route = models.CharField(max_length=200, blank=True)
-    collapse = models.ManyToManyField('SubTab', blank=True)
+    collapse = models.ManyToManyField('NavBarSubTab', blank=True)
     
     def __str__(self):
         return f'{self.name} (country)'
@@ -22,7 +22,7 @@ class NavBarSubTab(models.Model):
     href = models.CharField(max_length=250, blank=True)
     route = models.CharField(max_length=200, blank=True)
     dropdown = models.BooleanField()
-    collapse = models.ManyToManyField('SubElement', blank=True)
+    collapse = models.ManyToManyField('NavBarSubElement', blank=True)
 
     def __str__(self):
         return f'{self.name}'

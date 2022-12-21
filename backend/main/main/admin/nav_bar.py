@@ -12,7 +12,6 @@ from basic.models import Article
 
 class HrefForm(forms.ModelForm):
     class Meta:
-        model = NavBarSubElement
         widgets = {
                 'href': HrefWidget(related_objects=(
                     Article,
@@ -21,10 +20,12 @@ class HrefForm(forms.ModelForm):
         fields = '__all__'
 
 class TabAdmin(admin.ModelAdmin):
+    form = HrefForm
     list_display = ('name', 'href' ) #social, copyright
 admin.site.register(NavBarTab, TabAdmin)
 
 class SubTabAdmin(admin.ModelAdmin):
+    form = HrefForm
     list_display = ('name', 'href' ) #social, copyright
 admin.site.register(NavBarSubTab, SubTabAdmin)
 
