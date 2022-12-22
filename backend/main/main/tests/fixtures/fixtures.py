@@ -60,7 +60,6 @@ def sub_tab_set(sub_tab_factory, tab_set): # --> generator
     def wrap():
         return(
             sub_tab_factory.create(collapse=tab_set())
-            for _ in range(0, 10)
         )
     return wrap
 

@@ -23,13 +23,13 @@ class LinkFactory(factory.django.DjangoModelFactory):
     href = fake.url()
 
     class Meta:
-        model = Link
+        model = FooterLink
 
 class HeaderFactory(factory.django.DjangoModelFactory):
     name = fake.word()
 
     class Meta:
-        model = Header
+        model = FooterHeader
 
     @factory.post_generation
     def items(self, create, extracted, **kwargs):
@@ -47,7 +47,7 @@ class BrandFactory(factory.django.DjangoModelFactory):
     route = fake.url()
 
     class Meta:
-        model = Brand
+        model = FooterBrand
 
 class FooterFactory(factory.django.DjangoModelFactory):
     ''' Class creates a sample record in Footer '''
