@@ -50,27 +50,28 @@ def footer_set(footer_factory, menu_set): # --> generator
 
 # Nav bar
 @pytest.fixture()
-def tab_set(tab_factory): # --> generator
+def sub_element_set(sub_element_factory): # --> generator
+    def wrap():
+        return(
+            sub_element_factory() for _ in range(0, 10)
+        )
+    return wrap
+
+@pytest.fixture()
+def sub_tab_set(sub_tab_factory, sub_element_set): # --> generator
+    def wrap():
+        return(
+            sub_tab_factory.create(collapse=sub_element_set())
+            for _ in range
+        )
+    return wrap
+
+@pytest.fixture()
+# def sub_element_set(sub_element_factory, sub_tab_set): # --> generator
+def tab_set(tab_factory, sub_tab_set): # --> generator
     return(
-        tab_factory() for _ in range(0, 10)
+        tab_factory.create(
+            collapse = sub_tab_set() if i%2 else [],
+            )
+        for i in range(0, 10)
     )
-
-@pytest.fixture()
-def sub_tab_set(sub_tab_factory, tab_set): # --> generator
-    def wrap():
-        return(
-            sub_tab_factory.create(collapse=tab_set())
-        )
-    return wrap
-
-@pytest.fixture()
-def sub_element_set(sub_element_factory, sub_tab_set): # --> generator
-    def wrap():
-        return(
-            sub_element_factory.create(
-                dropdown= bool(i%2),
-                collapse=sub_tab_set() if i%2 else [],
-                )
-            for i in range(0, 10)
-        )
-    return wrap

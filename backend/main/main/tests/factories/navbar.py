@@ -34,7 +34,7 @@ class TabFactory(factory.django.DjangoModelFactory):
         if not create:
             return
         if extracted:
-            for link in collapse:
+            for link in extracted:
                 self.collapse.add(link)
 
 class SubTabFactory(factory.django.DjangoModelFactory):
@@ -49,11 +49,11 @@ class SubTabFactory(factory.django.DjangoModelFactory):
         model = NavBarSubTab
 
     @factory.post_generation
-    def collapse(elf, create, extracted, **kwargs):
+    def collapse(self, create, extracted, **kwargs):
         if not create:
             return
         if extracted:
-            for link in collapse:
+            for link in extracted:
                 self.collapse.add(link)
 
 class SubElementFactory(factory.django.DjangoModelFactory):
