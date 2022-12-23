@@ -34,7 +34,6 @@ def test_footer_check_brand(db, brand_factory):
 # Nav bar
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
 def test_nav_bar_check_tab(db, tab_factory):
     for _ in range(0, 10):
         tab =  tab_factory()
@@ -42,7 +41,6 @@ def test_nav_bar_check_tab(db, tab_factory):
 
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
 def test_nav_bar_check_sub_tab(db, sub_tab_factory):
     for _ in range(0, 10):
         sub_tab =  sub_tab_factory()
@@ -50,7 +48,6 @@ def test_nav_bar_check_sub_tab(db, sub_tab_factory):
 
 @pytest.mark.main
 @pytest.mark.models
-@pytest.mark.xfail
 def test_nav_bar_check_sub_element(db, sub_element_factory):
     for _ in range(0, 10):
         sub_element =  sub_element_factory()

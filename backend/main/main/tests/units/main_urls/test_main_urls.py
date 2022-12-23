@@ -57,22 +57,22 @@ def test_footer_url_if_fails(db, client, footer_set, language, country):
 # Nav bar
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
-def  test_nav_bar_url(db, client, nav_bar_set):
+def  test_nav_bar_url(db, client, tab_set):
+    language = 1
+    country = 1
     url_name = 'nav_bar'
     path = reverse(url_name, kwargs={
         'language': language,
         'country': country
         })
-    assert lient.get(path).view_name == url_name
+    assert resolve(path).view_name == url_name
 
 
 
 @pytest.mark.parametrize('language, country', language_country_url_not_exist_params)
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
-def test_nav_bar_url_if_exists(db, client, nav_bar_set, language, country):
+def test_nav_bar_url_if_exists(db, client, tab_set, language, country):
     url_name = 'nav_bar'
     path = reverse(url_name, kwargs={
         'language': language,
@@ -83,8 +83,7 @@ def test_nav_bar_url_if_exists(db, client, nav_bar_set, language, country):
 @pytest.mark.parametrize('language, country', language_country_url_incorrect_params)
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
-def test_nav_bar_url_if_fails(db, client, nav_bar_set, language, country):
+def test_nav_bar_url_if_fails(db, client, tab_set, language, country):
     url_name = 'nav_bar'
     with pytest.raises(NoReverseMatch):
         path = reverse(url_name, kwargs={
