@@ -30,7 +30,7 @@ class TabFactory(factory.django.DjangoModelFactory):
         model = NavBarTab
 
     @factory.post_generation
-    def collapse(elf, create, extracted, **kwargs):
+    def collapse(self, create, extracted, **kwargs):
         if not create:
             return
         if extracted:
