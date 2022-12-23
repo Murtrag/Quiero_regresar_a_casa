@@ -16,11 +16,10 @@ def test_footer_set_if_returns_complete_footer(db, footer_set):
 # Nav bar
 @pytest.mark.main
 @pytest.mark.api
-@pytest.mark.xfail
 def test_nav_bar_set_if_returns_complete_nav_bar(db, nav_bar_set):
     for el,i in enumerate(nav_bar_set):
         el_collapse = el.collapse.all()
         assert all((
-            len(el_collapse) if i%2 else len(el_collapse)==0
+            len(el_collapse) if i%2 else len(el_collapse)==0,
             len(el_collapse.first()) if i%2 else len(el_collapse.first())==0
         ))

@@ -68,7 +68,7 @@ def sub_element_set(sub_element_factory, sub_tab_set): # --> generator
     def wrap():
         return(
             sub_element_factory.create(
-                dropdown= bool(i%2)
+                dropdown= bool(i%2),
                 collapse=sub_tab_set() if i%2 else [],
                 )
             for i in range(0, 10)
