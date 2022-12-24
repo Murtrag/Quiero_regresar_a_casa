@@ -1,7 +1,10 @@
 from django.db import models
+from . import Language, Country
 
 class NavBarTab(models.Model):
     name = models.CharField(max_length=35)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     icon = models.CharField(
             max_length=100,
             blank=True,
