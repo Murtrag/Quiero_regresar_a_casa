@@ -18,7 +18,6 @@ language_country_url_incorrect_params = (
 # Footer
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
 def test_footer_url(db, client, footer_set):
     url_name = 'footer'
     for footer in footer_set:
@@ -32,7 +31,6 @@ def test_footer_url(db, client, footer_set):
 @pytest.mark.parametrize('language, country', language_country_url_not_exist_params)
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
 def test_footer_url_if_exists(db, client, footer_set, language, country):
     url_name = 'footer'
     path = reverse(url_name, kwargs={
@@ -44,7 +42,6 @@ def test_footer_url_if_exists(db, client, footer_set, language, country):
 @pytest.mark.parametrize('language, country', language_country_url_incorrect_params)
 @pytest.mark.main
 # @pytest.mark.urls
-@pytest.mark.xfail
 def test_footer_url_if_fails(db, client, footer_set, language, country):
     url_name = 'footer'
     with pytest.raises(NoReverseMatch):
@@ -57,7 +54,7 @@ def test_footer_url_if_fails(db, client, footer_set, language, country):
 # Nav bar
 @pytest.mark.main
 # @pytest.mark.urls
-def  test_nav_bar_url(db, client, tab_set):
+def test_nav_bar_url(db, client, tab_set):
     language = 1
     country = 1
     url_name = 'nav_bar'
@@ -67,18 +64,29 @@ def  test_nav_bar_url(db, client, tab_set):
         })
     assert resolve(path).view_name == url_name
 
+@pytest.mark.main
+# @pytest.mark.urls
+def test_nav_bar_if_not_empty(db, client, tab_set):
+    for tab in tab_set:
+        url_name = 'nav_bar'
+        path = reverse(url_name, kwargs={
+            'language': tab.language.pk,
+            'country': tab.country.pk
+            })
+        assert len(client.get(path).data) > 0
+
 
 
 @pytest.mark.parametrize('language, country', language_country_url_not_exist_params)
 @pytest.mark.main
 # @pytest.mark.urls
-def test_nav_bar_url_if_exists(db, client, tab_set, language, country):
+def test_nav_bar_url_if_empty(db, client, tab_set, language, country):
     url_name = 'nav_bar'
     path = reverse(url_name, kwargs={
         'language': language,
         'country': country,
         })
-    assert client.get(path).status_code == 404
+    assert client.get(path).data == []
 
 @pytest.mark.parametrize('language, country', language_country_url_incorrect_params)
 @pytest.mark.main

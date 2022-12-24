@@ -67,9 +67,9 @@ class MottoView(APIView):
 
 
 class NavBarList(
-        generics.GenericAPIView,
+        mixins.RetrieveModelMixin,
         custom_mixins.MultipleFieldLookupMixin,
-        # mixins.ListModelMixin,
+        generics.GenericAPIView,
         ):
     queryset = NavBarTab.objects.all()
     serializer_class = TabSerializer
