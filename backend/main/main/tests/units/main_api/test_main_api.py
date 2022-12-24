@@ -21,5 +21,5 @@ def test_tab_set_if_returns_complete_nav_bar(db, tab_set):
         el_collapse = el.collapse.all()
         assert all((
             len(el_collapse) if i%2 else len(el_collapse)==0,
-            el_collapse.first() is None if i%2 else el_collapse.first() is None
+            # el_collapse.first() is None if i%2 else len(el_collapse.first())
         ))
