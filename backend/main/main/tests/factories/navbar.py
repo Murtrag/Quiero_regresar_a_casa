@@ -9,6 +9,7 @@ from main.models import (
         NavBarSubElement,
         )
 
+# Facotry imports
 from .country import (
         LanguageFactory,
         CountryFactory
@@ -20,6 +21,8 @@ fake = Faker()
 class TabFactory(factory.django.DjangoModelFactory):
     # fields
     name = fake.word()
+    language = factory.SubFactory(LanguageFactory)
+    country = factory.SubFactory(CountryFactory)
     icon = fake.word()
     columns = random.randint(0, 9)
     rows_per_column = random.randint(0, 9)
