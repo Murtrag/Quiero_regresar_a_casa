@@ -14,8 +14,8 @@ Coded by www.creative-tim.com
 */
 
 // Material Kit 2 React pages
-import Presentation from "pages/Presentation";
+import MainLayout from "pages/Main";
 
-export default function PresentationPage() {
-  return <Presentation />;
+export default function MainLayoutPage() {
+  return <MainLayout />;
 }

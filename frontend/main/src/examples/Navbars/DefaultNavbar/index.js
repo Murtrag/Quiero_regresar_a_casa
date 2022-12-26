@@ -43,13 +43,12 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-import configData from "projectconfig.json"
+import { navBarURL } from "backendURLs"
 
 function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center }) {
 
   let [routes, setRoutes] = useState([])
 
-  const serverUrl = configData.SERVER_URL;
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
   const [dropdownName, setDropdownName] = useState("");
@@ -65,7 +64,8 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
 	// fetch(serverUrl + 'routes/1/1/').then(response=>response.json())
-	fetch('http://127.0.0.1:8000/' + 'nav-bar/1/1/').then(response=>response.json())
+	var country, language;
+	fetch(navBarURL(country=1, language=1)).then(response=>response.json())
 	.then((newRoute)=>{
 		setRoutes([
 			...routes,

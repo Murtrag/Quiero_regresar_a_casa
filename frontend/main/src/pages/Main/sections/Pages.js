@@ -26,10 +26,10 @@ import MKBadge from "components/MKBadge";
 import MKTypography from "components/MKTypography";
 
 // Presentation page components
-import ExampleCard from "pages/Presentation/components/ExampleCard";
+import ExampleCard from "pages/Main/components/ExampleCard";
 
 // Data
-import data from "pages/Presentation/sections/data/pagesData";
+import data from "pages/Main/sections/data/pagesData";
 
 function Pages() {
   const renderData = data.map(({ image, name, route }) => (

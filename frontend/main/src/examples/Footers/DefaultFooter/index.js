@@ -13,11 +13,10 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 import {useEffect, useState} from 'react';
-import configData from "projectconfig.json"
+import { serverURL, footerURL } from "backendURLs"
 
 
 function DefaultFooter({ content }) {
-	const serverUrl = configData.SERVER_URL;
 	let [state, setState] = useState({
 		brand: [],
 		socials: [],
@@ -26,7 +25,8 @@ function DefaultFooter({ content }) {
 	}) ;
 
 	useEffect(()=>{
-		fetch(serverUrl + 'footer/1/1/').then(response=>response.json())
+		var language, country;
+		fetch(footerURL(language=1, country=1)).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
@@ -46,7 +46,7 @@ function DefaultFooter({ content }) {
 		<Grid item xs={12} md={3} sx={{ ml: "auto", mb: 3 }}>
 		<MKBox>
 		<Link to={brand.route}>
-		<MKBox component="img" src={serverUrl + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
+		<MKBox component="img" src={serverURL + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
 		</Link>
 		<MKTypography variant="h6">{brand.name}</MKTypography>
 		</MKBox>

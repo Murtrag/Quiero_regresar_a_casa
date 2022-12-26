@@ -35,30 +35,31 @@ import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 // import Pages from "pages/Presentation/sections/Pages";
 // import Testimonials from "pages/Presentation/sections/Testimonials";
 // import Download from "pages/Presentation/sections/Download";
-   import Article from "pages/Presentation/sections/Article";
+import Article from "pages/Main/sections/Article";
 
 // Presentation page components
-import BuiltByDevelopers from "pages/Presentation/components/BuiltByDevelopers";
+import BuiltByDevelopers from "pages/Main/components/BuiltByDevelopers";
 
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
+import { Outlet, Link } from "react-router-dom";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
 import {useEffect, useState} from 'react';
-import configData from "projectconfig.json"
+import { mottoURL } from "backendURLs"
 
-function Presentation() {
-  const serverUrl = configData.SERVER_URL;
+function MainLayout() {
   let [state, setState] = useState({
      header: "",
      description: ""
   });
     
 	useEffect(()=>{
-		fetch(serverUrl + 'header/1/').then(response=>response.json())
+		var country;
+		fetch(mottoURL(country=1)).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
@@ -130,7 +131,7 @@ function Presentation() {
       >
 
         <Container>
-	  <Article />
+	  <Outlet />
         </Container>
         <MKBox pt={18} pb={6}>
         </MKBox>
@@ -142,4 +143,4 @@ function Presentation() {
   );
 }
 
-export default Presentation;
+export default MainLayout;
