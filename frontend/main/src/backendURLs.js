@@ -1,5 +1,5 @@
-// serverURL = "http://quiero-regresar.mx:81/"
-const serverURL = 'http://127.0.0.1:8000/'
+const serverURL = "http://quiero-regresar.mx:81/"
+//const serverURL = 'http://127.0.0.1:8000/'
 
 // Articles URLs
 const articleListURL = (country, language)=>serverURL + `articles/${country}/${language}/`
