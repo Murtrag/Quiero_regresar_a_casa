@@ -70,9 +70,9 @@ Coded by www.creative-tim.com
 // );
 // }
 
-import ReactDOM from "react-dom/client";
-import { Outlet, Link, useParams } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
@@ -82,13 +82,16 @@ import MainLayoutPage from "layouts/pages/main";
 const Home = () => {
 	return <h1>Home</h1>;
 };
-const Contact = () => {
-	return <h1>Contact Me</h1>;
-};
 const NoPage = () => {
 	return <h1>404</h1>;
 };
 export default function App() {
+	const { pathname } = useLocation();
+	useEffect(() => {
+		document.documentElement.scrollTop = 0;
+		document.scrollingElement.scrollTop = 0;
+	}, [pathname]);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
