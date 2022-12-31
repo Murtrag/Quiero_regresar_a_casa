@@ -59,7 +59,7 @@ class MottoView(APIView):
     def get(self, request, format=None, **kwargs):
         try:
             motto = Motto.objects.get(
-                languages__pk=kwargs.get(MottoView.lookup_field))
+                language__pk=kwargs.get(MottoView.lookup_field))
         except Motto.DoesNotExist:
             return HttpResponse(status=404)
         serializer = MottoSerializer(motto, many=False)
