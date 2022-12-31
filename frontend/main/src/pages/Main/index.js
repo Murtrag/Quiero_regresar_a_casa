@@ -58,8 +58,7 @@ function MainLayout() {
   });
     
 	useEffect(()=>{
-		var country;
-		fetch(mottoURL(country=1)).then(response=>response.json())
+		fetch(mottoURL({country: 1})).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,

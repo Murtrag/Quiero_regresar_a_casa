@@ -25,8 +25,7 @@ function DefaultFooter({ content }) {
 	}) ;
 
 	useEffect(()=>{
-		var language, country;
-		fetch(footerURL(language=1, country=1)).then(response=>response.json())
+		fetch(footerURL({language: 1, country: 1})).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,

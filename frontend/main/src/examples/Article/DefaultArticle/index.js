@@ -20,12 +20,11 @@ const Article = () => {
 	})
 
 	useEffect(()=>{
-		var language, country, pk;
-		fetch(articleDetailURL(
-			country=params.country,
-			language=params.language,
-			pk=params.article
-		)).then(response=>response.json())
+		fetch(articleDetailURL({
+			country: params.country,
+			language: params.language,
+			pk: params.article
+		})).then(response=>response.json())
 			.then((state)=>{
 				setState({
 					...state,
