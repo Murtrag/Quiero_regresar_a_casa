@@ -75,7 +75,7 @@ function MainLayout() {
           type: "external",
           route: "https://www.creative-tim.com/product/material-kit-react",
           label: "Sign in",
-          color: "info",
+          color: "dark",
         }}
         sticky
       />

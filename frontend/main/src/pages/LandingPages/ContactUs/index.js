@@ -43,7 +43,7 @@ function ContactUs() {
             type: "external",
             route: "https://www.creative-tim.com/product/material-kit-react",
             label: "Sign In",
-            color: "info",
+            color: "dark",
           }}
         />
       </MKBox>
@@ -82,8 +82,8 @@ function ContactUs() {
           >
             <MKBox
               variant="gradient"
-              bgColor="info"
-              coloredShadow="info"
+              bgColor="dark"
+              coloredShadow="dark"
               borderRadius="lg"
               p={2}
               mx={2}
@@ -130,7 +130,7 @@ function ContactUs() {
                   </Grid>
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKButton type="submit" variant="gradient" color="info">
+                  <MKButton type="submit" variant="gradient" color="dark">
                     Send Message
                   </MKButton>
                 </Grid>

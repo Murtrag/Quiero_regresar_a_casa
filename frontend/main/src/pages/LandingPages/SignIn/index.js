@@ -58,7 +58,7 @@ function SignInBasic() {
           type: "external",
           route: "https://www.creative-tim.com/product/material-kit-react",
           label: "Sign Up",
-          color: "info",
+          color: "dark",
         }}
         transparent
         light
@@ -87,9 +87,9 @@ function SignInBasic() {
             <Card>
               <MKBox
                 variant="gradient"
-                bgColor="info"
+                bgColor="dark"
                 borderRadius="lg"
-                coloredShadow="info"
+                coloredShadow="dark"
                 mx={2}
                 mt={-3}
                 p={2}
@@ -138,7 +138,7 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton variant="gradient" color="dark" fullWidth>
                       sign in
                     </MKButton>
                   </MKBox>
@@ -149,7 +149,7 @@ function SignInBasic() {
                         component={Link}
                         to="/authentication/sign-up/cover"
                         variant="button"
-                        color="info"
+                        color="dark"
                         fontWeight="medium"
                         textGradient
                       >
