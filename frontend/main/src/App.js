@@ -39,17 +39,15 @@ export default function App() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Routes>
-				<Route path="authentication/sign-in/" element={<SignIn />} />
-				<Route path="authentication/sign-up/" element={<ContactUs />} />
-				<Route path="contact-us/" element={<ContactUs />} />
+				{/* PANEL */}
+					<Route path="authentication/sign-in/" element={<SignIn />} />
+					{/* <Route path="authentication/sign-up/" element={<SignUp />} /> */}
+					<Route path="contact-us/" element={<ContactUs />} />
+					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
+					{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}
+				{/* PANEL */}
 				<Route path="/" element={<MainLayoutPage />}>
 					<Route index element={<Home />} />
-					{/* PANEL */}
-						{/* <Route path="register/" element={<Register />} /> */}
-						{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}
-						{/* <Route path="managment/" element={<ChangeLanguage />}> */}
-						{/* </Route> */}
-					{/* PANEL */}
 					{/* SECTIONS */}
 					{/* SECTIONS */}
 					{/* ARTICLES */}
