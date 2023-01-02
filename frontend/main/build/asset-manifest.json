@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/material-kit-react/static/js/main.299f1e44.js",
+    "main.js": "/material-kit-react/static/js/main.a797f89d.js",
     "static/media/bg-presentation.jpg": "/material-kit-react/static/media/bg-presentation.8a3d31ffb63e8e834529.jpg",
     "static/media/bg-sign-in-basic.jpeg": "/material-kit-react/static/media/bg-sign-in-basic.8a3d31ffb63e8e834529.jpeg",
     "static/media/rotating-card-bg-front.jpeg": "/material-kit-react/static/media/rotating-card-bg-front.bdcdfadc0dacb9bc5f23.jpeg",
     "static/media/macbook.png": "/material-kit-react/static/media/macbook.e0a8c5d5cc02d71b6d86.png",
-    "static/media/illustration-reset.jpg": "/material-kit-react/static/media/illustration-reset.9ea2a43452d54cddcad9.jpg",
     "static/media/bg-coworking.jpeg": "/material-kit-react/static/media/bg-coworking.06bccc47fe6ae5366bf8.jpeg",
+    "static/media/illustration-reset.jpg": "/material-kit-react/static/media/illustration-reset.7ce09ccfa2dba559d516.jpg",
     "static/media/city-profile.jpg": "/material-kit-react/static/media/city-profile.4d64bba97c3d1757379e.jpg",
     "static/media/rotating-card-bg-back.jpeg": "/material-kit-react/static/media/rotating-card-bg-back.183088de91adb283a9ae.jpeg",
     "static/media/blog-9-4.jpg": "/material-kit-react/static/media/blog-9-4.de736e0b751f453415a5.jpg",
@@ -33,9 +33,9 @@
     "static/media/logo-nasa.svg": "/material-kit-react/static/media/logo-nasa.c5d11f8820bfde5fd64db0074156e06c.svg",
     "static/media/logo-netflix.svg": "/material-kit-react/static/media/logo-netflix.432ed6b5c31b9bcab9a38e32bf46a1e9.svg",
     "index.html": "/material-kit-react/index.html",
-    "main.299f1e44.js.map": "/material-kit-react/static/js/main.299f1e44.js.map"
+    "main.a797f89d.js.map": "/material-kit-react/static/js/main.a797f89d.js.map"
   },
   "entrypoints": [
-    "static/js/main.299f1e44.js"
+    "static/js/main.a797f89d.js"
   ]
 }
