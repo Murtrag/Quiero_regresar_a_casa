@@ -26,13 +26,15 @@ import SignIn from "pages/LandingPages/SignIn/index"
 import SignUp from "examples/SignUp/index"
 import ContactUs from "pages/LandingPages/ContactUs/index"
 
+// Utils
+import scrollUp from "utils/index"
+
 import MainLayoutPage from "layouts/pages/main";
 
 export default function App() {
 	const { pathname } = useLocation();
 	useEffect(() => {
-		document.documentElement.scrollTop = 0;
-		document.scrollingElement.scrollTop = 0;
+		scrollUp()
 	}, [pathname]);
 
 	return (

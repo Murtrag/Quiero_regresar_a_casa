@@ -10,6 +10,9 @@ import Pages from "pages/Main/sections/Pages";
 import Testimonials from "pages/Main/sections/Testimonials";
 import Download from "pages/Main/sections/Download";
 
+//Utils
+import scrollUp from "utils/index";
+
 const Article = () => {
 	const params = useParams();
 
@@ -30,6 +33,7 @@ const Article = () => {
 					...state,
 					state
 				})
+				scrollUp()
 			})
 	}, [params])
 	return <>
