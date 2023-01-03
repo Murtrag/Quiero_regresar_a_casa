@@ -21,13 +21,12 @@ import theme from "assets/theme";
 import Article from "examples/Article/DefaultArticle/index"
 import Home from "examples/Home/index"
 import Error from "examples/Error/index"
-// import SignIn from "examples/SignIn/index"
+
 import SignIn from "pages/LandingPages/SignIn/index"
-import SignUp from "examples/SignUp/index"
 import ContactUs from "pages/LandingPages/ContactUs/index"
 
 // Utils
-import scrollUp from "utils/index"
+import { scrollUp } from "utils/index"
 
 import MainLayoutPage from "layouts/pages/main";
 

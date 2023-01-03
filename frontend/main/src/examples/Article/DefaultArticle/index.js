@@ -11,7 +11,7 @@ import Testimonials from "pages/Main/sections/Testimonials";
 import Download from "pages/Main/sections/Download";
 
 //Utils
-import scrollUp from "utils/index";
+import { scrollUp } from "utils/index";
 
 const Article = () => {
 	const params = useParams();
