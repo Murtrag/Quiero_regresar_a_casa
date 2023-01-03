@@ -73,7 +73,7 @@ class NavBarList(
         ):
     queryset = NavBarTab.objects.all()
     serializer_class = TabSerializer
-    lookup_fields = ('language', 'country',)
+    lookup_fields = ('language__country_code', 'country__country_code',)
     # permission_classes = [
     #     permissions.IsAuthenticated,
     # ]
