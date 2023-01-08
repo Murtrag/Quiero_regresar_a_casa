@@ -40,12 +40,12 @@ class FooterView(APIView):
     *tested
     '''
 
-    def get(self, request, language, country, format=None):
+    def get(self, request, format=None, **kwargs):
         try:
-            footer = Footer.objects.get(
-                    language=language,
-                    country=country
-                    )
+            footer = Footer.objects.get(**kwargs)
+                    # language=language,
+                    # country=country
+                    # )
         except Footer.DoesNotExist:
             return HttpResponse(status=404)
 
@@ -54,12 +54,11 @@ class FooterView(APIView):
 
 
 class MottoView(APIView):
-    lookup_field = 'language_pk'
+    lookup_field = 'language__country_code'
 
     def get(self, request, format=None, **kwargs):
         try:
-            motto = Motto.objects.get(
-                language__pk=kwargs.get(MottoView.lookup_field))
+            motto = Motto.objects.get(**kwargs)
         except Motto.DoesNotExist:
             return HttpResponse(status=404)
         serializer = MottoSerializer(motto, many=False)

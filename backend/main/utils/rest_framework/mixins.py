@@ -8,11 +8,13 @@ class MultipleFieldLookupMixin:
     based on a `lookup_fields` attribute, instead of the default single field filtering.
     """
     def _get_filter(self):
-        return {
-                field : self.kwargs[field]
-                for field in self.lookup_fields
-                if self.kwargs.get(field) 
-                }
+        try:
+            return {
+                    field : self.kwargs[field]
+                    for field in self.lookup_fields
+                    }
+        except KeyError as E:
+            raise KeyError(f'The parameter {E} has not be found in the request')
 
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())
