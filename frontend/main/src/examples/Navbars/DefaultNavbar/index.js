@@ -44,8 +44,9 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 import breakpoints from "assets/theme/base/breakpoints";
 
 import { navBarURL } from "backendURLs"
+import { connect } from "react-redux";
 
-function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center }) {
+function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center, locale }) {
 
   let [routes, setRoutes] = useState([])
 
@@ -63,7 +64,11 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
-	fetch(navBarURL({country: 1, language: 1})).then(response=>response.json())
+	console.log(locale)
+	fetch(navBarURL({
+		country: locale.country,
+		language: locale.language 
+	})).then(response=>response.json())
 	.then((newRoute)=>{
 		setRoutes([
 			...routes,
@@ -603,4 +608,9 @@ DefaultNavbar.propTypes = {
   center: PropTypes.bool,
 };
 
-export default DefaultNavbar;
+const mapStateToProps = state => ({
+	// locale: state.locale
+	locale: state.localeReducer
+})
+
+export default connect(mapStateToProps)(DefaultNavbar);
