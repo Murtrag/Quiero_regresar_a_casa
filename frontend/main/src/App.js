@@ -47,7 +47,9 @@ export default function App() {
 					<Route path="contact-us/" element={<ContactUs />} />
 					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
 					{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}
-					<Route path="language/:language/" element={<ChangeLanguage />} />
+					<Route path="/" element={<MainLayoutPage />}>
+						<Route path="language/:language/" element={<ChangeLanguage />} />
+					</Route>
 				{/* PANEL */}
 				<Route path="/" element={<MainLayoutPage />}>
 					<Route index element={<Home />} />

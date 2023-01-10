@@ -64,14 +64,13 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
-	console.log(locale)
 	fetch(navBarURL({
 		country: locale.country,
 		language: locale.language 
 	})).then(response=>response.json())
 	.then((newRoute)=>{
 		setRoutes([
-			...routes,
+			//...routes,
 			...newRoute
 		])
 	})
@@ -96,7 +95,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
-  }, []);
+  }, [locale]);
 
   const renderNavbarItems = routes.map(({ name, icon, href, route, collapse }) => (
     <DefaultNavbarDropdown

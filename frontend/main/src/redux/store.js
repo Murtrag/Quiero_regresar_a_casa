@@ -1,14 +1,18 @@
 import { createStore} from "redux";
 import rootReducer from "./reducers/index";
-
+import { loadState, saveState } from "./localStorage";
 const defaultState = {
-	// State loaded from memory
 	localeReducer: {
 		language: "mx",
 		country: "mx"
 	}
 }
-const store = createStore(rootReducer, defaultState);
-console.log(store.getState())
+const state = loadState(defaultState)
+
+const store = createStore(rootReducer, state);
+store.subscribe( ()=>{saveState({
+	localeReducer: store.getState().localeReducer
+})}
+)
 
 export default store;

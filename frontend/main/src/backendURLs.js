@@ -6,9 +6,9 @@ const articleDetailURL = ({country, language, pk})=>serverURL + `article/${count
 
 
 // Main URLs
-const footerURL = ({country, language})=>serverURL + `footer/${country}/${language}/`
+const footerURL = ({country, language})=>serverURL + `footer/${language}/${country}/`
 const mottoURL = ({language})=>serverURL + `motto/${language}/`
-const navBarURL = ({country, language})=>serverURL + `nav-bar/${country}/${language}/`
+const navBarURL = ({country, language})=>serverURL + `nav-bar/${language}/${country}/`
 
 export {
 	serverURL,
