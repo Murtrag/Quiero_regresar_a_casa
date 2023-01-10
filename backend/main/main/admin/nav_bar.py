@@ -21,7 +21,8 @@ class HrefForm(forms.ModelForm):
 
 class TabAdmin(admin.ModelAdmin):
     form = HrefForm
-    list_display = ('name', 'href' ) #social, copyright
+    list_display = ('name', 'country', 'language', ) #social, copyright
+    list_filter = ('country', 'language',)
 admin.site.register(NavBarTab, TabAdmin)
 
 class SubTabAdmin(admin.ModelAdmin):

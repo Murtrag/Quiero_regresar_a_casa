@@ -14,9 +14,10 @@ import MKTypography from "components/MKTypography";
 
 import {useEffect, useState} from 'react';
 import { serverURL, footerURL } from "backendURLs"
+import { connect } from 'react-redux';
 
 
-function DefaultFooter({ content }) {
+function DefaultFooter({ content, locale }) {
 	let [state, setState] = useState({
 		brand: [],
 		socials: [],
@@ -25,7 +26,10 @@ function DefaultFooter({ content }) {
 	}) ;
 
 	useEffect(()=>{
-		fetch(footerURL({language: 1, country: 1})).then(response=>response.json())
+		fetch(footerURL({
+			country: locale.country,
+			language: locale.language,
+		})).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
@@ -123,4 +127,8 @@ DefaultFooter.propTypes = {
 	content: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
 };
 
-export default DefaultFooter;
+const mapStateToProps = state => ({
+	locale: state.localeReducer
+})
+
+export default connect(mapStateToProps)(DefaultFooter);

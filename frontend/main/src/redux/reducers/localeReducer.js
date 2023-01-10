@@ -2,17 +2,17 @@
 import { CHANGE_LANGUAGE, CHANGE_COUNTRY } from "redux/actions/locale";
 
 
-function localeReducer(state={language: 'MX', country: 'MX'}, action){
+function localeReducer(state={language: 'mx', country: 'mx'}, action){
 	switch(action.type){
 		case CHANGE_LANGUAGE:
 			return {
 				...state,
-				...state.payload
+				...action.payload
 			}
 		case CHANGE_COUNTRY:
 			return {
 				...state,
-				...state.payload
+				...action.payload
 			}
 	}
 	return state

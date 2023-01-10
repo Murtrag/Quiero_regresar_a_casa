@@ -20,6 +20,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 import Article from "examples/Article/DefaultArticle/index"
 import Home from "examples/Home/index"
+import ChangeLanguage from "examples/Locale/ChangeLanguage/index"
 import Error from "examples/Error/index"
 
 import SignIn from "pages/LandingPages/SignIn/index"
@@ -46,6 +47,7 @@ export default function App() {
 					<Route path="contact-us/" element={<ContactUs />} />
 					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
 					{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}
+					<Route path="language/:language/" element={<ChangeLanguage />} />
 				{/* PANEL */}
 				<Route path="/" element={<MainLayoutPage />}>
 					<Route index element={<Home />} />

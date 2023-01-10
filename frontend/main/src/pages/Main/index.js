@@ -50,15 +50,18 @@ import bgImage from "assets/images/bg-presentation.jpg";
 
 import {useEffect, useState} from 'react';
 import { mottoURL } from "backendURLs"
+import { connect } from "react-redux";
 
-function MainLayout() {
+function MainLayout({locale}) {
   let [state, setState] = useState({
      header: "",
      description: ""
   });
     
 	useEffect(()=>{
-		fetch(mottoURL({country: 1})).then(response=>response.json())
+		fetch(mottoURL({
+			language: locale.language
+		})).then(response=>response.json())
 		.then((state)=>{
 			setState({
 				...state,
@@ -142,4 +145,8 @@ function MainLayout() {
   );
 }
 
-export default MainLayout;
+const mapStateToProps = state => ({
+	locale: state.localeReducer
+})
+
+export default connect(mapStateToProps)(MainLayout);

@@ -609,7 +609,6 @@ DefaultNavbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-	// locale: state.locale
 	locale: state.localeReducer
 })
 

@@ -3,14 +3,14 @@ const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 const CHANGE_COUNTRY = "CHANGE_LANGUAGE";
 
 // Action builders
-const changeLanguageAction = language=>({
+const changeLanguage = language=>({
 	type: CHANGE_LANGUAGE,
 	payload: {
 		language
 	}
 })
 
-const changeCountryAction = country=>({
+const changeCountry = country=>({
 	type: CHANGE_COUNTRY,
 	payload: {
 		country
@@ -20,6 +20,6 @@ const changeCountryAction = country=>({
 export {
 	CHANGE_LANGUAGE,
 	CHANGE_COUNTRY,
-	changeLanguageAction,
-	changeCountryAction,
+	changeLanguage,
+	changeCountry,
 }
