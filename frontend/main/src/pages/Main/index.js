@@ -68,7 +68,7 @@ function MainLayout({locale}) {
 				state
 			})
 		})
-	}, [])
+	}, [locale])
     
   return (
     <>

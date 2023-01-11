@@ -36,7 +36,7 @@ function DefaultFooter({ content, locale }) {
 				state
 			})
 		})
-	}, [])
+	}, [locale])
 
 	const { socials, copyright } = content;
 	let { menus, brand } = state;

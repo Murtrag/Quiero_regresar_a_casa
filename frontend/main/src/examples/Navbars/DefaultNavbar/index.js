@@ -611,4 +611,4 @@ const mapStateToProps = state => ({
 	locale: state.localeReducer
 })
 
-export default connect(mapStateToProps)(DefaultNavbar);
+export default connect(mapStateToProps, ()=>({}))(DefaultNavbar);
