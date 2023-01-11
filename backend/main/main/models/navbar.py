@@ -15,7 +15,11 @@ class NavBarTab(models.Model):
     href = models.CharField(max_length=250, blank=True)
     route = models.CharField(max_length=200, blank=True)
     collapse = models.ManyToManyField('NavBarSubTab', blank=True)
+    position = models.SmallIntegerField(blank=True, null=True)
     
+    class Meta:
+        ordering = ['position']
+
     def __str__(self):
         return f'{self.name} (country)'
 
