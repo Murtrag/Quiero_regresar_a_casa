@@ -13,7 +13,7 @@ from basic.models import Article
 class HrefForm(forms.ModelForm):
     class Meta:
         widgets = {
-                'href': HrefWidget(related_objects=(
+                'route': HrefWidget(related_objects=(
                     Article,
                     )),
                 }
@@ -21,21 +21,18 @@ class HrefForm(forms.ModelForm):
 
 class TabAdmin(admin.ModelAdmin):
     form = HrefForm
-    list_display = ('name', 'country', 'language', ) #social, copyright
-    list_filter = ('country', 'language',)
+    list_display = ('name', 'country', 'language', 'position', )
+    list_filter = ('country', 'language', 'position')
 admin.site.register(NavBarTab, TabAdmin)
 
 class SubTabAdmin(admin.ModelAdmin):
     form = HrefForm
-    list_display = ('name', 'href' ) #social, copyright
+    list_display = ('name', 'href', 'position', )
+    list_filter = ('position',)
 admin.site.register(NavBarSubTab, SubTabAdmin)
 
 class SubElementAdmin(admin.ModelAdmin):
     form = HrefForm
-    # list_display = ('name', 'href' ) #social, copyright
-    # def formfield_for_dbfield(self, db_field, **kwargs):
-    #     print('test?')
-    #     if db_field.name == 'Href':
-    #         kwargs['widget'] = HrefWidget
-    #     return super(VehicleAdmin, self).formfield_for_dbfield(db_field,**kwargs)
+    list_display = ('name', 'position', ) 
+    list_filter = ('position',)
 admin.site.register(NavBarSubElement, SubElementAdmin)
