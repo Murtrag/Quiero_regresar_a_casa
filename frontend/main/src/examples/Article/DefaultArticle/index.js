@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
-import { articleDetailURL } from "backendURLs"
+import { articleDetailURL } from "backendURLs";
+import  parse from 'html-react-parser';
 
 // Components
 import Counters from "pages/Main/sections/Counters";
@@ -12,6 +13,8 @@ import Download from "pages/Main/sections/Download";
 
 //Utils
 import { scrollUp } from "utils/index";
+
+import { replaceComponent } from "./tools/components";
 
 const Article = () => {
 	const params = useParams();
@@ -38,7 +41,8 @@ const Article = () => {
 	}, [params])
 	return <>
 		<style>{state.text_css}</style>
-		<div dangerouslySetInnerHTML={{__html: state.text_html}} />
+		{ /* <div dangerouslySetInnerHTML={{__html: state.text_html}} /> */}
+		{parse(state.text_html).map(replaceComponent)}
 		</>
 
 };
