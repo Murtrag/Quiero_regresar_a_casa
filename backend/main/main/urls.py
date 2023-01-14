@@ -25,13 +25,13 @@ urlpatterns = [
     path(r'profile/<int:pk>/', ProfileDetail.as_view()),
 
     # Footer api
-    path(r'footer/<str:language__country_code>/<str:country__country_code>/', FooterView.as_view(), name="footer"),
+    path(r'footer/<str:country__country_code>/<str:language__country_code>/', FooterView.as_view(), name="footer"),
 
     # Motto api
     path(r'motto/<str:language__country_code>/', MottoView.as_view()),
 
     # Nav bar api
-    path(r'nav-bar/<str:language__country_code>/<str:country__country_code>/', NavBarList.as_view(), name='nav_bar'),
+    path(r'nav-bar/<str:country__country_code>/<str:language__country_code>/', NavBarList.as_view(), name='nav_bar'),
 ]
 
 # Static files debug configuration
