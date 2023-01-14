@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "html-react-parser": "^3.0.7",
     "react-redux": "^8.0.5"
   }
 }

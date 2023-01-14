@@ -42,7 +42,7 @@ const Article = () => {
 	return <>
 		<style>{state.text_css}</style>
 		{ /* <div dangerouslySetInnerHTML={{__html: state.text_html}} /> */}
-		{parse(state.text_html).map(replaceComponent)}
+		{state.text_html && parse(state.text_html).map(replaceComponent)}
 		</>
 
 };
