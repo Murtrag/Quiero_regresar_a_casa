@@ -12,7 +12,8 @@ class Article(models.Model):
     text_html = models.TextField(blank=True)
     text_css = models.TextField(blank=True)
 
-    url_title = models.TextField(editable=False)
+    group_pk = models.SmallIntegerField(help_text="Same article in different language/country should have the same group_pk")
+    category = models.CharField(blank=True, max_length=150)
 
     @property
     def url(self):
@@ -23,15 +24,7 @@ class Article(models.Model):
          #    'pk': self.pk
          #    })
 
-    def save(self, *args, **kwargs):
-        self.url_title = slugify(self.title)
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.title
-
-
-    class Meta:
-        ordering = ('title',)
 
         

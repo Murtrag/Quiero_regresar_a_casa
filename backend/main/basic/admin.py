@@ -8,14 +8,16 @@ class ArticleAdmin(admin.ModelAdmin):
             'title',
             'language',
             'country',
+            'group_pk',
+            'category',
         )
     radio_fields = {
         "language": admin.VERTICAL,
         "country": admin.VERTICAL
     }
-    ordering = ('country', 'title', 'language',)
+    ordering = ('country', 'language','category', 'title',)
     search_fields = ('title',)
-    list_filter = ('country', 'language',)
+    list_filter = ('group_pk', 'country', 'language',)
 
 
 admin.site.register(Article, ArticleAdmin)
