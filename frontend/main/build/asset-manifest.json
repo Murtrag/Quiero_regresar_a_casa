@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/material-kit-react/static/js/main.2d4e6ee4.js",
+    "main.js": "/material-kit-react/static/js/main.91a67e91.js",
     "static/media/bg-presentation.jpg": "/material-kit-react/static/media/bg-presentation.8a3d31ffb63e8e834529.jpg",
     "static/media/bg-sign-in-basic.jpeg": "/material-kit-react/static/media/bg-sign-in-basic.8a3d31ffb63e8e834529.jpeg",
     "static/media/rotating-card-bg-front.jpeg": "/material-kit-react/static/media/rotating-card-bg-front.bdcdfadc0dacb9bc5f23.jpeg",
@@ -33,9 +33,9 @@
     "static/media/logo-nasa.svg": "/material-kit-react/static/media/logo-nasa.c5d11f8820bfde5fd64db0074156e06c.svg",
     "static/media/logo-netflix.svg": "/material-kit-react/static/media/logo-netflix.432ed6b5c31b9bcab9a38e32bf46a1e9.svg",
     "index.html": "/material-kit-react/index.html",
-    "main.2d4e6ee4.js.map": "/material-kit-react/static/js/main.2d4e6ee4.js.map"
+    "main.91a67e91.js.map": "/material-kit-react/static/js/main.91a67e91.js.map"
   },
   "entrypoints": [
-    "static/js/main.2d4e6ee4.js"
+    "static/js/main.91a67e91.js"
   ]
 }
