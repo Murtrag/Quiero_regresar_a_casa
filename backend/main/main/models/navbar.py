@@ -2,7 +2,7 @@ from django.db import models
 from . import Language, Country
 
 class NavBarTab(models.Model):
-    name = models.CharField(max_length=35)
+    name = models.CharField(max_length=85)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     icon = models.CharField(
@@ -24,8 +24,8 @@ class NavBarTab(models.Model):
         return f'{self.name} (country)'
 
 class NavBarSubTab(models.Model):
-    name = models.CharField(max_length=35)
-    description = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=85)
+    description = models.TextField( blank=True)
     href = models.CharField(max_length=250, blank=True)
     route = models.CharField(max_length=200, blank=True)
     dropdown = models.BooleanField()
@@ -36,8 +36,8 @@ class NavBarSubTab(models.Model):
         return f'{self.name}'
 
 class NavBarSubElement(models.Model):
-    name = models.CharField(max_length=35)
-    description = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=85)
+    description = models.TextField( blank=True)
     href = models.CharField(max_length=250, blank=True)
     route = models.CharField(max_length=200, blank=True)
     position = models.SmallIntegerField(blank=True, null=True)
