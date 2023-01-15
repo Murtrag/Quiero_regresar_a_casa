@@ -24,11 +24,11 @@ import MKBox from "components/MKBox";
 // Material Kit 2 React examples
 import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
+// Utiles
+import { parseArray } from "utils/parse";
+
 function Counters({first, second, third}) {
- const toList = val=>JSON.parse(val)
-	first = toList(first)
-	second = toList(second)
-	third = toList(third)
+  [first, second, third] = parseArray(first, second, third)
   return (
     <MKBox component="section" py={3}>
       <Container>

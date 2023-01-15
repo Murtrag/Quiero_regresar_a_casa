@@ -27,7 +27,7 @@ import SignIn from "pages/LandingPages/SignIn/index"
 import ContactUs from "pages/LandingPages/ContactUs/index"
 
 // Utils
-import { scrollUp } from "utils/index"
+import { scrollUp } from "utils/scroll"
 
 import MainLayoutPage from "layouts/pages/main";
 

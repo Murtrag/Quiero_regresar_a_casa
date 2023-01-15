@@ -29,7 +29,7 @@ import MKTypography from "components/MKTypography";
 import ExampleCard from "pages/Main/components/ExampleCard";
 
 // Data
-import data from "pages/Main/sections/data/designBlocksData";
+import data from "components/widgets/data/designBlocksData";
 
 function DesignBlocks() {
   const renderData = data.map(({ title, description, items }) => (

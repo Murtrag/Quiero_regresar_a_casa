@@ -5,7 +5,7 @@ import  parse from 'html-react-parser';
 
 
 //Utils
-import { scrollUp } from "utils/index";
+import { scrollUp } from "utils/scroll";
 
 import { replaceComponent } from "./tools/components";
 
@@ -24,10 +24,10 @@ const Article = () => {
 			language: params.language,
 			pk: params.article
 		})).then(response=>response.json())
-			.then((state)=>{
+			.then((newState)=>{
 				setState({
 					...state,
-					state
+					...newState
 				})
 				scrollUp()
 			})

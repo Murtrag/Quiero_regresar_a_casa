@@ -29,7 +29,7 @@ import MKTypography from "components/MKTypography";
 import ExampleCard from "pages/Main/components/ExampleCard";
 
 // Data
-import data from "pages/Main/sections/data/pagesData";
+import data from "components/widgets/data/pagesData";
 
 function Pages() {
   const renderData = data.map(({ image, name, route }) => (

@@ -35,7 +35,7 @@ import FilledInfoCard from "examples/Cards/InfoCards/FilledInfoCard";
 // import Pages from "pages/Presentation/sections/Pages";
 // import Testimonials from "pages/Presentation/sections/Testimonials";
 // import Download from "pages/Presentation/sections/Download";
-import Article from "pages/Main/sections/Article";
+import Article from "components/widgets/Article";
 
 // Presentation page components
 import BuiltByDevelopers from "pages/Main/components/BuiltByDevelopers";
