@@ -56,7 +56,7 @@ export default function App() {
 					{/* SECTIONS */}
 					{/* SECTIONS */}
 					{/* ARTICLES */}
-						<Route path="article/:country/:language/:article/" element={<Article />} />
+						<Route path=":category/:country/:language/:article/" element={<Article />} />
 					{/* ARTICLES */}
 					{/* SUPPORT_US */}	
 						{ /* <Route path="support-us/" element={<SupportUs />} /> */}

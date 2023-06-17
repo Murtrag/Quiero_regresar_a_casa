@@ -20,6 +20,7 @@ const Article = () => {
 
 	useEffect(()=>{
 		fetch(articleDetailURL({
+			category: params.category,
 			country: params.country,
 			language: params.language,
 			pk: params.article
