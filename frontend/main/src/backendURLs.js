@@ -4,7 +4,7 @@
 const serverURL = "http://192.168.1.3:8000/"
 
 // Articles URLs
-const articleDetailURL = ({category, country, language, pk})=>serverURL + `article/${country}/${language}/${pk}/`
+const articleDetailURL = ({category, country, language, pk})=>serverURL + `${category}/${country}/${language}/${pk}/`
 
 
 // Main URLs
