@@ -14,6 +14,7 @@ urlpatterns = [
     # ArticleList.as_view(), name='article_list'),
 
     # Detail article
-    path(r'article/<str:country__country_code>/<str:language__country_code>/<int:group_pk>/',
+    # path(r'article/<str:country__country_code>/<str:language__country_code>/<int:group_pk>/',
+    path(r'<str:category>/<str:country__country_code>/<str:language__country_code>/<int:group_pk>/',
     ArticleDetail.as_view(), name='detail_article')
 ]
