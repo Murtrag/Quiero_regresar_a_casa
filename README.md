@@ -24,7 +24,6 @@ The goal of Quiero Regresar is to effectively find missing persons, provide supp
 ### FrontEnd
 1. React.js
 2. Sass (https://sass-lang.com/documentation/)
-3. Tailwind (https://tailwindui.com/documentation)
 
 ## Run instruction
 To run the backend:
