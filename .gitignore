@@ -130,3 +130,4 @@ dmypy.json
 
 # Custom
 frontend/main/node_modules/*
+db.sqlite3
