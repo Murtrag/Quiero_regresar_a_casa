@@ -25,6 +25,9 @@ urlpatterns = [
         jwt_views.TokenRefreshView.as_view(), 
         name ='token_refresh')
 
+    # Token api logout view
+    path('logout/', views.LogoutView.as_view(), name ='logout')
+
 
 
     # Missing person api
