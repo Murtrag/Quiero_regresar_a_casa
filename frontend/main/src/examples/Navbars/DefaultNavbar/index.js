@@ -137,6 +137,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
       template = (
         <Grid key={name} container spacing={3} py={1} px={1.5}>
+	      <b>test</b>
           {calculateColumns.map((cols, key) => {
             const gridKey = `grid-${key}`;
             const dividerKey = `divider-${key}`;
