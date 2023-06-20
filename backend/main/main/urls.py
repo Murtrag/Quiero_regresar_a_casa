@@ -26,7 +26,7 @@ urlpatterns = [
         name ='token_refresh'),
 
     # Token api logout view
-    path('logout/', views.LogoutView.as_view(), name ='logout')
+    path('logout/', views.LogoutView.as_view(), name ='logout'),
 
 
 
