@@ -15,7 +15,7 @@ from utils.rest_framework import mixins as custom_mixins
 # from . import custom_permissions
 
 class LogoutView(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request):
         try:
