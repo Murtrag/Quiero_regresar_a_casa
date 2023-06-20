@@ -46,6 +46,10 @@ import breakpoints from "assets/theme/base/breakpoints";
 import { navBarURL } from "backendURLs"
 import { connect } from "react-redux";
 
+
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+
 function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center, locale }) {
 
   let [routes, setRoutes] = useState([])
@@ -56,6 +60,8 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   const [nestedDropdown, setNestedDropdown] = useState("");
   const [nestedDropdownEl, setNestedDropdownEl] = useState("");
   const [nestedDropdownName, setNestedDropdownName] = useState("");
+
+  const [isAuth, setIsAuth] = useState(true);
   const [arrowRef, setArrowRef] = useState(null);
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
@@ -137,7 +143,6 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
       template = (
         <Grid key={name} container spacing={3} py={1} px={1.5}>
-	      <b>test</b>
           {calculateColumns.map((cols, key) => {
             const gridKey = `grid-${key}`;
             const dividerKey = `divider-${key}`;
@@ -503,6 +508,20 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
             ml="auto"
             mr={center ? "auto" : 0}
           >
+
+	  <li>
+		  <a href="/">JWT Authentification</a>
+			  <div className="me-auto">
+				  {isAuth ? <a href="/">Dash board</a> : null}
+			  </div>
+			  <div>
+				  {isAuth ? <a href="/logout">Logout</a> :
+					    <a href="/login">Login</a>}
+			  </div>
+        </li>
+
+
+
             {renderNavbarItems}
           </MKBox>
           <MKBox ml={{ xs: "auto", lg: 0 }}>
