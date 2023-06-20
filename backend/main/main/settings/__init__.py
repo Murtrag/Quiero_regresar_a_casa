@@ -5,3 +5,4 @@ from .middleware import *
 from .database import *
 from .route import *
 from .core import *
+from .drf import *

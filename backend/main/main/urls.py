@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
+from rest_framework_simplejwt import views as jwt_views
 from .views import (ProfileList, ProfileDetail, FooterView, NavBarList,
                     MottoView)
 
@@ -13,6 +14,18 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls',
                               namespace='rest_framework'),
         name='api_auth'),
+   
+    # Api to get token
+    path('token/', 
+        jwt_views.TokenObtainPairView.as_view(), 
+        name ='token_obtain_pair'),
+
+    # Api to refresh token
+    path('token/refresh/', 
+        jwt_views.TokenRefreshView.as_view(), 
+        name ='token_refresh')
+
+
 
     # Missing person api
     path('missing-person/', include('missing_person.urls'),),
