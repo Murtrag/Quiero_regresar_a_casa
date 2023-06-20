@@ -23,7 +23,7 @@ urlpatterns = [
     # Api to refresh token
     path('token/refresh/', 
         jwt_views.TokenRefreshView.as_view(), 
-        name ='token_refresh')
+        name ='token_refresh'),
 
     # Token api logout view
     path('logout/', views.LogoutView.as_view(), name ='logout')
