@@ -120,7 +120,7 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput type="login" label="Login" fullWidth />
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput type="password" label="Password" fullWidth />
