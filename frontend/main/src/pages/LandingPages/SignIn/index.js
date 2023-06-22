@@ -49,7 +49,7 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
 
-  const [login, setLoginInputValue] = useState('');
+  const [username, setLoginInputValue] = useState('');
   const [password, setPasswordInputValue] = useState('');
 
   const handleSubmit = async (e) => {
@@ -62,7 +62,7 @@ function SignInBasic() {
 				'Content-Type': 'application/json',
 			},
 			// body: JSON.stringify({ login, password }),
-			body: JSON.stringify({ login, password }),
+			body: JSON.stringify({ username, password }),
 			credentials: 'include',
 		});
 
