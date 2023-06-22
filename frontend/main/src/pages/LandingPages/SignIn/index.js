@@ -69,12 +69,19 @@ function SignInBasic() {
 		});
 
 		if (response.ok) {
-			const data = await response.json();
+			const {access, refresh} = await response.json();
 
 			localStorage.clear();
-			localStorage.setItem('access_token', data.access);
-			localStorage.setItem('refresh_token', data.refresh);
-			axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
+			localStorage.setItem('access_token', access);
+			localStorage.setItem('refresh_token', refresh);
+			const token = `Bearer ${data['access']}`;
+			fetch('/', {
+				method: 'GET',
+				headers: {
+					'Authorization': token,
+				},
+			});
+
 			window.location.href = '/';
 		} else {
 			// Obsługa błędu logowania
