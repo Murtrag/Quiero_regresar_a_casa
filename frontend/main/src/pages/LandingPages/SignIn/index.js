@@ -41,6 +41,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
+import { tokenURL } from "backendURLs";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -53,18 +54,15 @@ function SignInBasic() {
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
-	const user = {
-		username: username,
-		password: password,
-	};
 
 	try {
-		const response = await fetch(tokenURL, {
+		const response = await fetch(tokenURL(), {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(user),
+			// body: JSON.stringify({ loginInputValue, passwordInputValue }),
+			body: JSON.stringify({ loginInputValue, passwordInputValue }),
 			credentials: 'include',
 		});
 
@@ -74,7 +72,7 @@ function SignInBasic() {
 			localStorage.clear();
 			localStorage.setItem('access_token', access);
 			localStorage.setItem('refresh_token', refresh);
-			const token = `Bearer ${data['access']}`;
+			const token = `Bearer ${access}`;
 			fetch('/', {
 				method: 'GET',
 				headers: {
@@ -161,12 +159,13 @@ function SignInBasic() {
                 </Grid>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
-                <MKBox component="form" role="form" onSubmit={handleSubmit}>
+                <MKBox component="form" onSubmit={handleSubmit} role="form">
                   <MKBox mb={2}>
-                    <MKInput type="login" onChange={e=>setLoginInputValue(e.target.value)} label="Login" fullWidth />
+                    <MKInput type="text" onChange={e=>setLoginInputValue(e.target.value)} label="Login" fullWidth />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" onChange={e=>setPasswordInputValue(e.target.value)} label="Password" fullWidth />
+                    <MKInput type="password" onChange={e=>setPasswordInputValue(e.target.value) }
+			    label="Password" fullWidth />
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -181,7 +180,7 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="dark" fullWidth>
+                    <MKButton type="submit" variant="gradient" color="dark" fullWidth>
                       sign in
                     </MKButton>
                   </MKBox>
