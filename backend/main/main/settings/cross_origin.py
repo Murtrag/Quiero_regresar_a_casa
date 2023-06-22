@@ -11,6 +11,6 @@ CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
 if DEBUG is True:
     ALLOWED_HOSTS.append('*')
     CORS_ORIGIN_ALLOW_ALL = True
-    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx')
+    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx',)
 else:
-    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx' )
+    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx', )

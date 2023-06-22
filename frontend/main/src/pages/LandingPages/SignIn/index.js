@@ -49,8 +49,8 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
 
-  const [loginInputValue, setLoginInputValue] = useState('');
-  const [passwordInputValue, setPasswordInputValue] = useState('');
+  const [login, setLoginInputValue] = useState('');
+  const [password, setPasswordInputValue] = useState('');
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
