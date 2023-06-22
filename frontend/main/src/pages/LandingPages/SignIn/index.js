@@ -48,6 +48,42 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
 
+  const [loginInputValue, setLoginInputValue] = useState('');
+  const [passwordInputValue, setPasswordInputValue] = useState('');
+
+  const handleSubmit = async (e) => {
+	e.preventDefault();
+	const user = {
+		username: username,
+		password: password,
+	};
+
+	try {
+		const response = await fetch(tokenURL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user),
+			credentials: 'include',
+		});
+
+		if (response.ok) {
+			const data = await response.json();
+
+			localStorage.clear();
+			localStorage.setItem('access_token', data.access);
+			localStorage.setItem('refresh_token', data.refresh);
+			axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
+			window.location.href = '/';
+		} else {
+			// Obsługa błędu logowania
+		}
+	} catch (error) {
+		// Obsługa błędu zapytania
+	}
+  };
+
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
   return (
@@ -118,12 +154,12 @@ function SignInBasic() {
                 </Grid>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
-                <MKBox component="form" role="form">
+                <MKBox component="form" role="form" onSubmit={handleSubmit}>
                   <MKBox mb={2}>
-                    <MKInput type="login" label="Login" fullWidth />
+                    <MKInput type="login" onChange={e=>setLoginInputValue(e.target.value)} label="Login" fullWidth />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput type="password" onChange={e=>setPasswordInputValue(e.target.value)} label="Password" fullWidth />
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
