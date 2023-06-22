@@ -1,5 +1,6 @@
 from main.settings.core import DEBUG
 
+CORS_ALLOW_CREDENTIALS = True
 ALLOWED_HOSTS = ['quieroregresaracasa.murtrag.repl.co', '*']
 CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
 # This should be removed later on
