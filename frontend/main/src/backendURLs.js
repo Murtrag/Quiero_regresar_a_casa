@@ -24,6 +24,8 @@ export {
 	footerURL,
 	mottoURL,
 	navBarURL,
+
+	tokenURL,
 }
 
 

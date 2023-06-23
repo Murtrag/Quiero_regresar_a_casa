@@ -1,5 +1,6 @@
 from main.settings.core import DEBUG
 
+CORS_ALLOW_CREDENTIALS = True
 ALLOWED_HOSTS = ['quieroregresaracasa.murtrag.repl.co', '*']
 CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
 # This should be removed later on
@@ -10,6 +11,6 @@ CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
 if DEBUG is True:
     ALLOWED_HOSTS.append('*')
     CORS_ORIGIN_ALLOW_ALL = True
-    CORS_ORIGIN_WHITELIST = ('http://*', 'https://*')
+    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx',)
 else:
-    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx' )
+    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx',)
