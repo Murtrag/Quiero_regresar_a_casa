@@ -44,7 +44,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-import { navBarURL } from "backendURLs"
+import { navBarURL, loginURL } from "backendURLs"
 import { connect } from "react-redux";
 
 
@@ -534,7 +534,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
               ) : (
                 <MKButton
                   component="a"
-                  href="authentication/sign-in/"
+                  href=loginURL()
                   variant={
                     action.color === "white" || action.color === "default"
                       ? "contained"

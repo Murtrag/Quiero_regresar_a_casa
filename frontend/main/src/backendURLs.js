@@ -13,8 +13,9 @@ const mottoURL = ({language})=>serverURL + `motto/${language}/`;
 const navBarURL = ({country, language})=>serverURL + `nav-bar/${country}/${language}/`;
 
 // User URLs
+const loginURL = ()=> serverURL + 'authentication/sign-in/'
 const tokenURL = ()=> serverURL + 'token/';
-const logoutURL = ()=> serverURL + 'token/';
+const logoutURL = ()=> serverURL + 'logout/';
 
 export {
 	serverURL,
@@ -25,7 +26,9 @@ export {
 	mottoURL,
 	navBarURL,
 
+	loginURL,
 	tokenURL,
+	logoutURL
 }
 
 
