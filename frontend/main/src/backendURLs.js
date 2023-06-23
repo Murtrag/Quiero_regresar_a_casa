@@ -14,6 +14,7 @@ const navBarURL = ({country, language})=>serverURL + `nav-bar/${country}/${langu
 
 // User URLs
 const tokenURL = ()=> serverURL + 'token/';
+const logoutURL = ()=> serverURL + 'token/';
 
 export {
 	serverURL,
