@@ -16,17 +16,17 @@ urlpatterns = [
         name='api_auth'),
    
     # Api to get token
-    path('token/', 
+    path('authentication/token/', 
         jwt_views.TokenObtainPairView.as_view(), 
         name ='token_obtain_pair'),
 
     # Api to refresh token
-    path('token/refresh/', 
+    path('authentication/token/refresh/', 
         jwt_views.TokenRefreshView.as_view(), 
         name ='token_refresh'),
 
     # Token api logout view
-    path('logout/', LogoutView.as_view(), name ='logout'),
+    path('authentication/logout/', LogoutView.as_view(), name ='logout'),
 
 
 
