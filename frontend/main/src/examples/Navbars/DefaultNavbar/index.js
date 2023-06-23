@@ -44,7 +44,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-import { navBarURL, loginURL } from "backendURLs"
+import { navBarURL, loginURL, logoutURL } from "backendURLs"
 import { connect } from "react-redux";
 
 
@@ -62,7 +62,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   const [nestedDropdownEl, setNestedDropdownEl] = useState("");
   const [nestedDropdownName, setNestedDropdownName] = useState("");
 
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [arrowRef, setArrowRef] = useState(null);
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
@@ -103,6 +103,12 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, [locale]);
+
+  useEffect(() => {
+	  if (localStorage.getItem('access_token') !== null) {
+		  setIsAuth(true); 
+	}
+  }, [isAuth]);
 
   const renderNavbarItems = routes.map(({ name, icon, href, route, collapse }) => (
     <DefaultNavbarDropdown
@@ -532,19 +538,24 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
                   {action.label}
                 </MKButton>
               ) : (
-                <MKButton
-                  component="a"
-                  href=loginURL()
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
+
+	      
+	      <MKButton
+	      prop={isAuth ? true : false}
+	      component="a"
+	      href={isAuth ? loginURL() : logoutURL()}
+	      variant={
+		      action.color === "white" || action.color === "default"
+		      ? "contained"
+		      : "gradient"
+	      }
+	      color={action.color ? action.color : "info"}
+	      size="small"
+		      >
+		      {isAuth ? action.label : "Logout"}
+		      </MKButton>
+	     
+
               ))}
           </MKBox>
           <MKBox
