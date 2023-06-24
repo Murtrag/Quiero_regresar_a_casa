@@ -41,7 +41,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
-import { b_tokenURL } from "urls";
+import { b_tokenURL, f_signUpURL } from "urls";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -82,10 +82,10 @@ function SignInBasic() {
 
 			window.location.href = '/';
 		} else {
-			// Obsługa błędu logowania
+			// Error handle if refused by server
 		}
 	} catch (error) {
-		// Obsługa błędu zapytania
+		// Error handl if catch any error
 	}
   };
 
@@ -97,7 +97,7 @@ function SignInBasic() {
         routes={routes}
         action={{
           type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
+          route: { f_signUpURL() },
           label: "Sign Up",
           color: "dark",
         }}
