@@ -61,7 +61,6 @@ function SignInBasic() {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			// body: JSON.stringify({ login, password }),
 			body: JSON.stringify({ username, password }),
 			credentials: 'include',
 		});
