@@ -49,7 +49,7 @@ import { Outlet, Link } from "react-router-dom";
 import bgImage from "assets/images/bg-presentation.jpg";
 
 import {useEffect, useState} from 'react';
-import { mottoURL } from "backendURLs"
+import { b_mottoURL } from "urls";
 import { connect } from "react-redux";
 
 function MainLayout({locale}) {
@@ -59,7 +59,7 @@ function MainLayout({locale}) {
   });
     
 	useEffect(()=>{
-		fetch(mottoURL({
+		fetch(b_mottoURL({
 			language: locale.language
 		})).then(response=>response.json())
 		.then((state)=>{

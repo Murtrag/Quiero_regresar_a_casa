@@ -44,7 +44,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-import { navBarURL, loginURL, logoutURL } from "backendURLs"
+import { b_navBarURL, f_loginURL, f_logoutURL } from "urls"
 import { connect } from "react-redux";
 
 
@@ -71,7 +71,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
-	fetch(navBarURL({
+	fetch(b_navBarURL({
 		country: locale.country,
 		language: locale.language 
 	})).then(response=>response.json())
@@ -543,7 +543,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 	      <MKButton
 	      prop={isAuth ? true : false}
 	      component="a"
-	      href={isAuth ? loginURL() : logoutURL()}
+	      href={isAuth ? f_loginURL() : f_logoutURL()}
 	      variant={
 		      action.color === "white" || action.color === "default"
 		      ? "contained"

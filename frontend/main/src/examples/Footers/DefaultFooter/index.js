@@ -13,7 +13,7 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
 import {useEffect, useState} from 'react';
-import { serverURL, footerURL } from "backendURLs"
+import { backendURL, b_footerURL } from "urls"
 import { connect } from 'react-redux';
 
 
@@ -26,7 +26,7 @@ function DefaultFooter({ content, locale }) {
 	}) ;
 
 	useEffect(()=>{
-		fetch(footerURL({
+		fetch(b_footerURL({
 			country: locale.country,
 			language: locale.language,
 		})).then(response=>response.json())

@@ -41,7 +41,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
-import { tokenURL } from "backendURLs";
+import { b_tokenURL } from "urls";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -56,7 +56,7 @@ function SignInBasic() {
 	e.preventDefault();
 
 	try {
-		const response = await fetch(tokenURL(), {
+		const response = await fetch(b_tokenURL(), {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
