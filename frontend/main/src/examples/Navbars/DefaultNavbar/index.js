@@ -35,7 +35,7 @@ import MuiLink from "@mui/material/Link";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
-import SignIn from "pages/LandingPages/SignIn/index"
+// import SignIn from "pages/LandingPages/SignIn/index"
 
 // Material Kit 2 React example components
 import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
@@ -543,7 +543,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 	      <MKButton
 	      prop={isAuth ? true : false}
 	      component="a"
-	      href={isAuth ? f_loginURL() : f_logoutURL()}
+	      href={isAuth ?  f_logoutURL() : f_loginURL()}
 	      variant={
 		      action.color === "white" || action.color === "default"
 		      ? "contained"
@@ -552,7 +552,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 	      color={action.color ? action.color : "info"}
 	      size="small"
 		      >
-		      {isAuth ? action.label : "Logout"}
+		      {isAuth ?  "Logout" : action.label}
 		      </MKButton>
 	     
 

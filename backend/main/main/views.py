@@ -2,6 +2,8 @@ from rest_framework import mixins
 from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
 from rest_framework import permissions
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import (
     ProfileSerializer,
@@ -16,6 +18,7 @@ from utils.rest_framework import mixins as custom_mixins
 
 class LogoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = [JWTAuthentication]
 
     def post(self, request):
         try:

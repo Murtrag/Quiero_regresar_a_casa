@@ -1,24 +1,25 @@
 import { useEffect } from "react";
+import { b_logoutURL } from "urls";
 
 
 export const Logout = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(logoutURL(), {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            refresh_token: localStorage.getItem("refresh_token"),
-          }),
-          credentials: "include",
-        });
+const response = await fetch(b_logoutURL(), {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.getItem("access_token")}`,
+  },
+  body: JSON.stringify({
+    refresh_token: localStorage.getItem("refresh_token"),
+  }),
+});
 
         if (response.ok) {
           localStorage.clear();
-          window.location.href = "/login";
+          window.location.href = "authentication/sign-in";
         } else {
           console.log("logout not working");
         }
@@ -31,3 +32,4 @@ export const Logout = () => {
   return <div></div>;
 };
 
+export default Logout;
