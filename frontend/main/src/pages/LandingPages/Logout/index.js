@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { b_logoutURL } from "urls";
+import { b_logoutURL, frontendURL } from "urls";
 
 
 export const Logout = () => {
@@ -19,7 +19,7 @@ const response = await fetch(b_logoutURL(), {
 
         if (response.ok) {
           localStorage.clear();
-          window.location.href = "authentication/sign-in";
+          window.location.href = frontendURL;
         } else {
           console.log("logout not working");
         }

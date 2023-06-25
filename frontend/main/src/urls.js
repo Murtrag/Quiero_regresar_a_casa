@@ -1,9 +1,12 @@
+// Protocol
+const protocolPrefix = "http://"
 // Core URLs
-const backendURL = "http://83.128.215.51:81/"
-const frontendURL = "http://quiero-regresar.mx/"
+const backendURL = `${protocolPrefix}83.128.215.51:81/`
+const frontendURL = `${window.location.protocol}//${window.location.host}/`;
+
 
 // Articles URLs
-const b_backArticleDetailURL = ({category, country, language, pk})=>backendURL + `${category}/${country}/${language}/${pk}/`;
+const b_articleDetailURL = ({category, country, language, pk})=>backendURL + `${category}/${country}/${language}/${pk}/`;
 
 
 // Main URLs
@@ -12,7 +15,7 @@ const b_mottoURL = ({language}) => backendURL + `motto/${language}/`;
 const b_navBarURL = ({country, language}) => backendURL + `nav-bar/${country}/${language}/`;
 
 // User URLs
-const f_loginURL = () => backendURL + 'authentication/sign-in/' // Move to frontendURLs
+const f_loginURL = () => frontendURL + 'authentication/sign-in/' // Move to frontendURLs
 const b_loginURL = () => backendURL + 'authentication/sign-in/' // Move to frontendURLs
 
 const f_signUpURL = () => backendURL + 'authentication/sign-up/' //Move to frontendURLs
@@ -30,7 +33,7 @@ export {
 	frontendURL,
 
 	// Articles URLs
-	b_backArticleDetailURL,
+	b_articleDetailURL,
 
 	// Main URLs
 	b_footerURL,

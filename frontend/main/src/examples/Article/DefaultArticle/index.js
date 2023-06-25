@@ -19,7 +19,7 @@ const Article = () => {
 	})
 
 	useEffect(()=>{
-		fetch(articleDetailURL({
+		fetch(b_articleDetailURL({
 			category: params.category,
 			country: params.country,
 			language: params.language,
