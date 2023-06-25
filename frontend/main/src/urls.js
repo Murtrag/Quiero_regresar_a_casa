@@ -7,22 +7,22 @@ const b_backArticleDetailURL = ({category, country, language, pk})=>backendURL +
 
 
 // Main URLs
-const b_footerURL = ({country, language})=>backendURL + `footer/${country}/${language}/`;
-const b_mottoURL = ({language})=>backendURL + `motto/${language}/`;
-const b_navBarURL = ({country, language})=backendURL + `nav-bar/${country}/${language}/`;
+const b_footerURL = ({country, language}) => backendURL + `footer/${country}/${language}/`;
+const b_mottoURL = ({language}) => backendURL + `motto/${language}/`;
+const b_navBarURL = ({country, language}) => backendURL + `nav-bar/${country}/${language}/`;
 
 // User URLs
-const f_loginURL = ()=> backendURL + 'authentication/sign-in/' // Move to frontendURLs
-const b_loginURL = ()=> backendURL + 'authentication/sign-in/' // Move to frontendURLs
+const f_loginURL = () => backendURL + 'authentication/sign-in/' // Move to frontendURLs
+const b_loginURL = () => backendURL + 'authentication/sign-in/' // Move to frontendURLs
 
-const f_signUpURL = ()=> backendURL + 'authentication/sign-up/' //Move to frontendURLs
-const b_SignUpURL = ()=> backendURL + 'authentication/sign-up/' //Move to frontendURLs
+const f_signUpURL = () => backendURL + 'authentication/sign-up/' //Move to frontendURLs
+const b_signUpURL = () => backendURL + 'authentication/sign-up/' //Move to frontendURLs
 
-const f_logoutURL = ()=> frontendURLs + 'authentication/logout/'; //Copy to frontendURLs
-const b_logoutURL = ()=> backendURL + 'authentication/logout/'; //Copy to frontendURLs
+const f_logoutURL = () => frontendURL + 'authentication/logout/'; //Copy to frontendURLs
+const b_logoutURL = () => backendURL + 'authentication/logout/'; //Copy to frontendURLs
 
-const b_tokenURL = ()=> backendURL + 'authentication/token/';
-const b_profileURL = ()=> backendURL + 'authentication/profile/'; //Edit profile
+const b_tokenURL = () => backendURL + 'authentication/token/';
+const b_profileURL = () => backendURL + 'authentication/profile/'; //Edit profile
 
 export {
 	// Core URLs
@@ -30,7 +30,7 @@ export {
 	frontendURL,
 
 	// Articles URLs
-	b_articleDetailURL,
+	b_backArticleDetailURL,
 
 	// Main URLs
 	b_footerURL,

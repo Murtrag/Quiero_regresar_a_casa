@@ -96,7 +96,7 @@ function SignInBasic() {
         routes={routes}
         action={{
           type: "external",
-          route: { f_signUpURL() },
+          route: f_signUpURL(),
           label: "Sign Up",
           color: "dark",
         }}

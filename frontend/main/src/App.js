@@ -24,7 +24,6 @@ import ChangeLanguage from "examples/Locale/ChangeLanguage/index"
 import Error from "examples/Error/index"
 
 import SignIn from "pages/LandingPages/SignIn/index"
-import SignIn from "pages/LandingPages/Logout/index"
 import ContactUs from "pages/LandingPages/ContactUs/index"
 
 // Utils
@@ -44,7 +43,7 @@ export default function App() {
 			<Routes>
 				{/* PANEL */}
 					<Route path="authentication/sign-in/" element={<SignIn />} />
-					<Route path="authentication/logout" element={<Logout />}/>
+					{/* <Route path="authentication/logout" element={<Logout />}/> */}
 					{/* <Route path="authentication/sign-up/" element={<SignUp />} /> */}
 					<Route path="contact-us/" element={<ContactUs />} />
 					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
