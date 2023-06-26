@@ -70,7 +70,6 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
   useEffect(() => {
-    // A function that sets the display state for the DefaultNavbarMobile.
 	fetch(b_navBarURL({
 		country: locale.country,
 		language: locale.language 
@@ -81,6 +80,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 			...newRoute
 		])
 	})
+    // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
       if (window.innerWidth < breakpoints.values.lg) {
         setMobileView(true);
