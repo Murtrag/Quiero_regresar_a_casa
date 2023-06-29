@@ -27,6 +27,7 @@ const b_logoutURL = () => backendURL + 'authentication/logout/'; //Copy to front
 const b_tokenURL = () => backendURL + 'authentication/token/';
 const b_profileURL = () => backendURL + 'authentication/profile/'; //Edit profile
 
+
 export {
 	// Core URLs
 	backendURL,

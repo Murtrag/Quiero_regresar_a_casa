@@ -46,6 +46,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 import { b_navBarURL, f_loginURL, f_logoutURL } from "urls"
 import { connect } from "react-redux";
+import { extractPath } from "utils/extractPath";
 
 
 // import Nav from 'react-bootstrap/Nav';
@@ -542,8 +543,8 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 	      
 	      <MKButton
 	      prop={isAuth ? true : false}
-	      component="a"
-	      href={isAuth ?  f_logoutURL() : f_loginURL()}
+	      component={Link}
+	      to={extractPath(isAuth ?  f_logoutURL() : f_loginURL())}
 	      variant={
 		      action.color === "white" || action.color === "default"
 		      ? "contained"
