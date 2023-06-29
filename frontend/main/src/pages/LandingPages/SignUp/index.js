@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
+import Switch from "@mui/material/Switch";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -10,40 +13,50 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
+import { b_tokenURL, f_signUpURL } from "urls";
 
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
-import bgImage from "assets/images/illustrations/illustration-reset.jpg";
+import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 function SignUp() {
+  const [rememberMe, setRememberMe] = useState(false);
   return (
     <>
-      <MKBox position="fixed" top="0.5rem" width="100%">
-        <DefaultNavbar
-          routes={routes}
-          action={{
-            type: "external",
-            route: "https://www.creative-tim.com/product/material-kit-react",
-            label: "Sign In",
-            color: "dark",
-          }}
-        />
-      </MKBox>
-      <Grid container spacing={3} alignItems="center">
-        <Grid item xs={12} lg={6}>
-          <MKBox
-            display={{ xs: "none", lg: "flex" }}
-            width="calc(100% - 2rem)"
-            height="calc(100vh - 2rem)"
-            borderRadius="lg"
-            ml={2}
-            mt={2}
-            sx={{ backgroundImage: `url(${bgImage})` }} {/* Is this a left crap? */}
-          />
-        </Grid>
+      <DefaultNavbar
+        routes={routes}
+        action={{
+          type: "external",
+          route: f_signUpURL(),
+          label: "Sign Up",
+          color: "dark",
+        }}
+        transparent
+        light
+      />
+      <MKBox
+        position="absolute"
+        top={0}
+        left={0}
+        zIndex={1}
+        width="100%"
+        minHeight="100vh"
+        sx={{
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.dark.main, 0.6),
+              rgba(gradients.dark.state, 0.6)
+            )}, url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      <MKBox px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>
+        <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
         <Grid
           item
           xs={12}
@@ -81,26 +94,11 @@ function SignUp() {
             <MKBox p={3}>
            <MKBox width="100%" component="form" method="post" autocomplete="off">
   <Grid container spacing={3}>
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={12}>
       <MKInput
         variant="standard"
         label="Login"
-        InputLabelProps={{ shrink: true }}
-        fullWidth
-      />
-    </Grid>
-    <Grid item xs={12} md={6}>
-      <MKInput
-        type="password"
-        variant="standard"
-        label="Password"
-        InputLabelProps={{ shrink: true }}
-        fullWidth
-      />
-      <MKInput
-        type="password"
-        variant="standard"
-        label="Repeat password"
+	tabindex="1"
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
@@ -114,9 +112,25 @@ function SignUp() {
         fullWidth
       />
       <MKInput
+        type="password"
+        variant="standard"
+        label="Password"
+        InputLabelProps={{ shrink: true }}
+        fullWidth
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <MKInput
         type="email"
         variant="standard"
         label="Repeat email"
+        InputLabelProps={{ shrink: true }}
+        fullWidth
+      />
+      <MKInput
+        type="password"
+        variant="standard"
+        label="Repeat password"
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
@@ -128,6 +142,8 @@ function SignUp() {
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
+    </Grid>
+    <Grid item xs={12} md={6}>
       <MKInput
         variant="standard"
         label="Last Name(s)"
@@ -135,15 +151,13 @@ function SignUp() {
         fullWidth
       />
     </Grid>
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12}>
       <MKInput
         variant="standard"
         label="Phone number"
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
-    </Grid>
-    <Grid item xs={12}>
       <MKInput
         variant="standard"
         label="Profile description"
@@ -155,25 +169,25 @@ function SignUp() {
       />
     </Grid>
   </Grid>
+	  <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
+                  <MKBox display="flex" alignItems="center" ml={-1}>
+                    <Switch checked={rememberMe} onChange={()=>console.log('test')} />
+                    <MKTypography
+                      variant="button"
+                      fontWeight="regular"
+                      color="text"
+                      onClick={()=>console.log('test')}
+                      sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
+                    >
+                      &nbsp;&nbsp;Accept the terms and conditions
+                    </MKTypography>
+                  </MKBox>
+	  </Grid>
   <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
     <MKButton type="submit" variant="gradient" color="dark">
       Register
     </MKButton>
   </Grid>
-  <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKBox display="flex" alignItems="center" ml={-1}>
-                    <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-                    <MKTypography
-                      variant="button"
-                      fontWeight="regular"
-                      color="text"
-                      onClick={handleSetRememberMe}
-                      sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
-                    >
-                      &nbsp;&nbsp;Remember me
-                    </MKTypography>
-                  </MKBox>
-	  </Grid>
 </MKBox>
 
             </MKBox>
@@ -183,6 +197,7 @@ function SignUp() {
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
+	  </MKBox>
     </>
   );
 }
