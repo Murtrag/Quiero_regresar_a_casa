@@ -26,6 +26,7 @@ import Error from "examples/Error/index"
 import SignIn from "pages/LandingPages/SignIn/index"
 import Logout from "pages/LandingPages/Logout/index"
 import ContactUs from "pages/LandingPages/ContactUs/index"
+import SignUp from "pages/LandingPages/SignUp/index"
 
 // Utils
 import { scrollUp } from "utils/scroll"
@@ -45,7 +46,7 @@ export default function App() {
 				{/* PANEL */}
 					<Route path="authentication/sign-in/" element={<SignIn />} />
 					<Route path="authentication/logout" element={<Logout />}/>
-					{/* <Route path="authentication/sign-up/" element={<SignUp />} /> */}
+					<Route path="authentication/sign-up/" element={<SignUp />} />
 					<Route path="contact-us/" element={<ContactUs />} />
 					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
 					{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}

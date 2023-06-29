@@ -7,9 +7,6 @@ import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
-// Mui components
-import { FormControlLabel, Checkbox } from '@mui/material';
-
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
@@ -21,7 +18,7 @@ import footerRoutes from "footer.routes";
 // Image
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
-function ContactUs() {
+function SignUp() {
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%">
@@ -44,7 +41,7 @@ function ContactUs() {
             borderRadius="lg"
             ml={2}
             mt={2}
-            sx={{ backgroundImage: `url(${bgImage})` }}
+            sx={{ backgroundImage: `url(${bgImage})` }} {/* Is this a left crap? */}
           />
         </Grid>
         <Grid
@@ -78,7 +75,7 @@ function ContactUs() {
               mt={-3}
             >
               <MKTypography variant="h3" color="white">
-                Contact us
+                Register
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
@@ -163,6 +160,20 @@ function ContactUs() {
       Register
     </MKButton>
   </Grid>
+  <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
+                  <MKBox display="flex" alignItems="center" ml={-1}>
+                    <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+                    <MKTypography
+                      variant="button"
+                      fontWeight="regular"
+                      color="text"
+                      onClick={handleSetRememberMe}
+                      sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
+                    >
+                      &nbsp;&nbsp;Remember me
+                    </MKTypography>
+                  </MKBox>
+	  </Grid>
 </MKBox>
 
             </MKBox>
@@ -176,4 +187,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default SignUp;
