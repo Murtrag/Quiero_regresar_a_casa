@@ -28,6 +28,9 @@ urlpatterns = [
     # Token api logout view
     path('authentication/logout/', LogoutView.as_view(), name ='logout'),
 
+    # Sign up api
+    path('authentication/sign-up/', SignUp.as_view(), name ='sign_up'),
+
 
 
     # Missing person api

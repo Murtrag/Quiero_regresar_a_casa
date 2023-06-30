@@ -3,10 +3,26 @@ from django.contrib.auth.models import User
 from main.models import Profile
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    username = serializers.ReadOnlyField()
+    email = serializers.EmailField(
+            required=True,
+            validators=[UniqueValidator(queryset=User.obejcts.all())]
+            )
+    username = serializers.CharField(
+            max_length=32,
+            validators=[UniqueValidator(queryset=User.objects.all())],
+            )
+    password = serializers.CharField(min_length=8, write_only=True)
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+                validated_data['username'],
+                validated_data['password']
+                )
+        return user
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'password',)
+        fields = ('id', 'username', 'email', 'password',)
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     

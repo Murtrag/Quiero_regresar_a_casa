@@ -18,7 +18,6 @@ from .serializers import (
 from .models import Profile, NavBarTab, Footer, Motto
 from utils.rest_framework import mixins as custom_mixins
 # from . import custom_permissions
-
 class LogoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     authentication_classes = [JWTAuthentication]
@@ -35,6 +34,22 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class SignUp(APIView):
+    '''
+    Api to create user
+    '''
+    def post(self, request, format='json'):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                return Response(
+                        serializer.data,
+                        status=status.HTTP_201_CREATED
+                        )
+        # return Response(status=status.HTTP_205_RESET_CONTENT))
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
