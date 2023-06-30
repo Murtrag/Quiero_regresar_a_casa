@@ -46,6 +46,8 @@ import { b_tokenURL, f_signUpURL } from "urls";
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
+import { extractPath } from "utils/extractPath";
+
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -96,7 +98,7 @@ function SignInBasic() {
         routes={routes}
         action={{
           type: "external",
-          route: f_signUpURL(),
+          route: extractPath(f_signUpURL()),
           label: "Sign Up",
           color: "dark",
         }}

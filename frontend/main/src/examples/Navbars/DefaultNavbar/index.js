@@ -46,7 +46,6 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 import { b_navBarURL, f_loginURL, f_logoutURL } from "urls"
 import { connect } from "react-redux";
-import { extractPath } from "utils/extractPath";
 
 
 // import Nav from 'react-bootstrap/Nav';
@@ -63,7 +62,6 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   const [nestedDropdownEl, setNestedDropdownEl] = useState("");
   const [nestedDropdownName, setNestedDropdownName] = useState("");
 
-  const [isAuth, setIsAuth] = useState(false);
   const [arrowRef, setArrowRef] = useState(null);
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
@@ -105,11 +103,6 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, [locale]);
 
-  useEffect(() => {
-	  if (localStorage.getItem('access_token') !== null) {
-		  setIsAuth(true); 
-	}
-  }, [isAuth]);
 
   const renderNavbarItems = routes.map(({ name, icon, href, route, collapse }) => (
     <DefaultNavbarDropdown
@@ -542,9 +535,8 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
 	      
 	      <MKButton
-	      prop={isAuth ? true : false}
 	      component={Link}
-	      to={extractPath(isAuth ?  f_logoutURL() : f_loginURL())}
+	      to={action.route}
 	      variant={
 		      action.color === "white" || action.color === "default"
 		      ? "contained"
@@ -553,7 +545,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 	      color={action.color ? action.color : "info"}
 	      size="small"
 		      >
-		      {isAuth ?  "Logout" : action.label}
+		      {action.label} 
 		      </MKButton>
 	     
 

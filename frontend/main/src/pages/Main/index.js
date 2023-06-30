@@ -48,11 +48,23 @@ import { Outlet, Link } from "react-router-dom";
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
+
+import { f_loginURL } from "urls";
+import { extractPath } from "utils/extractPath";
+
 import {useEffect, useState} from 'react';
 import { b_mottoURL } from "urls";
 import { connect } from "react-redux";
 
 function MainLayout({locale}) {
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+	  if (localStorage.getItem('access_token') !== null) {
+		  setIsAuth(true); 
+	}
+  }, [isAuth]);
+
   let [state, setState] = useState({
      header: "",
      description: ""
@@ -76,8 +88,9 @@ function MainLayout({locale}) {
         routes={routes}
         action={{
           type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "Sign in",
+	  prop: isAuth ? true : false,
+          route: extractPath(f_loginURL()),
+          label: isAuth?  "Logout" : "Sign In",
           color: "dark",
         }}
         sticky

@@ -18,7 +18,7 @@ const b_navBarURL = ({country, language}) => backendURL + `nav-bar/${country}/${
 const f_loginURL = () => frontendURL + 'authentication/sign-in/' // Move to frontendURLs
 const b_loginURL = () => backendURL + 'authentication/sign-in/' // Move to frontendURLs
 
-const f_signUpURL = () => backendURL + 'authentication/sign-up/' //Move to frontendURLs
+const f_signUpURL = () => frontendURL + 'authentication/sign-up/' //Move to frontendURLs
 const b_signUpURL = () => backendURL + 'authentication/sign-up/' //Move to frontendURLs
 
 const f_logoutURL = () => frontendURL + 'authentication/logout/'; //Copy to frontendURLs
