@@ -85,7 +85,7 @@ function SignUp() {
 			// 	},
 			// });
 
-			window.location.href = '/';
+			// window.location.href = '/';
 		} else {
 			// Error handle if refused by server
 			setSwalProps({
