@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from .serializers import (
     ProfileSerializer,
+    UserSerializer,
     FooterSerializer,
     TabSerializer,
     #MenuSerializer,
