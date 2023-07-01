@@ -13,7 +13,7 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import { b_tokenURL, f_signUpURL } from "urls";
+import { b_signUpURL, f_signUpURL } from "urls";
 
 // Routes
 import routes from "routes";
@@ -22,8 +22,81 @@ import footerRoutes from "footer.routes";
 // Image
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
+import SweetAlert2 from 'react-sweetalert2';
+
+
 function SignUp() {
-  const [rememberMe, setRememberMe] = useState(false);
+
+  const [swalProps, setSwalProps] = useState({});
+
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [repeatEmail, setRepeatEmail] = useState(false);
+  const [pass, setPass] = useState(false);
+  const [repeatPass, setRepeatPass] = useState(false);
+  const [firstName, setFirstName] = useState(false);
+  const [lastName, setLastName] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState(false);
+  const [profileDescription, setProfileDescription] = useState(false);
+
+  const handleSubmit = async (e) => {
+	e.preventDefault();
+
+	try {
+		const response = await fetch(b_signUpURL(), {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				login,
+				email,
+				repeatEmail,
+				pass,
+				repeatPass,
+				firstName,
+				lastName,
+				phoneNumber,
+				profileDescription
+			})
+			// ,credentials: 'include',
+		});
+
+		if (response.ok) {
+			// const {access, refresh} = await response.json();
+
+			// localStorage.clear();
+			// localStorage.setItem('access_token', access);
+			// localStorage.setItem('refresh_token', refresh);
+			// const token = `Bearer ${access}`;
+			// fetch('/', {
+			// 	method: 'GET',
+			// 	headers: {
+			// 		'Authorization': token,
+			// 	},
+			// });
+
+			window.location.href = '/';
+		} else {
+			// Error handle if refused by server
+			setSwalProps({
+				show: true,
+				title: 'Registration error',
+				text: `error: ${response.status}`,
+			});
+		}
+	} catch (error) {
+			setSwalProps({
+				show: true,
+				title: 'Registration error',
+				text: `error: `,
+			});
+	}
+  };
+
+  const handleSetAcceptTerms = () => setAcceptTerms(!acceptTerms);
+
   return (
     <>
       <DefaultNavbar
@@ -92,7 +165,7 @@ function SignUp() {
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
-           <MKBox width="100%" component="form" method="post" autocomplete="off">
+           <MKBox width="100%" component="form" onSubmit={handleSubmit} method="post" autocomplete="off">
   <Grid container spacing={3}>
     <Grid item xs={12} md={12}>
       <MKInput
@@ -171,12 +244,12 @@ function SignUp() {
   </Grid>
 	  <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
                   <MKBox display="flex" alignItems="center" ml={-1}>
-                    <Switch checked={rememberMe} onChange={()=>console.log('test')} />
+                    <Switch checked={acceptTerms} onChange={handleSetAcceptTerms} />
                     <MKTypography
                       variant="button"
                       fontWeight="regular"
                       color="text"
-                      onClick={()=>console.log('test')}
+                      onClick={handleSetAcceptTerms}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
                       &nbsp;&nbsp;Accept the terms and conditions
@@ -194,6 +267,7 @@ function SignUp() {
           </MKBox>
         </Grid>
       </Grid>
+<SweetAlert2 {...swalProps} />
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
