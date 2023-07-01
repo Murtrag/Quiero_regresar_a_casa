@@ -17,7 +17,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(
                 validated_data['username'],
-                validated_data['password']
+                validated_data['password'],
                 validated_data['email']
                 )
         return user
