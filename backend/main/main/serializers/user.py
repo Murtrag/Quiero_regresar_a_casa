@@ -6,7 +6,7 @@ from main.models import Profile
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     email = serializers.EmailField(
             required=True,
-            validators=[UniqueValidator(queryset=User.obejcts.all())]
+            validators=[UniqueValidator(queryset=User.objects.all())]
             )
     username = serializers.CharField(
             max_length=32,
