@@ -42,6 +42,7 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
+	setSwalProps({ show: false })
 
 	  console.log(JSON.stringify({
 		  username: login,
@@ -68,37 +69,45 @@ function SignUp() {
 				phone_number: phoneNumber,
 				profile_description: profileDescription
 			})
-			// ,credentials: 'include',
 		});
 
 		if (response.ok) {
-			// const {access, refresh} = await response.json();
-
-			// localStorage.clear();
-			// localStorage.setItem('access_token', access);
-			// localStorage.setItem('refresh_token', refresh);
-			// const token = `Bearer ${access}`;
-			// fetch('/', {
-			// 	method: 'GET',
-			// 	headers: {
-			// 		'Authorization': token,
-			// 	},
-			// });
-
+			setSwalProps({
+				show: true,
+				title: 'Registration success',
+				text: `You registered successfully, the registration requires also email confirmation`,
+				icon: 'success',
+				button: "Resend conirmation email",
+				showCancelButton: true,
+				confirmButtonText: "Ok",
+				cancelButtonText: "Resend confirmation email"
+			});
 			// window.location.href = '/';
 		} else {
 			// Error handle if refused by server
-			setSwalProps({
-				show: true,
-				title: 'Registration error',
-				text: `error: ${response.status}`,
-			});
+			response.json().then(data=>{
+				setSwalProps({
+					show: true,
+					title: 'Registration error',
+					text: `error: ${JSON.stringify(data)}`,
+					icon: 'error'
+				}).then(function(){
+					// function when confirm button clicked
+				}, function(dismiss){
+					if(dismiss == 'cancel'){
+						// function when cancel button is clicked
+						console.log('resend email')
+					}
+				})
+			})
+			console.log(response);
 		}
 	} catch (error) {
 			setSwalProps({
 				show: true,
 				title: 'Registration error',
 				text: `error: `,
+				icon: 'error'
 			});
 	}
   };
