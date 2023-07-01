@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 from rest_framework_simplejwt import views as jwt_views
-from .views import (ProfileList, LogoutView, ProfileDetail, FooterView, NavBarList,
+from .views import (ProfileList, SignUp, LogoutView, ProfileDetail, FooterView, NavBarList,
                     MottoView)
 
 urlpatterns = [
