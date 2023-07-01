@@ -33,6 +33,7 @@ function SignUp() {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [repeatEmail, setRepeatEmail] = useState('');
+  const [emailMatch, setEmailMatch] = useState(true);
   const [pass, setPass] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -200,9 +201,14 @@ function SignUp() {
         variant="standard"
         label="Email"
         InputLabelProps={{ shrink: true }}
-	onChange={e=>setEmail(e.target.value)}
+	onChange={(e) => {
+		  setEmail(e.target.value);
+		  setEmailMatch(e.target.value === repeatEmail);
+	  }}
+
         fullWidth
       />
+	  <span>{emailMatch? "":"email does not match"}</span>
       <MKInput
         type="password"
         variant="standard"
@@ -218,6 +224,7 @@ function SignUp() {
         variant="standard"
         label="Repeat email"
         InputLabelProps={{ shrink: true }}
+	onChange={(el)=>setEmailMatch(el.target.value==email) }
         fullWidth
       />
       <MKInput
