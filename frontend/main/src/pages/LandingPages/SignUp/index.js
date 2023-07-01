@@ -30,19 +30,29 @@ function SignUp() {
   const [swalProps, setSwalProps] = useState({});
 
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [login, setLogin] = useState(false);
-  const [email, setEmail] = useState(false);
-  const [repeatEmail, setRepeatEmail] = useState(false);
-  const [pass, setPass] = useState(false);
-  const [repeatPass, setRepeatPass] = useState(false);
-  const [firstName, setFirstName] = useState(false);
-  const [lastName, setLastName] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState(false);
-  const [profileDescription, setProfileDescription] = useState(false);
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [repeatEmail, setRepeatEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [repeatPass, setRepeatPass] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [profileDescription, setProfileDescription] = useState('');
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
 
+	  console.log(JSON.stringify({
+		  username: login,
+		  email: email,
+		  password: pass,
+		  first_name: firstName,
+		  last_name: lastName,
+		  phone_number: phoneNumber,
+		  profile_description: profileDescription
+	  })
+	  )
 	try {
 		const response = await fetch(b_signUpURL(), {
 			method: 'POST',
@@ -50,15 +60,13 @@ function SignUp() {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				login,
-				email,
-				repeatEmail,
-				pass,
-				repeatPass,
-				firstName,
-				lastName,
-				phoneNumber,
-				profileDescription
+				username: login,
+				email: email,
+				password: pass,
+				first_name: firstName,
+				last_name: lastName,
+				phone_number: phoneNumber,
+				profile_description: profileDescription
 			})
 			// ,credentials: 'include',
 		});
@@ -173,6 +181,7 @@ function SignUp() {
         label="Login"
 	tabindex="1"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setLogin(e.target.value)}
         fullWidth
       />
     </Grid>
@@ -182,6 +191,7 @@ function SignUp() {
         variant="standard"
         label="Email"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setEmail(e.target.value)}
         fullWidth
       />
       <MKInput
@@ -189,6 +199,7 @@ function SignUp() {
         variant="standard"
         label="Password"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setPass(e.target.value)}
         fullWidth
       />
     </Grid>
@@ -213,6 +224,7 @@ function SignUp() {
         variant="standard"
         label="First Name(s)"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setFirstName(e.target.value)}
         fullWidth
       />
     </Grid>
@@ -221,6 +233,7 @@ function SignUp() {
         variant="standard"
         label="Last Name(s)"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setLastName(e.target.value)}
         fullWidth
       />
     </Grid>
@@ -229,6 +242,7 @@ function SignUp() {
         variant="standard"
         label="Phone number"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setPhoneNumber(e.target.value)}
         fullWidth
       />
       <MKInput
@@ -236,6 +250,7 @@ function SignUp() {
         label="Profile description"
         placeholder="Here you can put optional description to your profile"
         InputLabelProps={{ shrink: true }}
+	onChange={e=>setProfileDescription(e.target.value)}
         multiline
         fullWidth
         rows={6}
