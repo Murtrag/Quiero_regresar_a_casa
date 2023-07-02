@@ -22,7 +22,18 @@ import footerRoutes from "footer.routes";
 // Image
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
+//
 import SweetAlert2 from 'react-sweetalert2';
+
+// Validators
+import { 
+	validateLogin,
+	validatePassword,
+	validateEmail
+} from "./validators/index";
+
+// Custom Styles
+import "assets/customCSS/signUp.css";
 
 
 function SignUp() {
@@ -33,7 +44,7 @@ function SignUp() {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [repeatEmail, setRepeatEmail] = useState('');
-  const [emailMatch, setEmailMatch] = useState(true);
+  // const [emailMatch, setEmailMatch] = useState(true);
   const [pass, setPass] = useState('');
   const [repeatPass, setRepeatPass] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -45,16 +56,6 @@ function SignUp() {
 	e.preventDefault();
 	setSwalProps({ show: false })
 
-	  console.log(JSON.stringify({
-		  username: login,
-		  email: email,
-		  password: pass,
-		  first_name: firstName,
-		  last_name: lastName,
-		  phone_number: phoneNumber,
-		  profile_description: profileDescription
-	  })
-	  )
 	try {
 		const response = await fetch(b_signUpURL(), {
 			method: 'POST',
@@ -190,6 +191,7 @@ function SignUp() {
         variant="standard"
         label="Login"
 	tabindex="1"
+	className={validateLogin(login)? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setLogin(e.target.value)}
         fullWidth
@@ -200,19 +202,17 @@ function SignUp() {
         type="email"
         variant="standard"
         label="Email"
+	className={email === repeatEmail? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
-	onChange={(e) => {
-		  setEmail(e.target.value);
-		  setEmailMatch(e.target.value === repeatEmail);
-	  }}
+	onChange={(e) => setEmail(e.target.value)}
 
         fullWidth
       />
-	  <span>{emailMatch? "":"email does not match"}</span>
       <MKInput
         type="password"
         variant="standard"
         label="Password"
+	className={pass === repeatPass? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setPass(e.target.value)}
         fullWidth
@@ -223,15 +223,18 @@ function SignUp() {
         type="email"
         variant="standard"
         label="Repeat email"
+	className={email === repeatEmail? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
-	onChange={(el)=>setEmailMatch(el.target.value==email) }
+	onChange={(el)=>setRepeatEmail(el.target.value) }
         fullWidth
       />
       <MKInput
         type="password"
         variant="standard"
         label="Repeat password"
+	className={pass === repeatPass? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
+	onChange={(el)=>setRepeatPass(el.target.value) }
         fullWidth
       />
     </Grid>

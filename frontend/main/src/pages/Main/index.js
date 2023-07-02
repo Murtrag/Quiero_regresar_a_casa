@@ -49,7 +49,7 @@ import { Outlet, Link } from "react-router-dom";
 import bgImage from "assets/images/bg-presentation.jpg";
 
 
-import { f_loginURL } from "urls";
+import { f_logoutURL, f_loginURL } from "urls";
 import { extractPath } from "utils/extractPath";
 
 import {useEffect, useState} from 'react';
@@ -59,11 +59,13 @@ import { connect } from "react-redux";
 function MainLayout({locale}) {
   const [isAuth, setIsAuth] = useState(false);
 
+
   useEffect(() => {
 	  if (localStorage.getItem('access_token') !== null) {
 		  setIsAuth(true); 
 	}
   }, [isAuth]);
+
 
   let [state, setState] = useState({
      header: "",
@@ -89,8 +91,8 @@ function MainLayout({locale}) {
         action={{
           type: "external",
 	  prop: isAuth ? true : false,
-          route: extractPath(f_loginURL()),
-          label: isAuth?  "Logout" : "Sign In",
+          route: extractPath(isAuth? f_logoutURL():f_loginURL()),
+          label: isAuth?  "Logout":"Sign In",
           color: "dark",
         }}
         sticky

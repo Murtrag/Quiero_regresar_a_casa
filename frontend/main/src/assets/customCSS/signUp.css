@@ -1,0 +1,7 @@
+.inputIncorrect > div:after {
+  border-color: red !important;
+}
+
+.inputCorrect > div:after {
+  border-color: green !important;
+}
