@@ -29,7 +29,11 @@ import SweetAlert2 from 'react-sweetalert2';
 import { 
 	validateLogin,
 	validatePassword,
-	validateEmail
+	validateEmail,
+	validateName,
+	validatePhoneNumber,
+	validateEquality,
+	combineValidators
 } from "./validators/index";
 
 // Custom Styles
@@ -202,7 +206,11 @@ function SignUp() {
         type="email"
         variant="standard"
         label="Email"
-	className={email === repeatEmail? "inputCorrect":"inputIncorrect"}
+	className={combineValidators(
+		validateEquality(email, repeatEmail),
+		validateEmail(email)
+		)? "inputCorrect":"inputIncorrect" 
+	}
         InputLabelProps={{ shrink: true }}
 	onChange={(e) => setEmail(e.target.value)}
 
@@ -212,7 +220,11 @@ function SignUp() {
         type="password"
         variant="standard"
         label="Password"
-	className={pass === repeatPass? "inputCorrect":"inputIncorrect"}
+	className={combineValidators(
+		validateEquality(pass, repeatPass),
+		validatePassword(pass)
+		)? "inputCorrect":"inputIncorrect" 
+	}
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setPass(e.target.value)}
         fullWidth
@@ -223,7 +235,11 @@ function SignUp() {
         type="email"
         variant="standard"
         label="Repeat email"
-	className={email === repeatEmail? "inputCorrect":"inputIncorrect"}
+	className={combineValidators(
+		validateEquality(email, repeatEmail),
+		validateEmail(repeatEmail)
+		)? "inputCorrect":"inputIncorrect" 
+	}
         InputLabelProps={{ shrink: true }}
 	onChange={(el)=>setRepeatEmail(el.target.value) }
         fullWidth
@@ -232,7 +248,11 @@ function SignUp() {
         type="password"
         variant="standard"
         label="Repeat password"
-	className={pass === repeatPass? "inputCorrect":"inputIncorrect"}
+	className={combineValidators(
+		validateEquality(pass, repeatPass),
+		validatePassword(repeatPass)
+		)? "inputCorrect":"inputIncorrect" 
+	}
         InputLabelProps={{ shrink: true }}
 	onChange={(el)=>setRepeatPass(el.target.value) }
         fullWidth
@@ -242,6 +262,7 @@ function SignUp() {
       <MKInput
         variant="standard"
         label="First Name(s)"
+	className={ validateName(firstName)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setFirstName(e.target.value)}
         fullWidth
@@ -251,6 +272,7 @@ function SignUp() {
       <MKInput
         variant="standard"
         label="Last Name(s)"
+	className={ validateName(lastName)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setLastName(e.target.value)}
         fullWidth
@@ -260,6 +282,7 @@ function SignUp() {
       <MKInput
         variant="standard"
         label="Phone number"
+	className={ validatePhoneNumber(phoneNumber)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setPhoneNumber(e.target.value)}
         fullWidth
