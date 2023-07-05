@@ -3,7 +3,7 @@ import { changeLanguage } from "redux/actions/locale";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import strinf from "string/changeLanguage";
+import string from "string/changeLanguage";
 
 const ChangeLanguage = ({changeLanguage})=>{
 	const params = useParams();
