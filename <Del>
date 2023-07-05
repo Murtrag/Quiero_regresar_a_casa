@@ -1,0 +1,10 @@
+export default {
+	navBar:{
+		button: "Sign Up"
+	},
+	fields:{
+		password: "Password"
+		rememberMe: "Remember me"
+	}
+
+}

@@ -42,11 +42,12 @@ const validatePassword = password => {
 
 const validateEmail = (email) => {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if (emailRegex.test(email)) {
-		return true; 
-	} else {
-		return false; 
-	}
+	return emailRegex.test(email);
+	// if (emailRegex.test(email)) {
+	// 	return true; 
+	// } else {
+	// 	return false; 
+	// }
 };
 
 const validateName = (name) => {
@@ -77,8 +78,7 @@ const validatePhoneNumber = (phoneNumber) => {
 		return false;
 	}
 
-	// Walidacja zakończona sukcesem
-	return null;
+	return true;
 };
 
 

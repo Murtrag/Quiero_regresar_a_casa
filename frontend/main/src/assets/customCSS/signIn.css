@@ -1,0 +1,6 @@
+.inputCorrect .css-12n1zae-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+	border-color: green;
+}
+.inputIncorrect .css-12n1zae-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+	border-color: red;
+}

@@ -13,7 +13,9 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-import { b_signUpURL, f_signUpURL } from "urls";
+import { b_signUpURL, f_loginURL } from "urls";
+import {extractPath} from "utils/extractPath";
+import string from "strings/signUp";
 
 // Routes
 import routes from "routes";
@@ -34,7 +36,7 @@ import {
 	validatePhoneNumber,
 	validateEquality,
 	combineValidators
-} from "./validators/index";
+} from "utils/validators/index";
 
 // Custom Styles
 import "assets/customCSS/signUp.css";
@@ -58,6 +60,7 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
+	// Turn off a sweet alert
 	setSwalProps({ show: false })
 
 	try {
@@ -80,13 +83,13 @@ function SignUp() {
 		if (response.ok) {
 			setSwalProps({
 				show: true,
-				title: 'Registration success',
-				text: `You registered successfully, the registration requires also email confirmation`,
+				title: string.messageSuccess.title ,
+				text: string.messageSuccess.text,
 				icon: 'success',
-				button: "Resend conirmation email",
+				button: string.messageSuccess.button,
 				showCancelButton: true,
-				confirmButtonText: "Ok",
-				cancelButtonText: "Resend confirmation email"
+				confirmButtonText: string.messageSuccess.confirmationButtonText,
+				cancelButtonText: string.messageSuccess.cancelButtonText
 			});
 			// window.location.href = '/';
 		} else {
@@ -106,13 +109,12 @@ function SignUp() {
 					}
 				})
 			})
-			console.log(response);
 		}
 	} catch (error) {
 			setSwalProps({
 				show: true,
-				title: 'Registration error',
-				text: `error: `,
+				title: string.messageErrors.syntaxError.title,
+				text: string.messageErrors.syntaxError.text,
 				icon: 'error'
 			});
 	}
@@ -126,8 +128,8 @@ function SignUp() {
         routes={routes}
         action={{
           type: "external",
-          route: f_signUpURL(),
-          label: "Sign Up",
+          route: extractPath( f_loginURL() ),
+          label: string.navBar.button,
           color: "dark",
         }}
         transparent
@@ -193,7 +195,7 @@ function SignUp() {
     <Grid item xs={12} md={12}>
       <MKInput
         variant="standard"
-        label="Login"
+        label={string.fields.login}
 	tabindex="1"
 	className={validateLogin(login)? "inputCorrect":"inputIncorrect"}
         InputLabelProps={{ shrink: true }}
@@ -205,7 +207,7 @@ function SignUp() {
       <MKInput
         type="email"
         variant="standard"
-        label="Email"
+        label={string.fields.email}
 	className={combineValidators(
 		validateEquality(email, repeatEmail),
 		validateEmail(email)
@@ -234,7 +236,7 @@ function SignUp() {
       <MKInput
         type="email"
         variant="standard"
-        label="Repeat email"
+        label={string.fields.repeatEmail}
 	className={combineValidators(
 		validateEquality(email, repeatEmail),
 		validateEmail(repeatEmail)
@@ -248,6 +250,7 @@ function SignUp() {
         type="password"
         variant="standard"
         label="Repeat password"
+        label={string.fields.repeatPass}
 	className={combineValidators(
 		validateEquality(pass, repeatPass),
 		validatePassword(repeatPass)
@@ -261,7 +264,7 @@ function SignUp() {
     <Grid item xs={12} md={6}>
       <MKInput
         variant="standard"
-        label="First Name(s)"
+        label={string.fields.firstName}
 	className={ validateName(firstName)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setFirstName(e.target.value)}
@@ -271,7 +274,7 @@ function SignUp() {
     <Grid item xs={12} md={6}>
       <MKInput
         variant="standard"
-        label="Last Name(s)"
+        label={string.fields.lastName}
 	className={ validateName(lastName)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setLastName(e.target.value)}
@@ -281,7 +284,7 @@ function SignUp() {
     <Grid item xs={12}>
       <MKInput
         variant="standard"
-        label="Phone number"
+        label={string.fields.phoneNumber}
 	className={ validatePhoneNumber(phoneNumber)? "inputCorrect":"inputIncorrect" }
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setPhoneNumber(e.target.value)}
@@ -289,7 +292,7 @@ function SignUp() {
       />
       <MKInput
         variant="standard"
-        label="Profile description"
+        label={string.fields.profileDescription}
         placeholder="Here you can put optional description to your profile"
         InputLabelProps={{ shrink: true }}
 	onChange={e=>setProfileDescription(e.target.value)}
@@ -309,7 +312,7 @@ function SignUp() {
                       onClick={handleSetAcceptTerms}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
-                      &nbsp;&nbsp;Accept the terms and conditions
+                      &nbsp;&nbsp;{string.fields.acceptTerms}
                     </MKTypography>
                   </MKBox>
 	  </Grid>

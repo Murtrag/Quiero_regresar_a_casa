@@ -27,13 +27,22 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 // Material Kit 2 React page layout routes
 import routes from "routes";
 import { b_tokenURL, f_signUpURL } from "urls";
+import string from "strings/signIn";
+import SweetAlert2 from 'react-sweetalert2';
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import "assets/customCSS/signIn.css";
 
 import { extractPath } from "utils/extractPath";
+import { 
+	validateLogin,
+	validatePassword,
+} from "utils/validators/index";
 
 function SignInBasic() {
+  const [swalProps, setSwalProps] = useState({});
+
   const [rememberMe, setRememberMe] = useState(false);
 
   const [username, setLoginInputValue] = useState('');
@@ -43,6 +52,7 @@ function SignInBasic() {
 	e.preventDefault();
 
 	try {
+		setSwalProps({ show: false })
 		const response = await fetch(b_tokenURL(), {
 			method: 'POST',
 			headers: {
@@ -59,6 +69,13 @@ function SignInBasic() {
 			localStorage.setItem('access_token', access);
 			localStorage.setItem('refresh_token', refresh);
 			const token = `Bearer ${access}`;
+			setSwalProps({
+				show: true,
+				title: string.messageSuccess.title ,
+				text: string.messageSuccess.text,
+				icon: 'success',
+				button: string.messageSuccess.confirmButtonText,
+			});
 			fetch('/', {
 				method: 'GET',
 				headers: {
@@ -66,12 +83,31 @@ function SignInBasic() {
 				},
 			});
 
-			window.location.href = '/';
+			// window.location.href = '/';
 		} else {
-			// Error handle if refused by server
+			response.json().then(data=>{
+				setSwalProps({
+					show: true,
+					title: 'Registration error',
+					text: `error: ${JSON.stringify(data)}`,
+					icon: 'error'
+				}).then(function(){
+					// function when confirm button clicked
+				}, function(dismiss){
+					if(dismiss == 'cancel'){
+						// function when cancel button is clicked
+						console.log('resend email')
+					}
+				})
+			})
 		}
 	} catch (error) {
-		// Error handl if catch any error
+			setSwalProps({
+				show: true,
+				title: string.messageErrors.syntaxError.title,
+				text: string.messageErrors.syntaxError.text,
+				icon: 'error'
+			});
 	}
   };
 
@@ -84,7 +120,7 @@ function SignInBasic() {
         action={{
           type: "external",
           route: extractPath(f_signUpURL()),
-          label: "Sign Up",
+          label: string.navBar.button,
           color: "dark",
         }}
         transparent
@@ -147,11 +183,24 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" onSubmit={handleSubmit} role="form">
                   <MKBox mb={2}>
-                    <MKInput type="text" onChange={e=>setLoginInputValue(e.target.value)} label="Login" fullWidth />
+
+                    <MKInput
+			  type="text"
+			  className={ validateLogin(username)? "inputCorrect":"inputIncorrect" }
+			  onChange={e=>setLoginInputValue(e.target.value)}
+			  label={string.fields.login}
+		  fullWidth />
+
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" onChange={e=>setPasswordInputValue(e.target.value) }
-			    label="Password" fullWidth />
+
+                    <MKInput
+			  type="password"
+			  className={ validatePassword(password)? "inputCorrect":"inputIncorrect" }
+			  onChange={e=>setPasswordInputValue(e.target.value) }
+			    label={string.fields.password}
+		  fullWidth />
+
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -162,7 +211,7 @@ function SignInBasic() {
                       onClick={handleSetRememberMe}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
-                      &nbsp;&nbsp;Remember me
+                      &nbsp;&nbsp;{string.fields.rememberMe}
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
@@ -191,6 +240,7 @@ function SignInBasic() {
           </Grid>
         </Grid>
       </MKBox>
+	<SweetAlert2 {...swalProps} />
       <MKBox width="100%" position="absolute" zIndex={2} bottom="1.625rem">
         <SimpleFooter light />
       </MKBox>
