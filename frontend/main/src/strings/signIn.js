@@ -9,12 +9,12 @@ export default {
 	},
 	messageErrors:{
 		serverError:{
-			title: 'Registration error',
+			title: 'Login error',
 			text: data=>`Server message ${JSON.stringify(data)}`,
 		},
 		syntaxError:{
-			title: 'Registration error',
-			text: `error: `,
+			title: 'Login error',
+			text: `Syntax error, please contact administrators `,
 		}
 	},
 	fields:{

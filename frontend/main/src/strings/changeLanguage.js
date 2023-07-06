@@ -6,7 +6,7 @@ export default{
 	page:{
 		message:{
 			title: "You change language to",
-			text: text=>` ${text}` 
+			text: seconds=>`You will get redirected in  ${seconds} seconds` 
 		}
 	}
 }

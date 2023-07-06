@@ -88,16 +88,9 @@ function SignInBasic() {
 			response.json().then(data=>{
 				setSwalProps({
 					show: true,
-					title: 'Registration error',
-					text: `error: ${JSON.stringify(data)}`,
+					title: string.messageErrors.serverError.title,
+					text: string.messageErrors.serverError.text(JSON.stringify(data)),
 					icon: 'error'
-				}).then(function(){
-					// function when confirm button clicked
-				}, function(dismiss){
-					if(dismiss == 'cancel'){
-						// function when cancel button is clicked
-						console.log('resend email')
-					}
 				})
 			})
 		}

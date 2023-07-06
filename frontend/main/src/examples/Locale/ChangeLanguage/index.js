@@ -3,12 +3,13 @@ import { changeLanguage } from "redux/actions/locale";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import string from "string/changeLanguage";
+import string from "strings/changeLanguage";
 
 const ChangeLanguage = ({changeLanguage})=>{
 	const params = useParams();
 
 	let [timeOut, setTimeOut] = useState(5);
+	// let previousPage = getPrevPage();
 	var timerId;
 	useEffect(()=>{
 		if (timeOut>0){
@@ -23,13 +24,10 @@ const ChangeLanguage = ({changeLanguage})=>{
 		}
 		return () => clearInterval(timerId);
 	},[timeOut])
-
-		// <h1>You changed language to {params.language} </h1>
-		// <p>You will get redirected in {timeOut} seconds</p>
 	return <>
 		<h1>{string.page.message.title}</h1>
 		<p>{string.page.message.text(timeOut)}</p>
-		{timeOut==0 && <Navigate to='/' />}
+		{timeOut===0 && <Navigate to='/' />/* To prev page with new language */}
 		</>
 }
 
