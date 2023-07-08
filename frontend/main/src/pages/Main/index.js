@@ -48,6 +48,10 @@ import { Outlet, Link } from "react-router-dom";
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
+// Styles
+import "assets/customCSS/main.css";
+
+
 
 import { f_logoutURL, f_loginURL } from "urls";
 import { extractPath } from "utils/extractPath";
@@ -109,9 +113,10 @@ function MainLayout({locale}) {
         }}
       >
         <Container>
-          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
+          <Grid container item xs={12} lg={10} justifyContent="center" mx="auto">
             <MKTypography
               variant="h1"
+	      className="baner-header"
               color="white"
               mt={-6}
               mb={1}
@@ -120,13 +125,13 @@ function MainLayout({locale}) {
                   fontSize: size["3xl"],
                 },
               })}
-            >
-              { state.header + " " }
+            > { state.header + " " }
             </MKTypography>
             <MKTypography
               variant="body1"
               color="white"
               textAlign="center"
+	      className="baner-motto"
               px={{ xs: 6, lg: 12 }}
               mt={1}
             >

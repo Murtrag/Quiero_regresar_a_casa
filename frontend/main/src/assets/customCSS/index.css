@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Mexicana';
+  src: url('assets/fonts/Mexicana.ttf') format('truetype');
+  }
+  
+@font-face {
+  font-family: 'Las_locuras';
+  src: url('assets/fonts/Las_locuras.TTF') format('truetype');
+  }
+
+@font-face {
+  font-family: 'Mexifont';
+  src: url('assets/fonts/Mexifont.otf') format('truetype');
+  }
+
+body{
+	background-color: black!important;
+}

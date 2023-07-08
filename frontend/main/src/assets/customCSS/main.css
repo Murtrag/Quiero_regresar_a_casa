@@ -1,0 +1,17 @@
+.baner-header{
+	color: white;
+	/* mix-blend-mode: difference; */
+	font-size: 5rem !important;
+	margin-top: -160px !important;
+	font-family: 'Las_locuras', sans-serif !important;
+	/* text-shadow: 0px -2px 30px white; */
+	text-shadow: 0px 7px 49px black;
+}
+.baner-motto{
+	color: white;
+	/* mix-blend-mode: difference; */
+	font-size: 2.5rem !important;
+	font-family: 'Las_locuras', sans-serif !important;
+	/* text-shadow: 0px -2px 30px white; */
+	text-shadow: 0px 7px 49px black !important;
+}
