@@ -17,10 +17,15 @@ export default {
 			text: `Syntax error, please contact administrators `,
 		}
 	},
-	fields:{
-		login: "Login",
-		password: "Password",
-		rememberMe: "Remember me"
-	}
+	loginWindow:{
+		fields:{
+			login: "Login",
+			password: "Password",
+			rememberMe: "Remember me"
+		},
+		message: "Don't have an account?",
+		messageButton: "Sign up" 
+	},
+
 
 }

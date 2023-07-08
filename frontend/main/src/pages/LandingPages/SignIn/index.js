@@ -181,7 +181,7 @@ function SignInBasic() {
 			  type="text"
 			  className={ validateLogin(username)? "inputCorrect":"inputIncorrect" }
 			  onChange={e=>setLoginInputValue(e.target.value)}
-			  label={string.fields.login}
+			  label={string.loginWindow.fields.login}
 		  fullWidth />
 
                   </MKBox>
@@ -191,7 +191,7 @@ function SignInBasic() {
 			  type="password"
 			  className={ validatePassword(password)? "inputCorrect":"inputIncorrect" }
 			  onChange={e=>setPasswordInputValue(e.target.value) }
-			    label={string.fields.password}
+			    label={string.loginWindow.fields.password}
 		  fullWidth />
 
                   </MKBox>
@@ -204,7 +204,7 @@ function SignInBasic() {
                       onClick={handleSetRememberMe}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
-                      &nbsp;&nbsp;{string.fields.rememberMe}
+                      &nbsp;&nbsp;{string.loginWindow.fields.rememberMe}
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
@@ -214,7 +214,7 @@ function SignInBasic() {
                   </MKBox>
                   <MKBox mt={3} mb={1} textAlign="center">
                     <MKTypography variant="button" color="text">
-                      Don&apos;t have an account?{" "}
+	  {string.loginWindow.message}{" "}
                       <MKTypography
                         component={Link}
                         to="/authentication/sign-up/cover"
@@ -223,7 +223,7 @@ function SignInBasic() {
                         fontWeight="medium"
                         textGradient
                       >
-                        Sign up
+	  {string.loginWindow.messageButton}
                       </MKTypography>
                     </MKTypography>
                   </MKBox>
