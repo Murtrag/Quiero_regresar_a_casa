@@ -17,6 +17,7 @@ import footerRoutes from "footer.routes";
 
 // Image
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
+import "assets/customCSS/contactUs.css";
 
 function ContactUs() {
   return (
@@ -39,6 +40,7 @@ function ContactUs() {
             width="calc(100% - 2rem)"
             height="calc(100vh - 2rem)"
             borderRadius="lg"
+	    className="left-image"
             ml={2}
             mt={2}
             sx={{ backgroundImage: `url(${bgImage})` }}
