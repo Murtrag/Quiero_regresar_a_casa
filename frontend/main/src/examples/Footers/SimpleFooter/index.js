@@ -28,9 +28,33 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React base styles
 import typography from "assets/theme/base/typography";
 
-function SimpleFooter({ company, links, light }) {
+import {useEffect, useState} from 'react';
+import { backendURL, b_footerURL } from "urls"
+import { connect } from 'react-redux';
+
+function SimpleFooter({ company, links, light, locale }) {
+// function SimpleFooter({ brand, socials, menus, copyright, locale }) {
   const { href, name } = company;
   const { size } = typography;
+  // let [state, setState] = useState({
+		// brand: [],
+		// socials: [],
+		// menus: [],
+		// copyright: [],
+	// }) ;
+
+  // useEffect(()=>{
+		// fetch(b_footerURL({
+			// country: locale.country,
+			// language: locale.language,
+		// })).then(response=>response.json())
+			// .then((state)=>{
+				// setState({
+					// ...state,
+					// state
+				// })
+			// })
+  // }, [locale])
 
   const renderLinks = () =>
     links.map((link, key) => (
@@ -78,7 +102,7 @@ function SimpleFooter({ company, links, light }) {
               &nbsp;{name}&nbsp;
             </MKTypography>
           </Link>
-          for a better web.
+          for a better world.
         </MKBox>
         <MKBox
           component="ul"
@@ -106,12 +130,12 @@ function SimpleFooter({ company, links, light }) {
 
 // Setting default values for the props of SimpleFooter
 SimpleFooter.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
+  company: { href: "https://www.quiero-regresar.mx/", name: "Quiero-Regresar" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Creative Tim" },
-    { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-    { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
+    { href: "https://www.quiero-regresar.mx/", name: "Quiero-Regresar" },
+    { href: "https://www.quiero-regresar.mx/", name: "About us" },
+    { href: "https://www.quiero-regresar.mx/", name: "Blog" },
+    { href: "https://www.quiero-regresar.mx/", name: "License" },
   ],
   light: false,
 };
@@ -124,3 +148,8 @@ SimpleFooter.propTypes = {
 };
 
 export default SimpleFooter;
+// const mapStateToProps = state => ({
+// 	locale: state.localeReducer
+// })
+
+// export default connect(mapStateToProps)(SimpleFooter);

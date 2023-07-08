@@ -23,10 +23,13 @@ import MKButton from "components/MKButton";
 // Material Kit 2 React example components
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
+// import DefaultFooter from "examples/Footers/DefaultFooter";
+import footerRoutes from "footer.routes";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
 import { b_tokenURL, f_signUpURL } from "urls";
+import SignUp from "pages/LandingPages/SignUp/index"
 import string from "strings/signIn";
 import SweetAlert2 from 'react-sweetalert2';
 
@@ -216,8 +219,8 @@ function SignInBasic() {
                     <MKTypography variant="button" color="text">
 	  {string.loginWindow.message}{" "}
                       <MKTypography
-                        component={Link}
-                        to="/authentication/sign-up/cover"
+			component={Link}
+                        to={f_signUpURL}
                         variant="button"
                         color="dark"
                         fontWeight="medium"
@@ -235,7 +238,7 @@ function SignInBasic() {
       </MKBox>
 	<SweetAlert2 {...swalProps} />
       <MKBox width="100%" position="absolute" zIndex={2} bottom="1.625rem">
-        <SimpleFooter light />
+	  <SimpleFooter light /> 
       </MKBox>
     </>
   );
