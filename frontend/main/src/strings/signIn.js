@@ -18,6 +18,7 @@ export default {
 		}
 	},
 	loginWindow:{
+		title: "Sign in",
 		fields:{
 			login: "Login",
 			password: "Password",

@@ -156,7 +156,7 @@ function SignInBasic() {
                 textAlign="center"
               >
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-                  Sign in
+                  {string.loginWindow.title}
                 </MKTypography>
                 <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
                   <Grid item xs={2}>
@@ -220,7 +220,7 @@ function SignInBasic() {
 	  {string.loginWindow.message}{" "}
                       <MKTypography
 			component={Link}
-                        to={f_signUpURL}
+                        to={extractPath(f_signUpURL())}
                         variant="button"
                         color="dark"
                         fontWeight="medium"

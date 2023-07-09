@@ -221,7 +221,7 @@ function SignUp() {
       <MKInput
         type="password"
         variant="standard"
-        label="Password"
+        label={string.fields.password}
 	className={combineValidators(
 		validateEquality(pass, repeatPass),
 		validatePassword(pass)
@@ -249,8 +249,7 @@ function SignUp() {
       <MKInput
         type="password"
         variant="standard"
-        label="Repeat password"
-        label={string.fields.repeatPass}
+        label={string.fields.repeatPassword}
 	className={combineValidators(
 		validateEquality(pass, repeatPass),
 		validatePassword(repeatPass)
