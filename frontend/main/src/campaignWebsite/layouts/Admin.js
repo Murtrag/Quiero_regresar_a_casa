@@ -16,16 +16,17 @@
 
 */
 import React, { Component } from "react";
-import { useLocation, Route, Switch } from "react-router-dom";
+import { useLocation, Route, Routes } from "react-router-dom";
 
-import AdminNavbar from "components/Navbars/AdminNavbar";
-import Footer from "components/Footer/Footer";
-import Sidebar from "components/Sidebar/Sidebar";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
+import AdminNavbar from "campaignWebsite/components/Navbars/AdminNavbar";
+import Footer from "campaignWebsite/components/Footer/Footer";
+import Sidebar from "campaignWebsite/components/Sidebar/Sidebar";
+import FixedPlugin from "campaignWebsite/components/FixedPlugin/FixedPlugin";
 
-import routes from "routes.js";
+import { Outlet, Link } from "react-router-dom";
+import routes from "campaignWebsite/routes";
 
-import sidebarImage from "assets/img/sidebar-3.jpg";
+import sidebarImage from "campaignWebsite/assets/img/sidebar-3.jpg";
 
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);
@@ -61,6 +62,8 @@ function Admin() {
       element.parentNode.removeChild(element);
     }
   }, [location]);
+
+    // <Routes>{getRoutes(routes)}</Routes>
   return (
     <>
       <div className="wrapper">
@@ -68,7 +71,7 @@ function Admin() {
         <div className="main-panel" ref={mainPanel}>
           <AdminNavbar />
           <div className="content">
-            <Switch>{getRoutes(routes)}</Switch>
+	    <Outlet />
           </div>
           <Footer />
         </div>
