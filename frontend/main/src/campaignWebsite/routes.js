@@ -16,72 +16,68 @@
 
 */
 import Dashboard from "campaignWebsite/views/Dashboard";
-import UserProfile from "campaignWebsite/views/UserProfile.js";
-import TableList from "campaignWebsite/views/TableList.js";
-import Typography from "campaignWebsite/views/Typography.js";
-import Icons from "campaignWebsite/views/Icons.js";
-import Maps from "campaignWebsite/views/Maps.js";
-import Notifications from "campaignWebsite/views/Notifications.js";
-import Upgrade from "campaignWebsite/views/Upgrade.js";
+import UserProfile from "campaignWebsite/views/UserProfile";
+import TableList from "campaignWebsite/views/TableList";
+import Typography from "campaignWebsite/views/Typography";
+import Icons from "campaignWebsite/views/Icons";
+import Maps from "campaignWebsite/views/Maps";
+import Notifications from "campaignWebsite/views/Notifications";
+import Upgrade from "campaignWebsite/views/Upgrade";
+import {frontendURL} from "urls";
+
+import string from "strings/dashboard_routes";
 
 const dashboardRoutes = [
   {
     upgrade: true,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    icon: "nc-icon nc-alien-33",
+    path: "/../",
+    name: string.sidebar.bottomButton,
+    icon: "nc-icon nc-stre-left",
     component: Upgrade,
     layout: "/admin"
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: string.sidebar.dashboard,
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin"
   },
   {
     path: "/user",
-    name: "User Profile",
+    name: string.sidebar.userProfile,
     icon: "nc-icon nc-circle-09",
     component: UserProfile,
     layout: "/admin"
   },
   {
     path: "/table",
-    name: "Table List",
-    icon: "nc-icon nc-notes",
+    name: string.sidebar.myInvestigations,
+    icon: "nc-icon nc-zoom-split",
     component: TableList,
     layout: "/admin"
   },
   {
     path: "/typography",
-    name: "Typography",
-    icon: "nc-icon nc-paper-2",
+    name: string.sidebar.promotions,
+    icon: "nc-icon nc-notification-70",
     component: Typography,
     layout: "/admin"
   },
   {
-    path: "/icons",
-    name: "Icons",
-    icon: "nc-icon nc-atom",
-    component: Icons,
+    path: "/notifications",
+    name: string.sidebar.notifications,
+    icon: "nc-icon nc-bell-55",
+    component: Notifications,
     layout: "/admin"
   },
   {
     path: "/maps",
-    name: "Maps",
-    icon: "nc-icon nc-pin-3",
+    name: string.sidebar.securitySettings,
+    icon: "nc-icon nc-settings-90",
     component: Maps,
     layout: "/admin"
   },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "nc-icon nc-bell-55",
-    component: Notifications,
-    layout: "/admin"
-  }
 ];
 
 export default dashboardRoutes;
