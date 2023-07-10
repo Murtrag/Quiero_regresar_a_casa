@@ -70,8 +70,8 @@ export default function App() {
 
 					<Route path="admin/" element={<AdminLayout />} >
 						<Route path="dashboard/" element={<Dashboard />} />
-						<Route path="user-profile/" element={<UserProfile />} />
-						<Route path="table-list/" element={<TableList />} />
+						<Route path="user/" element={<UserProfile />} />
+						<Route path="table/" element={<TableList />} />
 						<Route path="typography/" element={<Typography />} />
 						<Route path="icons/" element={<Icons />} />
 						<Route path="maps/" element={<Maps />} />
