@@ -21,7 +21,7 @@ import theme from "assets/theme";
 import Article from "examples/Article/DefaultArticle/index"
 import Home from "examples/Home/index"
 import ChangeLanguage from "examples/Locale/ChangeLanguage/index"
-import Error from "examples/Error/index"
+import Error from "pages/Error/index"
 
 import SignIn from "pages/LandingPages/SignIn/index"
 import Logout from "pages/LandingPages/Logout/index"
@@ -29,9 +29,9 @@ import ContactUs from "pages/LandingPages/ContactUs/index"
 import SignUp from "pages/LandingPages/SignUp/index"
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "campaignWebsite/assets/css/animate.min.css";
-import "campaignWebsite/assets/scss/light-bootstrap-dashboard-react.scss";
-import "campaignWebsite/assets/css/demo.css";
+import "assets/css/animate.min.css";
+import "assets/scss/light-bootstrap-dashboard-react.scss";
+import "assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Dashboard from "campaignWebsite/views/Dashboard";

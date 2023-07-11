@@ -26,7 +26,7 @@ import FixedPlugin from "campaignWebsite/components/FixedPlugin/FixedPlugin";
 import { Outlet, Link } from "react-router-dom";
 import routes from "campaignWebsite/routes";
 
-import sidebarImage from "campaignWebsite/assets/img/sidebar-3.jpg";
+import sidebarImage from "assets/images/sidebar-3.jpg";
 
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);

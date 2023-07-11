@@ -156,7 +156,7 @@ function User() {
               <div className="card-image">
                 <img
                   alt="..."
-                  src={require("campaignWebsite/assets/img/photo-1431578500526-4d9613015464.jpeg")}
+                  src={require("assets/images/photo-1431578500526-4d9613015464.jpeg")}
                 ></img>
               </div>
               <Card.Body>
@@ -165,7 +165,7 @@ function User() {
                     <img
                       alt="..."
                       className="avatar border-gray"
-                      src={require("campaignWebsite/assets/img/faces/face-3.jpg")}
+                      src={require("assets/images/faces/face-3.jpg")}
                     ></img>
                     <h5 className="title">Mike Andrew</h5>
                   </a>
