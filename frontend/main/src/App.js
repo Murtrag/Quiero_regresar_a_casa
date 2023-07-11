@@ -18,15 +18,15 @@ import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
-import Article from "examples/Article/DefaultArticle/index"
-import Home from "examples/Home/index"
-import ChangeLanguage from "examples/Locale/ChangeLanguage/index"
-import Error from "pages/Error/index"
+import Article from "publicWebsite/examples/Article/DefaultArticle/index"
+import Home from "publicWebsite/examples/Home/index"
+import ChangeLanguage from "publicWebsite/examples/Locale/ChangeLanguage/index"
+import Error from "publicWebsite/pages/Error/index"
 
-import SignIn from "pages/LandingPages/SignIn/index"
-import Logout from "pages/LandingPages/Logout/index"
-import ContactUs from "pages/LandingPages/ContactUs/index"
-import SignUp from "pages/LandingPages/SignUp/index"
+import SignIn from "publicWebsite/pages/LandingPages/SignIn/index"
+import Logout from "publicWebsite/pages/LandingPages/Logout/index"
+import ContactUs from "publicWebsite/pages/LandingPages/ContactUs/index"
+import SignUp from "publicWebsite/pages/LandingPages/SignUp/index"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "assets/css/animate.min.css";
@@ -47,7 +47,7 @@ import AdminLayout from "campaignWebsite/layouts/Admin.js";
 // Utils
 import { scrollUp } from "utils/scroll"
 
-import MainLayoutPage from "layouts/pages/main";
+import MainLayoutPage from "publicWebsite/layouts/pages/main";
 
 export default function App() {
 	const { pathname } = useLocation();
