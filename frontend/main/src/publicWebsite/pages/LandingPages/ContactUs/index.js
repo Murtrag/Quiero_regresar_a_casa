@@ -25,8 +25,24 @@ import {useEffect, useState} from 'react';
 import { f_logoutURL, f_loginURL } from "urls";
 import { extractPath } from "utils/extractPath";
 
+// Validators
+import { 
+	validateEmail,
+	validateName,
+	// validateMessage,
+} from "utils/validators/index";
+
+// Custom Styles
+import "assets/customCSS/signUp.css";
+
 function ContactUs() {
+  const [swalProps, setSwalProps] = useState({});
+
   const [isAuth, setIsAuth] = useState(false);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
 
   useEffect(() => {
@@ -34,6 +50,64 @@ function ContactUs() {
 		  setIsAuth(true); 
 	}
   }, [isAuth]);
+
+
+
+  
+  // const handleSubmit = async (e) => {
+	// e.preventDefault();
+	// // Turn off a sweet alert
+	// setSwalProps({ show: false })
+
+	// try {
+		// const response = await fetch(b_contactUsURL(), {
+			// method: 'POST',
+			// headers: {
+				// 'Content-Type': 'application/json',
+			// },
+			// body: JSON.stringify({
+				// name: name,
+				// email: email,
+				// message: message
+			// })
+		// });
+
+		// if (response.ok) {
+			// setSwalProps({
+				// show: true,
+				// title: string.messageSuccess.title ,
+				// text: string.messageSuccess.text,
+				// icon: 'success',
+				// button: string.messageSuccess.button,
+			// });
+		// } else {
+			// // Error handle if refused by server
+			// response.json().then(data=>{
+				// setSwalProps({
+					// show: true,
+					// title: 'Send message error',
+					// text: `error: ${JSON.stringify(data)}`,
+					// icon: 'error'
+				// }).then(function(){
+					// // function when confirm button clicked
+				// }, function(dismiss){
+					// if(dismiss == 'cancel'){
+						// // function when cancel button is clicked
+						// console.log('resend email')
+					// }
+				// })
+			// })
+		// }
+	// } catch (error) {
+			// setSwalProps({
+				// show: true,
+				// title: string.messageErrors.syntaxError.title,
+				// text: string.messageErrors.syntaxError.text,
+				// icon: 'error'
+			// });
+	// }
+  // };
+
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%">
@@ -105,8 +179,10 @@ function ContactUs() {
                   <Grid item xs={12} md={6}>
                     <MKInput
                       variant="standard"
+		      className={validateName(name)? "inputCorrect":"inputIncorrect"}
                       label={string.contactWindow.fields.name}
                       InputLabelProps={{ shrink: true }}
+		      onChange={(e) => setName(e.target.value)}
                       fullWidth
                     />
                   </Grid>
@@ -114,8 +190,10 @@ function ContactUs() {
                     <MKInput
                       type="email"
                       variant="standard"
+		      className={validateEmail(email)? "inputCorrect":"inputIncorrect"}
                       label={string.contactWindow.fields.email}
                       InputLabelProps={{ shrink: true }}
+		      onChange={(e) => setEmail(e.target.value)}
                       fullWidth
                     />
                   </Grid>
