@@ -34,7 +34,7 @@ import string from "strings/signIn";
 import SweetAlert2 from 'react-sweetalert2';
 
 // Images
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/bg-presentation.jpg";
 import "assets/customCSS/signIn.css";
 
 import { extractPath } from "utils/extractPath";

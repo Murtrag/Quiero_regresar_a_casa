@@ -53,11 +53,10 @@ import "assets/customCSS/main.css";
 
 
 
-import { f_logoutURL, f_loginURL } from "urls";
+import { f_logoutURL, f_loginURL, b_mottoURL } from "urls";
 import { extractPath } from "utils/extractPath";
 
 import {useEffect, useState} from 'react';
-import { b_mottoURL } from "urls";
 import { connect } from "react-redux";
 
 function MainLayout({locale}) {
@@ -105,7 +104,7 @@ function MainLayout({locale}) {
         minHeight="75vh"
         width="100%"
         sx={{
-          backgroundImage: `url(${bgImage})`,
+	  backgroundImage: `linear-gradient(195deg, rgba(66, 66, 74, 0.6), rgba(25, 25, 25, 0.6)),url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "top",
           display: "grid",

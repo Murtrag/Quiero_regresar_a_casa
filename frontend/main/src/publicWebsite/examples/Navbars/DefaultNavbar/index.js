@@ -44,7 +44,7 @@ import DefaultNavbarMobile from "publicWebsite/examples/Navbars/DefaultNavbar/De
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-import { b_navBarURL, f_loginURL, f_logoutURL } from "urls"
+import {b_navBarURL, f_loginURL, f_logoutURL } from "urls"
 import { connect } from "react-redux";
 
 

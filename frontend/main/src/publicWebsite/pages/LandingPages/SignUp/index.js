@@ -22,7 +22,7 @@ import routes from "publicWebsite/routes";
 import footerRoutes from "footer.routes";
 
 // Image
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from "assets/images/bg-presentation.jpg";
 
 //
 import SweetAlert2 from 'react-sweetalert2';
