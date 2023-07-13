@@ -51,7 +51,7 @@ function DefaultFooter({ content, locale }) {
 		<Link to={brand.route}>
 		<MKBox component="img" src={backendURL + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
 		</Link>
-		<MKTypography variant="h6">{brand.name}</MKTypography>
+		<MKTypography color="white" variant="h6">{brand.name}</MKTypography>
 		</MKBox>
 		<MKBox display="flex" alignItems="center" mt={3}>
 		{socials.map(({ icon, link }, key) => (
@@ -62,7 +62,7 @@ function DefaultFooter({ content, locale }) {
 			target="_blank"
 			rel="noreferrer"
 			variant="h5"
-			color="dark"
+			color="white"
 			opacity={0.8}
 			mr={key === socials.length - 1 ? 0 : 2.5}
 			>
@@ -78,6 +78,7 @@ function DefaultFooter({ content, locale }) {
 			variant="button"
 			fontWeight="bold"
 			textTransform="capitalize"
+			color="white"
 			mb={1}
 			>
 			{title}
@@ -94,6 +95,7 @@ function DefaultFooter({ content, locale }) {
 					variant="button"
 					fontWeight="regular"
 					textTransform="capitalize"
+					color="white"
 					>
 					{name}
 					</MKTypography>
@@ -104,6 +106,7 @@ function DefaultFooter({ content, locale }) {
 					variant="button"
 					fontWeight="regular"
 					textTransform="capitalize"
+					color="white"
 					>
 					{name}
 					</MKTypography>

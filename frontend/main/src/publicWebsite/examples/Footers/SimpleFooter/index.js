@@ -28,36 +28,43 @@ import MKTypography from "publicWebsite/components/MKTypography";
 // Material Kit 2 React base styles
 import typography from "assets/theme/base/typography";
 
-import {useEffect, useState} from 'react';
+import {useEffect, useState} from "react";
 import { backendURL, b_footerURL } from "urls"
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+
+import { getElementAtIndex } from "utils/getElement";
 
 function SimpleFooter({ company, links, light, locale }) {
 // function SimpleFooter({ brand, socials, menus, copyright, locale }) {
   const { href, name } = company;
   const { size } = typography;
-  // let [state, setState] = useState({
-		// brand: [],
-		// socials: [],
-		// menus: [],
-		// copyright: [],
-	// }) ;
+  let [state, setState] = useState({
+		brand: [],
+		socials: [],
+		menus: [],
+		copyright: [],
+	}) ;
 
-  // useEffect(()=>{
-		// fetch(b_footerURL({
-			// country: locale.country,
-			// language: locale.language,
-		// })).then(response=>response.json())
-			// .then((state)=>{
-				// setState({
-					// ...state,
-					// state
-				// })
-			// })
-  // }, [locale])
+  useEffect(()=>{
+		fetch(b_footerURL({
+			country: locale.country,
+			language: locale.language,
+		})).then(response=>response.json())
+			.then((state)=>{
+				setState({
+					...state,
+					state
+				})
+			})
+  }, [locale])
 
   const renderLinks = () =>
-    links.map((link, key) => (
+	getElementAtIndex(
+		state.menus,
+		0,
+		{items:[]}
+	).items.map((link, key) => (
+
       <MKBox
         key={link.name}
         component="li"
@@ -90,13 +97,7 @@ function SimpleFooter({ company, links, light, locale }) {
           color={light ? "white" : "text"}
           fontSize={size.sm}
         >
-          &copy; {new Date().getFullYear()}, made with
-          <MKBox fontSize={size.md} color={light ? "white" : "text"} mb={-0.5} mx={0.25}>
-            <Icon color="inherit" fontSize="inherit">
-              favorite
-            </Icon>
-          </MKBox>
-          by
+          &copy; {new Date().getFullYear()}, made with ♥ by
           <Link href={href} target="_blank">
             <MKTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
               &nbsp;{name}&nbsp;
@@ -147,9 +148,9 @@ SimpleFooter.propTypes = {
   light: PropTypes.bool,
 };
 
-export default SimpleFooter;
-// const mapStateToProps = state => ({
-// 	locale: state.localeReducer
-// })
+// export default SimpleFooter;
+const mapStateToProps = state => ({
+	locale: state.localeReducer
+})
 
-// export default connect(mapStateToProps)(SimpleFooter);
+export default connect(mapStateToProps)(SimpleFooter);
