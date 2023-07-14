@@ -16,13 +16,15 @@ import {useEffect, useState} from 'react';
 import { backendURL, b_footerURL } from "urls"
 import { connect } from 'react-redux';
 
+import string from "strings/footer";
+
 
 function DefaultFooter({ content, locale }) {
 	let [state, setState] = useState({
 		brand: [],
 		socials: [],
 		menus: [],
-		copyright: [],
+		// copyright: [],
 	}) ;
 
 	useEffect(()=>{
@@ -38,7 +40,7 @@ function DefaultFooter({ content, locale }) {
 		})
 	}, [locale])
 
-	const { socials, copyright } = content;
+	const { socials, _ } = content;
 	let { menus, brand } = state;
 
 
@@ -49,7 +51,7 @@ function DefaultFooter({ content, locale }) {
 		<Grid item xs={12} md={3} sx={{ ml: "auto", mb: 3 }}>
 		<MKBox>
 		<Link to={brand.route}>
-		<MKBox component="img" src={backendURL + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
+		{brand.image && <MKBox component="img" src={backendURL + brand.image} alt={brand.name} maxWidth="2rem" mb={2} />}
 		</Link>
 		<MKTypography color="white" variant="h6">{brand.name}</MKTypography>
 		</MKBox>
@@ -117,7 +119,7 @@ function DefaultFooter({ content, locale }) {
 			</Grid>
 		))}
 		<Grid item xs={12} sx={{ textAlign: "center", my: 3 }}>
-		{copyright}
+			{string.defaultFooter.copyright(new Date().getFullYear())}
 		</Grid>
 		</Grid>
 		</Container>

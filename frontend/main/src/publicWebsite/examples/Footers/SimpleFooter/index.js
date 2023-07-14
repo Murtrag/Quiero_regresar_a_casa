@@ -33,6 +33,7 @@ import { backendURL, b_footerURL } from "urls"
 import { connect } from "react-redux";
 
 import { getElementAtIndex } from "utils/getElement";
+import string from "strings/footer";
 
 function SimpleFooter({ company, links, light, locale }) {
 // function SimpleFooter({ brand, socials, menus, copyright, locale }) {
@@ -97,13 +98,7 @@ function SimpleFooter({ company, links, light, locale }) {
           color={light ? "white" : "text"}
           fontSize={size.sm}
         >
-          &copy; {new Date().getFullYear()}, made with ♥ by
-          <Link href={href} target="_blank">
-            <MKTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
-              &nbsp;{name}&nbsp;
-            </MKTypography>
-          </Link>
-          for a better world.
+	  {string.simpleFooter.copyright(new Date().getFullYear())}
         </MKBox>
         <MKBox
           component="ul"
