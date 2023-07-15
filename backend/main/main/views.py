@@ -66,7 +66,7 @@ class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
 
 
 # class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
-class ProfileDetail(mixins.RetriveModelMixin, generics.GenericAPIView):
+class ProfileDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     authentication_classes = (JWTAuthentication, )
