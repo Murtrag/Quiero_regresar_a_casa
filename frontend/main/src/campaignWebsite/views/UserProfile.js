@@ -31,16 +31,12 @@ function User() {
 		fetch(b_userProfileURL(), {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
 			},
 			body: JSON.stringify({
-				username: login,
-				email: email,
-				first_name: firstName,
-				last_name: lastName,
-				phone_number: phoneNumber,
-				profile_description: profileDescription
-			})
+				access_token: localStorage.getItem("access_token"),
+			}),
 		}).then(response=>response.json())
 			.then((state)=>{
 				setLogin(state.username);
@@ -139,7 +135,7 @@ function User() {
                     </Col>
                     <Col className="px-1" md="3">
                       <Form.Group>
-                        <label>Username</label>
+                        <label>Login</label>
                         <Form.Control
                           defaultValue="michael23"
                           placeholder="Username"

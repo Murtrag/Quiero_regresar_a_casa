@@ -3,6 +3,7 @@ from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
 from rest_framework import permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -65,27 +66,20 @@ class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
         return self.list(request, *args, **kwargs)
 
 
-
-# class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 class ProfileDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    authentication_classes = (JWTAuthentication, )
-    permission_classes = [
-        # custom_permissions.IsOwnerOrReadOnly
-    ]
-    def get(self, request, *args, **kwargs):
-        print(request)
-        print(request.data)
-        serializer = ProfileSerializer(data=request.data)
-        return Response( serializer.data)
-    # def get_object(self):
-    #     user = self.request.user
-    #     profile = Profile.objects.get(user=user)
-    #     # serializer = ProfileSerializer(profile)
-    #     # return serializer
-    #     return {}
-    #     return profile.pk
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = [JWTAuthentication]
+
+    def post(self, request, *args, **kwargs):
+        token = AccessToken(
+            request.data.get("access_token")
+        )
+        profile = Profile.objects.get(pk=token.get("user_id"))
+        serializer = ProfileSerializer(instance=profile)
+        return Response( serializer.data )
+
 
 
 class FooterView(APIView):
