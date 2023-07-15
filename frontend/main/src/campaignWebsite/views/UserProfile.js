@@ -1,4 +1,8 @@
 import React from "react";
+import {useEffect, useState} from "react";
+
+import string from "strings/userProfile";
+import { b_userProfileURL } from "urls";
 
 // react-bootstrap components
 import {
@@ -14,6 +18,77 @@ import {
 } from "react-bootstrap";
 
 function User() {
+  const [swalProps, setSwalProps] = useState({});
+
+  const [login, setLogin] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [profileDescription, setProfileDescription] = useState('');
+
+
+
+  const handleSubmit = async (e) => {
+	e.preventDefault();
+	// Turn off a sweet alert
+	setSwalProps({ show: false })
+
+	try {
+		const response = await fetch(b_userProfileURL(), {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: login,
+				email: email,
+				first_name: firstName,
+				last_name: lastName,
+				phone_number: phoneNumber,
+				profile_description: profileDescription
+			})
+		});
+
+		if (response.ok) {
+			setSwalProps({
+				show: true,
+				title: string.messageSuccess.title ,
+				text: string.messageSuccess.text,
+				icon: 'success',
+				button: string.messageSuccess.button,
+				showCancelButton: true,
+				confirmButtonText: string.messageSuccess.confirmationButtonText,
+				cancelButtonText: string.messageSuccess.cancelButtonText
+			});
+			// window.location.href = '/';
+		} else {
+			// Error handle if refused by server
+			response.json().then(data=>{
+				setSwalProps({
+					show: true,
+					title: 'Registration error',
+					text: `error: ${JSON.stringify(data)}`,
+					icon: 'error'
+				}).then(function(){
+					// function when confirm button clicked
+				}, function(dismiss){
+					if(dismiss == 'cancel'){
+						// function when cancel button is clicked
+						console.log('resend email')
+					}
+				})
+			})
+		}
+	} catch (error) {
+			setSwalProps({
+				show: true,
+				title: string.messageErrors.syntaxError.title,
+				text: string.messageErrors.syntaxError.text,
+				icon: 'error'
+			});
+	}
+  };
   return (
     <>
       <Container fluid>

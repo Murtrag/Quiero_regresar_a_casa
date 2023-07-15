@@ -26,13 +26,19 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('id', 'username', 'email', 'password',)
 
-class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+# class ProfileSerializer(serializers.HyperlinkedModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     
-    internal_currency = serializers.ReadOnlyField()
     user = UserSerializer()
+    internal_currency = serializers.ReadOnlyField()
+    user_fields = serializers.SerializerMethodField()
+
+    def get_user_fields(self, obj):
+        fields = ("username", "first_name", "last_name", "email", )
+        return User.objects.get(id=obj.user_id).values(*fields)
 
     class Meta:
         model = Profile
-        fields = ('user', 'phone_number', 'internal_currency',)
+        fields = ('user', 'phone_number', 'internal_currency', "user_fields", )
 
 

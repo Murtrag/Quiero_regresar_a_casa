@@ -5,6 +5,7 @@ const backendURL = `${protocolPrefix}83.128.215.51:81/`
 const frontendURL = `${window.location.protocol}//${window.location.host}/`;
 
 
+// public site
 // Articles URLs
 const b_articleDetailURL = ({category, country, language, pk})=>backendURL + `${category}/${country}/${language}/${pk}/`;
 
@@ -26,6 +27,26 @@ const b_logoutURL = () => backendURL + 'authentication/logout/'; //Copy to front
 
 const b_tokenURL = () => backendURL + 'authentication/token/';
 const b_profileURL = () => backendURL + 'authentication/profile/'; //Edit profile
+
+// capeign site
+
+const f_dashboardURL = () => frontendURL + 'dashboard/'
+const b_dashboardURL = () => backendURL + 'dashboard/'
+
+const f_userProfileURL = () => frontendURL + 'dashboard/user-profile/'
+const b_userProfileURL = () => backendURL + 'dashboard/user-profile/'
+
+const f_myInvestigationsURL = () => frontendURL + 'dashboard/my-investigations/'
+const b_myInvestigationsURL = () => backendURL + 'dashboard/my-investigations/'
+
+const f_promotionsURL = () => frontendURL + 'dashboard/promotions/'
+const b_promotionsURL = () => backendURL + 'dashboard/promotions/'
+
+const f_notifications = () => frontendURL + 'dashboard/notifications/'
+const b_notifications = () => backendURL + 'dashboard/notifications/'
+
+const f_securitySettings = () => frontendURL + 'dashboard/securitySettings/'
+const b_securitySettings = () => backendURL + 'dashboard/securitySettings/'
 
 
 export {
@@ -52,8 +73,22 @@ export {
 	b_logoutURL,
 
 	b_tokenURL,
-	b_profileURL
+
+	// capeign site
+	f_dashboardURL,
+                          
+        f_userProfileURL,
+        b_userProfileURL,
+                          
+        f_myInvestigationsURL,
+        b_myInvestigationsURL,
+                          
+        f_promotionsURL,
+        b_promotionsURL,
+                          
+        f_notifications,
+        b_notifications,
+                          
+        f_securitySettings,
+        b_securitySettings,
 }
-
-
-
