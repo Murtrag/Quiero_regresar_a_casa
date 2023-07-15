@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MaxLengthValidator
 
 
 
@@ -13,6 +14,11 @@ class Profile(models.Model):
     internal_currency = models.DecimalField(default=0,
                                             max_digits=5,
                                             decimal_places=2)
+    address = models.CharField(max_length=512)
+    city = models.CharField(max_length=255)
+    country = models.CharField(max_length=255)
+    postal_code = models.CharField(max_length=10)
+    profile_description = models.TextField(validators=[MaxLengthValidator(2000)])
 
     def __str__(self):
         return f'{self.user.pk}: {self.user.username}'

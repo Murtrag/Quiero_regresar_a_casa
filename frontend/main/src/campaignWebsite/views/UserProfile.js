@@ -2,7 +2,10 @@ import React from "react";
 import {useEffect, useState} from "react";
 
 import string from "strings/userProfile";
-import { b_userProfileURL } from "urls";
+import { 
+	f_loginURL,
+	b_userProfileURL
+} from "urls";
 
 // react-bootstrap components
 import {
@@ -21,10 +24,14 @@ function User() {
   const [swalProps, setSwalProps] = useState({});
 
   const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
   const [profileDescription, setProfileDescription] = useState('');
 
   useEffect(()=>{
@@ -37,15 +44,31 @@ function User() {
 			body: JSON.stringify({
 				access_token: localStorage.getItem("access_token"),
 			}),
-		}).then(response=>response.json())
-			.then((state)=>{
-				setLogin(state.username);
-				setFirstName(state.first_name);
-				setLastName(state.last_name);
-				setEmail(state.email);
-				setPhoneNumber(state.phone_number);
-				// setProfileDescription(state.profile_description);
-			})
+		}).then(response => {
+			if (response.status === 401) {
+				window.location.href = f_loginURL();
+				
+			} else {
+				return response.json();
+			}
+		})
+		  .then((state) => {
+			  setLogin(state.username);
+			  setFirstName(state.first_name);
+			  setLastName(state.last_name);
+			  setEmail(state.email);
+			  setPhoneNumber(state.phone_number);
+			  setCity(state.city);
+			  setCountry(state.country);
+			  setPostalCode(state.postal_code);
+			  // setProfileDescription(state.profile_description);
+		  })
+		  .catch(error => {
+			  // Obsługa innych błędów
+			  console.error(error);
+		  });
+
+
   }, [])
 
 
@@ -135,10 +158,10 @@ function User() {
                     </Col>
                     <Col className="px-1" md="3">
                       <Form.Group>
-                        <label>Login</label>
+                        <label>{string.fields.labels.login}</label>
                         <Form.Control
-                          defaultValue="michael23"
-                          placeholder="Username"
+                          value={login}
+                          placeholder={string.fields.placeholders.login}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -146,10 +169,11 @@ function User() {
                     <Col className="pl-1" md="4">
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1">
-                          Email address
+			  {string.fields.labels.email} 
                         </label>
                         <Form.Control
-                          placeholder="Email"
+                          placeholder={string.fields.placeholders.email}
+	  		  value={email}
                           type="email"
                         ></Form.Control>
                       </Form.Group>
@@ -158,20 +182,20 @@ function User() {
                   <Row>
                     <Col className="pr-1" md="6">
                       <Form.Group>
-                        <label>First Name</label>
+                        <label>{string.fields.labels.firstName}</label>
                         <Form.Control
-                          defaultValue="Mike"
-                          placeholder="Company"
+                          value={firstName}
+                          placeholder={string.fields.placeholders.firstName}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
                     <Col className="pl-1" md="6">
                       <Form.Group>
-                        <label>Last Name</label>
+                        <label>{string.fields.labels.lastName}</label>
                         <Form.Control
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
+                          value={lastName}
+                          placeholder={string.fields.placeholders.lastName}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -180,10 +204,22 @@ function User() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
-                        <label>Address</label>
+                        <label>{string.fields.labels.address}</label>
                         <Form.Control
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                          placeholder="Home Address"
+                          value={address}
+                          placeholder={string.fields.placeholders.address}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>{string.fields.labels.phoneNumber}</label>
+                        <Form.Control
+                          value={phoneNumber}
+                          placeholder={string.fields.placeholders.phoneNumber}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -192,29 +228,30 @@ function User() {
                   <Row>
                     <Col className="pr-1" md="4">
                       <Form.Group>
-                        <label>City</label>
+                        <label>{string.fields.labels.city}</label>
                         <Form.Control
-                          defaultValue="Mike"
-                          placeholder="City"
+                          value={city}
+                          placeholder={string.fields.placeholders.city}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
                     <Col className="px-1" md="4">
                       <Form.Group>
-                        <label>Country</label>
+                        <label>{string.fields.labels.country}</label>
                         <Form.Control
-                          defaultValue="Andrew"
-                          placeholder="Country"
+                          value={country}
+                          placeholder={string.fields.placeholders.country}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
                     <Col className="pl-1" md="4">
                       <Form.Group>
-                        <label>Postal Code</label>
+                        <label>{string.fields.labels.postalCode}</label>
                         <Form.Control
-                          placeholder="ZIP Code"
+                          placeholder={string.fields.placeholders.postalCode}
+	  		  value={postalCode}
                           type="number"
                         ></Form.Control>
                       </Form.Group>
@@ -223,12 +260,11 @@ function User() {
                   <Row>
                     <Col md="12">
                       <Form.Group>
-                        <label>About Me</label>
+                        <label>{string.fields.labels.profileDescription}</label>
                         <Form.Control
                           cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                          that two seat Lambo."
-                          placeholder="Here can be your description"
+                          value={profileDescription}
+                          placeholder={string.fields.placeholders.profileDescription}
                           rows="4"
                           as="textarea"
                         ></Form.Control>

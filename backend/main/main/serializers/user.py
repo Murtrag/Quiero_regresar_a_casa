@@ -36,6 +36,17 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('phone_number', 'username', 'first_name', 'last_name', 'email')
+        fields = (
+                "username",
+                "email",
+                "first_name",
+                "last_name",
+                "phone_number",
+                "address",
+                "city",
+                "country",
+                "postal_code",
+                "profile_description",
+                )
 
 
