@@ -27,21 +27,31 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'username', 'email', 'password',)
 
 # class ProfileSerializer(serializers.HyperlinkedModelSerializer):
-class ProfileSerializer(serializers.ModelSerializer):
+# class ProfileSerializer(serializers.ModelSerializer):
     
-    user = UserSerializer()
-    internal_currency = serializers.ReadOnlyField()
-    user_fields = serializers.SerializerMethodField()
+#     internal_currency = serializers.ReadOnlyField()
+#     user_fields = serializers.SerializerMethodField()
 
-    def get_user_fields(self, obj):
-        fields = ("username", "first_name", "last_name", "email", )
-        user_obj = User.objects.get(id=obj.user_id)
-        return {
-                field: getattr(user_obj, field) for field in fields
-                }
+#     def get_user_fields(self, obj):
+#         fields = ("username", "first_name", "last_name", "email", )
+#         user_obj = User.objects.get(id=obj.user_id)
+#         return {
+#                 field: getattr(user_obj, field) for field in fields
+#                 }
+
+#     class Meta:
+#         model = Profile
+#         fields = ('phone_number', 'internal_currency', "user_fields", )
+
+class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username')
+    first_name = serializers.CharField(source='user.first_name')
+    last_name = serializers.CharField(source='user.last_name')
+    email = serializers.EmailField(source='user.email')
+    # internal_currency = serializers.ReadOnlyField()
 
     class Meta:
         model = Profile
-        fields = ('user', 'phone_number', 'internal_currency', "user_fields", )
+        fields = ('phone_number', 'internal_currency', 'username', 'first_name', 'last_name', 'email')
 
 
