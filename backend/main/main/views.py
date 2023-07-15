@@ -66,7 +66,7 @@ class ProfileList(mixins.ListModelMixin, generics.GenericAPIView):
 
 
 # class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
-class ProfileDetail(generics.GenericAPIView):
+class ProfileDetail(mixins.RetriveModelMixin, generics.GenericAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     authentication_classes = (JWTAuthentication, )
@@ -74,7 +74,7 @@ class ProfileDetail(generics.GenericAPIView):
         # custom_permissions.IsOwnerOrReadOnly
     ]
     def get(self, request, *args, **kwargs):
-        return {}
+        return self.get(request, *args, **kwargs)
     # def get_object(self):
     #     user = self.request.user
     #     profile = Profile.objects.get(user=user)
