@@ -76,6 +76,7 @@ class ProfileDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
     ]
     def get(self, request, *args, **kwargs):
         print(request)
+        print(request.data)
         serializer = ProfileSerializer(data=request.data)
         return Response( serializer.data)
     # def get_object(self):

@@ -28,7 +28,20 @@ function User() {
   const [profileDescription, setProfileDescription] = useState('');
 
   useEffect(()=>{
-		fetch(b_userProfileURL({ pk:1 })).then(response=>response.json())
+		fetch(b_userProfileURL(), {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: login,
+				email: email,
+				first_name: firstName,
+				last_name: lastName,
+				phone_number: phoneNumber,
+				profile_description: profileDescription
+			})
+		}).then(response=>response.json())
 			.then((state)=>{
 				setLogin(state.username);
 				setFirstName(state.first_name);
