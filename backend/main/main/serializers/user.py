@@ -35,7 +35,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_user_fields(self, obj):
         fields = ("username", "first_name", "last_name", "email", )
-        return User.objects.get(id=obj.user_id).values(*fields)
+        user_obj = User.objects.get(id=obj.user_id)
+        return {
+                field: getattr(user_obj, field) for field in fields
+                }
 
     class Meta:
         model = Profile
