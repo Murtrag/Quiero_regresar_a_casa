@@ -71,6 +71,12 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
         # custom_permissions.IsOwnerOrReadOnly
     ]
+    authentication_classes = [JWTAuthentication]
+
+    def get_object(self):
+        user = self.request.user
+        profile = Profile.objects.get(user=user)
+        return profile
 
 
 class FooterView(APIView):
