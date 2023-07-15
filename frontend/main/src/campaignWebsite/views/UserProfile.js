@@ -27,6 +27,18 @@ function User() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [profileDescription, setProfileDescription] = useState('');
 
+  useEffect(()=>{
+		fetch(b_userProfileURL({ pk:1 })).then(response=>response.json())
+			.then((state)=>{
+				setLogin(state.username);
+				setFirstName(state.first_name);
+				setLastName(state.last_name);
+				setEmail(state.email);
+				setPhoneNumber(state.phone_number);
+				// setProfileDescription(state.profile_description);
+			})
+  }, [])
+
 
 
   const handleSubmit = async (e) => {

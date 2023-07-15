@@ -40,8 +40,8 @@ urlpatterns = [
     path('', include('basic.urls')),
 
     # User api
-    path(r'profile/', ProfileList.as_view()),
-    path(r'profile/<int:pk>/', ProfileDetail.as_view()),
+    path(r'dashboard/user-profile/', ProfileList.as_view()),
+    path(r'dashboard/user-profile/<int:pk>/', ProfileDetail.as_view()),
 
     # Footer api
     path(r'footer/<str:country__country_code>/<str:language__country_code>/', FooterView.as_view(), name="footer"),
