@@ -13,7 +13,7 @@ Coded by www.creative-tim.com
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -41,7 +41,7 @@ import Maps from "campaignWebsite/views/Maps";
 import TableList from "campaignWebsite/views/TableList";
 import Typography from "campaignWebsite/views/Typography";
 // import AdminLayout from "campaignWebsite/layouts/Upgrade.js";
-import UserProfile from "campaignWebsite/views/UserProfile.js";
+import UserProfile from "campaignWebsite/views/UserProfile/index";
 import AdminLayout from "campaignWebsite/layouts/Admin.js";
 
 // Utils
@@ -51,6 +51,7 @@ import MainLayoutPage from "publicWebsite/layouts/pages/main";
 
 export default function App() {
 	const { pathname } = useLocation();
+
 	useEffect(() => {
 		scrollUp()
 	}, [pathname]);
@@ -68,14 +69,13 @@ export default function App() {
 					{/* <Route path="managment/" element={<ChangeLanguage />}> */}
 					{/* <Route path="country/:country/" element={<ChangeCountry />} /> */}
 
-					<Route path="admin/" element={<AdminLayout />} >
-						<Route path="dashboard/" element={<Dashboard />} />
-						<Route path="user/" element={<UserProfile />} />
-						<Route path="table/" element={<TableList />} />
-						<Route path="typography/" element={<Typography />} />
-						<Route path="icons/" element={<Icons />} />
-						<Route path="maps/" element={<Maps />} />
+					<Route path="dashboard/" element={<AdminLayout />} >
+						<Route index element={<Dashboard />} />
+						<Route path="user-profile/" element={<UserProfile />} />
+						<Route path="my-investigations/" element={<TableList />} />
+						<Route path="promotions/" element={<Typography />} />
 						<Route path="notifications/" element={<Notifications />} />
+						<Route path="security-settings/" element={<Typography />} />
 					</Route>
 					<Route path="/" element={<MainLayoutPage />}>
 						<Route path="language/:language/" element={<ChangeLanguage />} />

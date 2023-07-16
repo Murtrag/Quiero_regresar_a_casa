@@ -42,11 +42,11 @@ const b_myInvestigationsURL = () => backendURL + 'dashboard/my-investigations/'
 const f_promotionsURL = () => frontendURL + 'dashboard/promotions/'
 const b_promotionsURL = () => backendURL + 'dashboard/promotions/'
 
-const f_notifications = () => frontendURL + 'dashboard/notifications/'
-const b_notifications = () => backendURL + 'dashboard/notifications/'
+const f_notificationsURL = () => frontendURL + 'dashboard/notifications/'
+const b_notificationsURL = () => backendURL + 'dashboard/notifications/'
 
-const f_securitySettings = () => frontendURL + 'dashboard/securitySettings/'
-const b_securitySettings = () => backendURL + 'dashboard/securitySettings/'
+const f_securitySettingsURL = () => frontendURL + 'dashboard/security-settings/'
+const b_securitySettingsURL = () => backendURL + 'dashboard/security-settings/'
 
 
 export {
@@ -86,9 +86,9 @@ export {
         f_promotionsURL,
         b_promotionsURL,
                           
-        f_notifications,
-        b_notifications,
+        f_notificationsURL,
+        b_notificationsURL,
                           
-        f_securitySettings,
-        b_securitySettings,
+        f_securitySettingsURL,
+        b_securitySettingsURL,
 }

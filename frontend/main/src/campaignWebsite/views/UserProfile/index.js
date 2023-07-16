@@ -7,6 +7,9 @@ import {
 	b_userProfileURL
 } from "urls";
 
+// import { fetchData } from "./fetch.js";
+import { nlToBr } from "utils/parse";
+
 // react-bootstrap components
 import {
   Badge,
@@ -33,6 +36,7 @@ function User() {
   const [country, setCountry] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [profileDescription, setProfileDescription] = useState('');
+  const [reset, setReset] = useState(false);
 
   useEffect(()=>{
 		fetch(b_userProfileURL(), {
@@ -58,18 +62,17 @@ function User() {
 			  setLastName(state.last_name);
 			  setEmail(state.email);
 			  setPhoneNumber(state.phone_number);
+			  setAddress(state.address);
 			  setCity(state.city);
 			  setCountry(state.country);
 			  setPostalCode(state.postal_code);
-			  // setProfileDescription(state.profile_description);
+			  setProfileDescription(state.profile_description);
 		  })
 		  .catch(error => {
 			  // Obsługa innych błędów
 			  console.error(error);
 		  });
-
-
-  }, [])
+  }, [reset])
 
 
 
@@ -162,6 +165,7 @@ function User() {
                         <Form.Control
                           value={login}
                           placeholder={string.fields.placeholders.login}
+			  onChange={e=>setLogin(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -173,6 +177,7 @@ function User() {
                         </label>
                         <Form.Control
                           placeholder={string.fields.placeholders.email}
+			  onChange={e=>setEmail(e.target.value)}
 	  		  value={email}
                           type="email"
                         ></Form.Control>
@@ -186,6 +191,7 @@ function User() {
                         <Form.Control
                           value={firstName}
                           placeholder={string.fields.placeholders.firstName}
+			  onChange={e=>setFirstName(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -196,6 +202,7 @@ function User() {
                         <Form.Control
                           value={lastName}
                           placeholder={string.fields.placeholders.lastName}
+			  onChange={e=>setLastName(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -208,6 +215,7 @@ function User() {
                         <Form.Control
                           value={address}
                           placeholder={string.fields.placeholders.address}
+			  onChange={e=>setAddress(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -220,6 +228,7 @@ function User() {
                         <Form.Control
                           value={phoneNumber}
                           placeholder={string.fields.placeholders.phoneNumber}
+			  onChange={e=>setPhoneNumber(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -232,6 +241,7 @@ function User() {
                         <Form.Control
                           value={city}
                           placeholder={string.fields.placeholders.city}
+			  onChange={e=>setCity(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -242,6 +252,7 @@ function User() {
                         <Form.Control
                           value={country}
                           placeholder={string.fields.placeholders.country}
+			  onChange={e=>setCountry(e.target.value)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
@@ -251,8 +262,9 @@ function User() {
                         <label>{string.fields.labels.postalCode}</label>
                         <Form.Control
                           placeholder={string.fields.placeholders.postalCode}
+			  onChange={e=>setPostalCode(e.target.value)}
 	  		  value={postalCode}
-                          type="number"
+                          type="text"
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -265,6 +277,7 @@ function User() {
                           cols="80"
                           value={profileDescription}
                           placeholder={string.fields.placeholders.profileDescription}
+			  onChange={e=>setProfileDescription(e.target.value)}
                           rows="4"
                           as="textarea"
                         ></Form.Control>
@@ -275,8 +288,16 @@ function User() {
                     className="btn-fill pull-right"
                     type="submit"
                     variant="info"
+                  >&nbsp;
+		    {string.buttons.updateProfile}
+                  </Button>
+                  <Button
+                    className="btn-fill pull-right"
+                    type="button"
+	  	    onClick={()=>setReset(!reset)}
+                    variant="danger"
                   >
-                    Update Profile
+		    {string.buttons.resetFields}
                   </Button>
                   <div className="clearfix"></div>
                 </Form>
@@ -299,14 +320,12 @@ function User() {
                       className="avatar border-gray"
                       src={require("assets/images/faces/face-3.jpg")}
                     ></img>
-                    <h5 className="title">Mike Andrew</h5>
+                    <h5 className="title">{firstName + " " + lastName}</h5>
                   </a>
-                  <p className="description">michael24</p>
+                  <p className="description">{login}</p>
                 </div>
                 <p className="description text-center">
-                  "Lamborghini Mercy <br></br>
-                  Your chick she so thirsty <br></br>
-                  I'm in that two seat Lambo"
+	  	  {nlToBr(profileDescription)}
                 </p>
               </Card.Body>
               <hr></hr>

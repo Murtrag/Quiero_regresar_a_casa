@@ -26,5 +26,10 @@ export default{
 
 		}
 
+
+	},
+	buttons:{
+		updateProfile: "Update Profile",
+		resetFields: "Reset Changes",
 	}
 }

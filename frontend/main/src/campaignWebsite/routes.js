@@ -23,9 +23,26 @@ import Icons from "campaignWebsite/views/Icons";
 import Maps from "campaignWebsite/views/Maps";
 import Notifications from "campaignWebsite/views/Notifications";
 import Upgrade from "campaignWebsite/views/Upgrade";
-import {frontendURL} from "urls";
+import { extractPath } from "utils/extractPath";
+
+import {
+	f_dashboardURL,
+	f_userProfileURL,
+	f_myInvestigationsURL,
+	f_promotionsURL,
+	f_notificationsURL,
+	f_securitySettingsURL
+
+} from "urls";
 
 import string from "strings/dashboard_routes";
+
+const convertToRoute = (url) => {
+  const path = extractPath(url);
+  const layout = "/"+path.split("/")[1];
+  const routePath = "/"+path.substring(layout.length + 1);
+  return { path: routePath, layout };
+};
 
 const dashboardRoutes = [
   {
@@ -34,49 +51,45 @@ const dashboardRoutes = [
     name: string.sidebar.bottomButton,
     icon: "nc-icon nc-stre-left",
     component: Upgrade,
-    layout: "/admin"
+    layout: "/dashboard"
   },
   {
-    path: "/dashboard",
+    // path: "/",
     name: string.sidebar.dashboard,
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
-    layout: "/admin"
+    // layout: "/dashboard"
+    ...convertToRoute(f_dashboardURL())
   },
   {
-    path: "/user",
     name: string.sidebar.userProfile,
     icon: "nc-icon nc-circle-09",
     component: UserProfile,
-    layout: "/admin"
+    ...convertToRoute(f_userProfileURL())
   },
   {
-    path: "/table",
     name: string.sidebar.myInvestigations,
     icon: "nc-icon nc-zoom-split",
     component: TableList,
-    layout: "/admin"
+    ...convertToRoute(f_myInvestigationsURL())
   },
   {
-    path: "/typography",
     name: string.sidebar.promotions,
     icon: "nc-icon nc-notification-70",
     component: Typography,
-    layout: "/admin"
+    ...convertToRoute(f_promotionsURL())
   },
   {
-    path: "/notifications",
     name: string.sidebar.notifications,
     icon: "nc-icon nc-bell-55",
     component: Notifications,
-    layout: "/admin"
+    ...convertToRoute(f_notificationsURL())
   },
   {
-    path: "/maps",
     name: string.sidebar.securitySettings,
     icon: "nc-icon nc-settings-90",
-    component: Maps,
-    layout: "/admin"
+    component: Typography,
+    ...convertToRoute(f_securitySettingsURL())
   },
 ];
 
