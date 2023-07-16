@@ -28,6 +28,13 @@ export default{
 
 
 	},
+	messageReset:{
+		title: "Warning",
+		text: "Are you sure you want to reset your changes?",
+		cancelButtonText: "Cancel",
+		confirmationButtonText: "Yes I am sure",
+
+	},
 	buttons:{
 		updateProfile: "Update Profile",
 		resetFields: "Reset Changes",

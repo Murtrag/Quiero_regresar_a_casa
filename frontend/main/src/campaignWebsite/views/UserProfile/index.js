@@ -1,5 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
+import SweetAlert2 from 'react-sweetalert2';
+import Swal from "sweetalert2";
 
 import string from "strings/userProfile";
 import { 
@@ -72,6 +74,23 @@ function User() {
   }, [reset])
 
 
+  const handleReset = (e) => {
+	  Swal.fire({
+	    title: string.messageReset.title,
+	    text: string.messageReset.text,
+	    showCancelButton: true,
+            icon: "warning",
+	    confirmButtonText: string.messageReset.confirmationButtonText,
+          }).then(function (el) {
+		  if (el.isConfirmed){
+			  setReset(!reset)
+		  }
+		  // else{ // isDismissed
+			  // console.log("canceled");
+		  // }
+            });
+  }
+
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
@@ -130,7 +149,7 @@ function User() {
 			})
 		}
 	} catch (error) {
-			setSwalProps({
+			Swal.fire({
 				show: true,
 				title: string.messageErrors.syntaxError.title,
 				text: string.messageErrors.syntaxError.text,
@@ -296,7 +315,7 @@ function User() {
                   <Button
                     className="btn-fill pull-right"
                     type="button"
-	  	    onClick={()=>setReset(!reset)}
+	  	    onClick={(el)=>handleReset(el)}
                     variant="danger"
                   >
 		    {string.buttons.resetFields}
@@ -361,6 +380,7 @@ function User() {
           </Col>
         </Row>
       </Container>
+      <SweetAlert2 {...swalProps} />
     </>
   );
 }
