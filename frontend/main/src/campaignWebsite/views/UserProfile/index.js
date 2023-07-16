@@ -40,14 +40,11 @@ function User() {
 
   useEffect(()=>{
 		fetch(b_userProfileURL(), {
-			method: 'POST',
+			method: 'GET',
 			headers: {
 				"Content-Type": "application/json",
 				"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
-			},
-			body: JSON.stringify({
-				access_token: localStorage.getItem("access_token"),
-			}),
+			}
 		}).then(response => {
 			if (response.status === 401) {
 				window.location.href = f_loginURL();
@@ -83,17 +80,22 @@ function User() {
 
 	try {
 		const response = await fetch(b_userProfileURL(), {
-			method: 'POST',
+			method: 'PATCH',
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
 			},
 			body: JSON.stringify({
 				username: login,
-				email: email,
 				first_name: firstName,
 				last_name: lastName,
+				email: email,
 				phone_number: phoneNumber,
-				profile_description: profileDescription
+				address: address,
+				city: city,
+				country: country,
+				postal_code: postalCode,
+				profile_description: profileDescription,
 			})
 		});
 
@@ -146,7 +148,7 @@ function User() {
                 <Card.Title as="h4">Edit Profile</Card.Title>
               </Card.Header>
               <Card.Body>
-                <Form>
+                <Form onSubmit={el=>handleSubmit(el)}>
                   <Row>
                     <Col className="pr-1" md="5">
                       <Form.Group>

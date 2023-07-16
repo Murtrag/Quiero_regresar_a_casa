@@ -3,7 +3,7 @@ from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
 from rest_framework import permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.tokens import AccessToken
+# from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -72,14 +72,23 @@ class ProfileDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     authentication_classes = [JWTAuthentication]
 
-    def post(self, request, *args, **kwargs):
-        token = AccessToken(
-            request.data.get("access_token")
-        )
-        profile = Profile.objects.get(pk=token.get("user_id"))
+    def get_object(self):
+        user = self.request.user
+        profile = Profile.objects.get(user=user)
+        return profile
+
+    def patch(self, request, *args, **kwargs):
+        profile = self.get_object()
+        serializer = self.get_serializer(profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                
+    def get(self, request, *args, **kwargs):
+        profile = self.get_object()
         serializer = ProfileSerializer(instance=profile)
         return Response( serializer.data )
-
 
 
 class FooterView(APIView):

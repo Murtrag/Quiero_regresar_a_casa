@@ -34,6 +34,18 @@ class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email')
     # internal_currency = serializers.ReadOnlyField()
 
+    def update(self, instance, validated_data):
+        user_data = validated_data.pop('user', {})
+        for attr, value in user_data.items():
+            setattr(instance.user, attr, value)
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.user.save()
+        instance.save()
+        return instance
+
     class Meta:
         model = Profile
         fields = (

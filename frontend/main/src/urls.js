@@ -35,6 +35,7 @@ const b_dashboardURL = () => backendURL + 'dashboard/'
 
 const f_userProfileURL = () => frontendURL + 'dashboard/user-profile/'
 const b_userProfileURL = () => backendURL + `dashboard/user-profile/`
+// const b_userProfileUpdateURL = () => backendURL + `dashboard/user-profile/`
 
 const f_myInvestigationsURL = () => frontendURL + 'dashboard/my-investigations/'
 const b_myInvestigationsURL = () => backendURL + 'dashboard/my-investigations/'
