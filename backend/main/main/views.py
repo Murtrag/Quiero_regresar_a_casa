@@ -138,10 +138,10 @@ class NavBarList(
         # queryset = super().get_object()
 
         if user.is_anonymous:
-            return queryset.exclude(only_staff=True, only_user=True)
+            return queryset.exclude(is_staff_only=True, is_user_only=True)
 
         if user.is_authenticated:
-            return queryset.exclude(only_staff=True)
+            return queryset.exclude(is_staff_only=True)
 
         if user.is_staff:
             return queryset
