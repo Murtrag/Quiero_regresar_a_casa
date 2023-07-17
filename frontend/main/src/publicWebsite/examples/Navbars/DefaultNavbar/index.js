@@ -69,16 +69,21 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
   useEffect(() => {
-	fetch(b_navBarURL({
-		country: locale.country,
-		language: locale.language 
-	})).then(response=>response.json())
-	.then((newRoute)=>{
-		setRoutes([
-			//...routes,
-			...newRoute
-		])
-	})
+	  const token = localStorage.getItem("access_token"); 
+	  const headers = token ? { "Authorization": `Bearer ${token}` } : {}; 
+
+	  fetch(b_navBarURL({
+		  country: locale.country,
+		  language: locale.language
+	  }), {
+		  headers: headers
+	  }).then(response=>response.json())
+		  .then((newRoute)=>{
+			  setRoutes([
+				  //...routes,
+				  ...newRoute
+			  ])
+		  })	
     // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
       if (window.innerWidth < breakpoints.values.lg) {

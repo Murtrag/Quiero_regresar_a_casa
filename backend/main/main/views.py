@@ -130,6 +130,7 @@ class NavBarList(
         ):
     queryset = NavBarTab.objects.all()
     serializer_class = TabSerializer
+    permission_classes = [permissions.AllowAny]
     lookup_fields = ('country__country_code', 'language__country_code',)
 
     def get_queryset(self):
@@ -137,13 +138,14 @@ class NavBarList(
         queryset = super().get_queryset()
 
         if user.is_anonymous:
-            return queryset.exclude(is_staff_only=True, is_user_only=True)
+            return queryset.exclude(is_staff_only=True).exclude(is_user_only=True)
 
         if user.is_authenticated:
             return queryset.exclude(is_staff_only=True)
 
         if user.is_staff:
             return queryset
+
 
 
     def get(self, request, *args, **kwargs):
