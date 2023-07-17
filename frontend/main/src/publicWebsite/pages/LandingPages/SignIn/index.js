@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -28,10 +28,11 @@ import footerRoutes from "footer.routes";
 
 // Material Kit 2 React page layout routes
 import routes from "publicWebsite/routes";
-import { b_tokenURL, f_signUpURL } from "urls";
+import { b_tokenURL, f_signUpURL, f_dashboardURL } from "urls";
 import SignUp from "publicWebsite/pages/LandingPages/SignUp/index"
 import string from "strings/signIn";
 import SweetAlert2 from 'react-sweetalert2';
+import Swal from "sweetalert2";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
@@ -44,8 +45,10 @@ import {
 } from "utils/validators/index";
 
 function SignInBasic() {
-  const [swalProps, setSwalProps] = useState({});
+  const navigate = useNavigate();
 
+
+  const [swalProps, setSwalProps] = useState({});
   const [rememberMe, setRememberMe] = useState(false);
 
   const [username, setLoginInputValue] = useState('');
@@ -55,7 +58,6 @@ function SignInBasic() {
 	e.preventDefault();
 
 	try {
-		setSwalProps({ show: false })
 		const response = await fetch(b_tokenURL(), {
 			method: 'POST',
 			headers: {
@@ -66,31 +68,24 @@ function SignInBasic() {
 		});
 
 		if (response.ok) {
+			localStorage.clear();
+
 			const {access, refresh} = await response.json();
 
-			localStorage.clear();
 			localStorage.setItem('access_token', access);
 			localStorage.setItem('refresh_token', refresh);
-			const token = `Bearer ${access}`;
-			setSwalProps({
-				show: true,
+			Swal.fire({
 				title: string.messageSuccess.title ,
 				text: string.messageSuccess.text,
 				icon: 'success',
 				button: string.messageSuccess.confirmButtonText,
-			});
-			fetch('/', {
-				method: 'GET',
-				headers: {
-					'Authorization': token,
-				},
+			}).then(el=>{
+				navigate(extractPath(f_dashboardURL()));
 			});
 
-			// window.location.href = '/';
 		} else {
 			response.json().then(data=>{
-				setSwalProps({
-					show: true,
+				Swal.fire({
 					title: string.messageErrors.serverError.title,
 					text: string.messageErrors.serverError.text(JSON.stringify(data)),
 					icon: 'error'
@@ -98,7 +93,7 @@ function SignInBasic() {
 			})
 		}
 	} catch (error) {
-			setSwalProps({
+			Swal.fire({
 				show: true,
 				title: string.messageErrors.syntaxError.title,
 				text: string.messageErrors.syntaxError.text,

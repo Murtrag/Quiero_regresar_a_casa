@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import mixins
 from rest_framework import generics
 from django.http import JsonResponse, HttpResponse
@@ -130,9 +131,21 @@ class NavBarList(
     queryset = NavBarTab.objects.all()
     serializer_class = TabSerializer
     lookup_fields = ('country__country_code', 'language__country_code',)
-    # permission_classes = [
-    #     permissions.IsAuthenticated,
-    # ]
+
+    def get_object(self):
+        user = self.request.user
+        # queryset = NavBarTab.objects.all()
+        queryset = super().get_object()
+
+        if user.is_annoymous:
+            return queryset.exclude(only_staff=True, only_user=True)
+
+        if user.is_authenticated:
+            return queryset.exclude(only_staff=True)
+
+        if user.is_staff:
+            return queryset
+
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)

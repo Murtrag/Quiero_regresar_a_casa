@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { extractPath } from "utils/extractPath";
 import { b_logoutURL, frontendURL } from "urls";
 
 
 export const Logout = () => {
+	const navigate = useNavigate();
 	useEffect(() => {
 		(async () => {
 			try {
@@ -17,10 +20,8 @@ export const Logout = () => {
 					}),
 				});
 
-				if (response.ok) {
-					localStorage.clear();
-					window.location.href = frontendURL;
-				} else {
+				if (response.ok) {}
+				else {
 					console.log("logout not working");
 				}
 			} catch (e) {
@@ -28,9 +29,8 @@ export const Logout = () => {
 			}
 		})();
 		localStorage.clear();
-		window.location.href = frontendURL;
+		navigate(extractPath(frontendURL));
 	}, []);
-
 	return <div></div>;
 };
 

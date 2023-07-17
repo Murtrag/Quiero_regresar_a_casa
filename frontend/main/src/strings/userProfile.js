@@ -35,6 +35,19 @@ export default{
 		confirmationButtonText: "Yes I am sure",
 
 	},
+	messageSuccess:{
+		title: "Updated",
+		text: "Your profile has been updated successfully",
+		confirmationButtonText: "Ok",
+
+	},
+	messageErrors:{
+		syntaxError: {
+			title: "",
+			text: ""
+		},
+
+	},
 	buttons:{
 		updateProfile: "Update Profile",
 		resetFields: "Reset Changes",

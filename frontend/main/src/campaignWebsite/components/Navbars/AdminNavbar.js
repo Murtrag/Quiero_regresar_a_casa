@@ -16,12 +16,15 @@
 
 */
 import React, { Component } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
+import { extractPath } from "utils/extractPath";
+import { f_logoutURL } from "urls";
 
 import routes from "campaignWebsite/routes";
 
 function Header() {
+  const navigate = useNavigate();
   const location = useLocation();
   const mobileSidebarToggle = (e) => {
     e.preventDefault();
@@ -195,8 +198,12 @@ function Header() {
             <Nav.Item>
               <Nav.Link
                 className="m-0"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
+                onClick={el=>{
+			el.preventDefault();
+			navigate(extractPath(f_logoutURL() ));
+
+		}
+		}
               >
                 <span className="no-icon">Log out</span>
               </Nav.Link>

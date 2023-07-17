@@ -16,6 +16,8 @@ class NavBarTab(models.Model):
     route = models.CharField(max_length=200, blank=True)
     collapse = models.ManyToManyField('NavBarSubTab', blank=True)
     position = models.SmallIntegerField(blank=True, null=True)
+    is_staff_only = models.BooleanField(default=False)
+    is_user_only = models.BooleanField(default=False)
     
     class Meta:
         ordering = ['position']

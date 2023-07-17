@@ -68,7 +68,6 @@ function User() {
 			  setProfileDescription(state.profile_description);
 		  })
 		  .catch(error => {
-			  // Obsługa innych błędów
 			  console.error(error);
 		  });
   }, [reset])
@@ -81,22 +80,16 @@ function User() {
 	    showCancelButton: true,
             icon: "warning",
 	    confirmButtonText: string.messageReset.confirmationButtonText,
-          }).then(function (el) {
+          }).then((el)=> {
 		  if (el.isConfirmed){
 			  setReset(!reset)
 		  }
-		  // else{ // isDismissed
-			  // console.log("canceled");
-		  // }
             });
   }
 
 
-  const handleSubmit = async (e) => {
-	e.preventDefault();
-	// Turn off a sweet alert
-	setSwalProps({ show: false })
-
+  const handleSubmit = async (el) => {
+	el.preventDefault();
 	try {
 		const response = await fetch(b_userProfileURL(), {
 			method: 'PATCH',
@@ -119,38 +112,24 @@ function User() {
 		});
 
 		if (response.ok) {
-			setSwalProps({
-				show: true,
+			Swal.fire({
 				title: string.messageSuccess.title ,
 				text: string.messageSuccess.text,
 				icon: 'success',
-				button: string.messageSuccess.button,
-				showCancelButton: true,
 				confirmButtonText: string.messageSuccess.confirmationButtonText,
-				cancelButtonText: string.messageSuccess.cancelButtonText
 			});
-			// window.location.href = '/';
 		} else {
 			// Error handle if refused by server
 			response.json().then(data=>{
-				setSwalProps({
-					show: true,
-					title: 'Registration error',
+				Swal.fire({
+					title: 'Update error',
 					text: `error: ${JSON.stringify(data)}`,
 					icon: 'error'
-				}).then(function(){
-					// function when confirm button clicked
-				}, function(dismiss){
-					if(dismiss == 'cancel'){
-						// function when cancel button is clicked
-						console.log('resend email')
-					}
 				})
 			})
 		}
 	} catch (error) {
 			Swal.fire({
-				show: true,
 				title: string.messageErrors.syntaxError.title,
 				text: string.messageErrors.syntaxError.text,
 				icon: 'error'

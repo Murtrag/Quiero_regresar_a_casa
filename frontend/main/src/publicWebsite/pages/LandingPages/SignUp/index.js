@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -26,6 +27,7 @@ import bgImage from "assets/images/bg-presentation.jpg";
 
 //
 import SweetAlert2 from 'react-sweetalert2';
+import Swal from 'sweetalert2';
 
 // Validators
 import { 
@@ -44,6 +46,7 @@ import "assets/customCSS/signUp.css";
 
 function SignUp() {
 
+  const navigate = useNavigate();
   const [swalProps, setSwalProps] = useState({});
 
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -60,8 +63,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
 	e.preventDefault();
-	// Turn off a sweet alert
-	setSwalProps({ show: false })
 
 	try {
 		const response = await fetch(b_signUpURL(), {
@@ -81,17 +82,21 @@ function SignUp() {
 		});
 
 		if (response.ok) {
-			setSwalProps({
-				show: true,
+			Swal.fire({
 				title: string.messageSuccess.title ,
 				text: string.messageSuccess.text,
 				icon: 'success',
-				button: string.messageSuccess.button,
 				showCancelButton: true,
-				confirmButtonText: string.messageSuccess.confirmationButtonText,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+				confirmButtonText: string.messageSuccess.confirmButtonText,
 				cancelButtonText: string.messageSuccess.cancelButtonText
-			});
-			// window.location.href = '/';
+			}).then((el)=> {
+				if (el.isConfirmed){
+					navigate(extractPath(f_loginURL()));
+				} else if (el.dismiss === Swal.DismissReason.cancel) {
+					console.log('Send email');
+				}            });
 		} else {
 			// Error handle if refused by server
 			response.json().then(data=>{
