@@ -17,7 +17,7 @@
 */
 import Dashboard from "campaignWebsite/views/Dashboard";
 import UserProfile from "campaignWebsite/views/UserProfile";
-import TableList from "campaignWebsite/views/TableList";
+import MyInvestigations from "campaignWebsite/views/MyInvestigations/index";
 import Typography from "campaignWebsite/views/Typography";
 import Icons from "campaignWebsite/views/Icons";
 import Maps from "campaignWebsite/views/Maps";
@@ -70,7 +70,7 @@ const dashboardRoutes = [
   {
     name: string.sidebar.myInvestigations,
     icon: "nc-icon nc-zoom-split",
-    component: TableList,
+    component: MyInvestigations,
     ...convertToRoute(f_myInvestigationsURL())
   },
   {

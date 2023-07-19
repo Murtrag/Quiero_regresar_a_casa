@@ -38,7 +38,7 @@ import Dashboard from "campaignWebsite/views/Dashboard";
 import Notifications from "campaignWebsite/views/Notifications";
 import Icons from "campaignWebsite/views/Icons";
 import Maps from "campaignWebsite/views/Maps";
-import TableList from "campaignWebsite/views/TableList";
+import MyInvestigations from "campaignWebsite/views/MyInvestigations/index";
 import Typography from "campaignWebsite/views/Typography";
 // import AdminLayout from "campaignWebsite/layouts/Upgrade.js";
 import UserProfile from "campaignWebsite/views/UserProfile/index";
@@ -72,7 +72,7 @@ export default function App() {
 					<Route path="dashboard/" element={<AdminLayout />} >
 						<Route index element={<Dashboard />} />
 						<Route path="user-profile/" element={<UserProfile />} />
-						<Route path="my-investigations/" element={<TableList />} />
+						<Route path="my-investigations/" element={<MyInvestigations />} />
 						<Route path="promotions/" element={<Typography />} />
 						<Route path="notifications/" element={<Notifications />} />
 						<Route path="security-settings/" element={<Typography />} />
