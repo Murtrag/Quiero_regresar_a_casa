@@ -1,5 +1,6 @@
 import React from "react";
 import MissingPersonCard from "./MissingPersonCard";
+import string from "strings/myInvestigations";
 
 // react-bootstrap components
 import {
@@ -45,13 +46,11 @@ function MyInvestigations() {
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
-                <Card.Title as="h4">Striped Table with Hover</Card.Title>
-                <p className="card-category">
-                  Here is a subtitle for this table
-                </p>
+                <Card.Title as="h4">{string.currentInvestigations.title}</Card.Title>
+                <p className="card-category">{string.currentInvestigations.description}</p>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
-		 <MissingPersonCard name="Ashley" description="Sexy girl" image="https://www.fbi.gov/wanted/kidnap/ashley-summers/summersaged2023.jpg"  />
+		 <MissingPersonCard name="Ashley" description="Random Face" image="https://www.fbi.gov/wanted/kidnap/ashley-summers/summersaged2023.jpg"  />
               </Card.Body>
             </Card>
           </Col>
