@@ -1,5 +1,5 @@
 .missing-person-img {
-	max-width: 30%;
-	max-height: 200px; /* lub inna wartość, która pasuje do twojego projektu */
+	max-width: 100%;
+	/* max-height: 200px; /1* lub inna wartość, która pasuje do twojego projektu *1/ */
 	/* object-fit: cover; */
 }

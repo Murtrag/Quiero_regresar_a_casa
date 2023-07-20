@@ -49,6 +49,11 @@ const b_notificationsURL = () => backendURL + 'dashboard/notifications/'
 const f_securitySettingsURL = () => frontendURL + 'dashboard/security-settings/'
 const b_securitySettingsURL = () => backendURL + 'dashboard/security-settings/'
 
+const f_missingPeopleURL = () => frontendURL + 'dashboard/missing-people/';
+const b_missingPeopleListURL = () => backendURL + 'dashboard/missing-people/';
+const b_AddMissingPersonURL = () => backendURL + 'dashboard/missing-people/add/';
+const b_missingPeopleDetailURL = ({ pk }) => backendURL + `dashboard/missing-people/${pk}/`;
+
 
 export {
 	// Core URLs
@@ -92,4 +97,10 @@ export {
                           
         f_securitySettingsURL,
         b_securitySettingsURL,
+
+	// Missing people functionality
+	f_missingPeopleURL,
+	b_missingPeopleListURL,
+	b_AddMissingPersonURL,
+	b_missingPeopleDetailURL,
 }

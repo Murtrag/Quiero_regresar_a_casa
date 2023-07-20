@@ -34,7 +34,7 @@ urlpatterns = [
 
 
     # Missing person api
-    path('missing-person/', include('missing_person.urls'),),
+    path('dashboard/', include('missing_person.urls'),),
 
     # Basic api
     path('', include('basic.urls')),
