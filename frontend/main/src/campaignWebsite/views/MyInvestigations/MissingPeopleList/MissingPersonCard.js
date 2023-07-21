@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Col } from "react-bootstrap";
+import { nlToBr } from "utils/parse";
 import "./style.css";
 
-const MissingPersonCard = ({ name, description, image }) => {
+const MissingPersonCard = ({ fullName, callingName, description, image }) => {
   return (
     <Col xs={2} sm={2} md={2} lg={2}>
       <Card>
@@ -13,8 +14,11 @@ const MissingPersonCard = ({ name, description, image }) => {
           className="missing-person-img"
         />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>{description}</Card.Text>
+	  <h5 className="title">{fullName}</h5>
+	  <p className="description">{callingName}</p>
+	<p className="description text-center">
+	  {nlToBr(description)}
+	</p>
         </Card.Body>
       </Card>
     </Col>
@@ -22,3 +26,4 @@ const MissingPersonCard = ({ name, description, image }) => {
 };
 
 export default MissingPersonCard;
+

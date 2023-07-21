@@ -1,7 +1,8 @@
 export default {
 	newInvestigation: {
 		title: "New investigation field",
-		description: "Here you can start a new investigation"
+		description: "Here you can start a new investigation",
+		startButton: "Start new investigation"
 	},
 	currentInvestigations: {
 		title: "Your Currect Investigation",

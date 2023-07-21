@@ -207,7 +207,7 @@ function SignInBasic() {
                   </MKBox>
                   <MKBox mt={4} mb={1}>
                     <MKButton type="submit" variant="gradient" color="dark" fullWidth>
-                      sign in
+	  {string.loginWindow.button} 
                     </MKButton>
                   </MKBox>
                   <MKBox mt={3} mb={1} textAlign="center">

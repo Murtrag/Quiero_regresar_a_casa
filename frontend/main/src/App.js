@@ -56,7 +56,6 @@ export default function App() {
 		scrollUp()
 	}, [pathname]);
 
-	<Route path="admin/" render={(props) => <AdminLayout {...props} />} />
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />

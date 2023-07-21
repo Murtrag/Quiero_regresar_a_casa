@@ -24,6 +24,7 @@ export default {
 			password: "Password",
 			rememberMe: "Remember me"
 		},
+		button: "sign in",
 		message: "Don't have an account?",
 		messageButton: "Sign up" 
 	},
