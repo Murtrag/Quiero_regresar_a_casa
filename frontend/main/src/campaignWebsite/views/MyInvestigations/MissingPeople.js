@@ -38,8 +38,8 @@ const MissingPeople = () => {
     <Container fluid>
 	  <Row>
 	  {
-		  data.map(({name, description, image})=>(
-			<MissingPersonCard name={name} description={description} image={image} />	
+		  data.map(({name, description, images})=>(
+			<MissingPersonCard name={name} description={description} image={images[0].image} />	
 		  ))
 	  }
 	  </Row>
