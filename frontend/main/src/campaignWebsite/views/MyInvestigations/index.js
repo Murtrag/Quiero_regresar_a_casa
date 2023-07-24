@@ -1,7 +1,7 @@
 import React from "react";
 import MissingPeople from "./MissingPeopleList/index";
 import AddMissingPerson from "./AddMissingPerson/index";
-import string from "strings/myInvestigations";
+import {useState} from "react";
 
 // react-bootstrap components
 import {
@@ -17,26 +17,21 @@ import {
 } from "react-bootstrap";
 
 function MyInvestigations() {
-	 return (
+  const [startNewInvestigationStep, setStartNewInvestigationStep] = useState(0);
+  const totalSteps = 4;
+
+  return (
     <>
       <Container fluid>
         <Row>
           <Col md="12">
-		 <AddMissingPerson />
+		  <AddMissingPerson step={startNewInvestigationStep} totalSteps={totalSteps} setStep={setStartNewInvestigationStep} />
           </Col>
           <Col md="12">
-            <Card className="strpied-tabled-with-hover">
-              <Card.Header>
-                <Card.Title as="h4">{string.currentInvestigations.title}</Card.Title>
-                <p className="card-category">{string.currentInvestigations.description}</p>
-              </Card.Header>
-              <Card.Body className="table-full-width table-responsive px-0">
-		 <MissingPeople data={[
-			 {name: "Ashley", description: "Random Face", image:"https://scontent-ams4-1.xx.fbcdn.net/v/t1.18169-9/27072953_1973703225992145_3261305098483892783_n.jpg?_nc_cat=103&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=SgjfZtMG_ogAX_KKK1T&_nc_ht=scontent-ams4-1.xx&oh=00_AfDKjwjAG5OmF_Nq6fEnDZcm7lLDtopjtmF_Iee4hQ1H9A&oe=64E0C61A"},
-			 {name: "Ashley", description: "Random Face", image:"https://scontent-ams4-1.xx.fbcdn.net/v/t1.18169-9/27072953_1973703225992145_3261305098483892783_n.jpg?_nc_cat=103&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=SgjfZtMG_ogAX_KKK1T&_nc_ht=scontent-ams4-1.xx&oh=00_AfDKjwjAG5OmF_Nq6fEnDZcm7lLDtopjtmF_Iee4hQ1H9A&oe=64E0C61A"},
-		 ]}/>
-              </Card.Body>
-            </Card>
+		  {
+			  startNewInvestigationStep===0 &&
+			  <MissingPeople />
+		  }
           </Col>
         </Row>
       </Container>

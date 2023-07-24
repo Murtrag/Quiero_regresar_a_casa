@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Container, Row } from "react-bootstrap";
 import MissingPersonCard from "./MissingPersonCard"
 import "./style.css";
+import string from "strings/myInvestigations";
 import {useEffect, useState} from "react";
 import {
 	b_missingPeopleListURL,
@@ -35,6 +36,12 @@ const MissingPeople = () => {
 		  });
   }, [])
   return (
+    <Card className="strpied-tabled-with-hover">
+      <Card.Header>
+	<Card.Title as="h4">{string.currentInvestigations.title}</Card.Title>
+	<p className="card-category">{string.currentInvestigations.description}</p>
+      </Card.Header>
+      <Card.Body className="table-full-width table-responsive px-0">
     <Container fluid>
 	  <Row>
 	  {
@@ -45,6 +52,8 @@ const MissingPeople = () => {
 	  </Row>
 
     </Container>
+              </Card.Body>
+            </Card>
   );
 };
 

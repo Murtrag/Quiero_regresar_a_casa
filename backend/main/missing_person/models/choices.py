@@ -24,8 +24,11 @@ hair_length = (
         )
 
 sex_choice = (
-        ('m', "male"),
-        ('f', "female"),
+        ('m', "Male"),
+        ('f', "Female"),
+        ('t', "Transgender"),
+        ('nb', "Non-binary"),
+        ('o', "Other"),
         )
 
 eye_color = (
