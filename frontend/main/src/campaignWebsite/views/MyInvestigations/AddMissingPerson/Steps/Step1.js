@@ -1,6 +1,7 @@
 import React from "react";
 import string from "strings/myInvestigations";
-import Choices from "strings/choices";
+import choices from "strings/choices";
+import Select from "utils/Options";
 import {
 	//   Badge,
 	//   Button,
@@ -69,7 +70,7 @@ export default ({setField, formData})=>(
 			  onChange={e=>setField(e)}
                           type="select"
                         >
-				 <Choices.Sex />
+				 <Options data=choices.sex />
 
 			</Form.Select>
                       </Form.Group>
@@ -81,7 +82,7 @@ export default ({setField, formData})=>(
 			  onChange={e=>setField(e)}
                           type="select"
                         >
-				<Choices.Country />
+				<Options data=choices.origin />
 
 			</Form.Select>
                       </Form.Group>

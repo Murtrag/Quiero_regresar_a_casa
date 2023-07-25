@@ -1,9 +1,9 @@
 import React from "react";
 
-function Select({ options }) {
+function Select({ data }) {
 	return (
 			<select>
-			{options.map(([value, label]) => (
+			{data.map(([value, label]) => (
 						<option value={value} key={value}>
 						{label}
 						</option>
