@@ -32,20 +32,6 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 		})
 	};
 
-	let actionButtonText, actionButtonAction;
-	switch(step){
-		case 0:
-			actionButtonText = <>{string.newInvestigation.startButton} {"  "} <i className="nc-icon nc-zoom-split" /></>
-				actionButtonAction=()=>setStep(step + 1)
-			break;
-		case totalSteps:
-			actionButtonText = <>Submit {"  "} <i className="nc-icon nc-send" /></>
-				actionButtonAction=()=>setStep(0)
-			break;
-		default:
-			actionButtonText = <>Continue {"  "} <i className="nc-icon nc-stre-right" /></>
-				actionButtonAction=()=>setStep(step + 1)
-	}
 	const handleSubmit = async (el) => {
 		el.preventDefault();
 		try {
@@ -96,6 +82,22 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 			});
 		}
 	};
+
+	// Initialize buttons
+	let actionButtonText, actionButtonAction;
+	switch(step){
+		case 0:
+			actionButtonText = <>{string.newInvestigation.startButton} {"  "} <i className="nc-icon nc-zoom-split" /></>
+				actionButtonAction=()=>setStep(step + 1)
+			break;
+		case totalSteps:
+			actionButtonText = <>Submit {"  "} <i className="nc-icon nc-send" /></>
+				actionButtonAction=(el)=>handleSubmit(el)
+			break;
+		default:
+			actionButtonText = <>Continue {"  "} <i className="nc-icon nc-stre-right" /></>
+				actionButtonAction=()=>setStep(step + 1)
+	}
 	return (
 	  <Card className="strpied-tabled-with-hover">
 	    <StepRender setStep={setStem} formData={formData} step={step} />
