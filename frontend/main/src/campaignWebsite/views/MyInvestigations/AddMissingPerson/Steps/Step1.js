@@ -1,7 +1,7 @@
 import React from "react";
 import string from "strings/myInvestigations";
 import choices from "strings/choices";
-import Select from "utils/Options";
+import DataSelect from "components/DataSelect/DataSelect";
 import {
 	//   Badge,
 	//   Button,
@@ -64,27 +64,24 @@ export default ({setField, formData})=>(
                       <Form.Group>
                         <label>Sex</label>
 
-                        <Form.Select
+                        <DataSelect
                           value={formData.sex}
 			  name="sex"
 			  onChange={e=>setField(e)}
                           type="select"
-                        >
-				 <Options data=choices.sex />
+			  data={choices.sex}
+                        />
 
-			</Form.Select>
                       </Form.Group>
                       <Form.Group>
                         <label>Origin</label>
-                        <Form.Select
+                        <DataSelect
                           value={formData.origin}
 			  name="origin"
 			  onChange={e=>setField(e)}
                           type="select"
-                        >
-				<Options data=choices.origin />
-
-			</Form.Select>
+			  data={choices.country}
+                        />
                       </Form.Group>
 		</Card.Header>
 )

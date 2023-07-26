@@ -19,6 +19,20 @@ import StepRender from "./Steps/index";
 
 
 function AddMissingPerson({step, totalSteps, setStep}) {
+	let actionButtonText, actionButtonAction;
+	switch(step){
+		case 0:
+			actionButtonText = <>{string.newInvestigation.startButton} {"  "} <i className="nc-icon nc-zoom-split" /></>
+			actionButtonAction=()=>setStep(step + 1)
+			break;
+		case totalSteps:
+			actionButtonText = <>Submit {"  "} <i className="nc-icon nc-send" /></>
+			actionButtonAction=()=>setStep(0)
+			break;
+		default:
+			actionButtonText = <>Continue {"  "} <i className="nc-icon nc-stre-right" /></>
+			actionButtonAction=()=>setStep(step + 1)
+	}
 	return (
 	  <Card className="strpied-tabled-with-hover">
 	    <StepRender step={step} />
@@ -49,12 +63,10 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 		      type="submit"
 		      variant="gradient"
 		      color="dark"
-		      onClick={el => setStep(step + 1)}
+		      onClick={actionButtonAction}
 		      fullWidth
 		    >
-		      {(step === 0) ? string.newInvestigation.startButton : "Continue"}
-			&nbsp;
-			{(step === 0) ?  <i className="nc-icon nc-zoom-split" />:<i className="nc-icon nc-stre-right" />}
+			{actionButtonText}
 		    </MKButton>
 		  </Col>
 		</Row>

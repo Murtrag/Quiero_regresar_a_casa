@@ -2,7 +2,7 @@ import React from "react";
 import string from "strings/myInvestigations";
 
 import choices from "strings/choices";
-import Select from "utils/Options";
+import DataSelect from "components/DataSelect/DataSelect";
 
 import {
 	//   Badge,
@@ -25,30 +25,33 @@ export default ({setField, formData})=>(
 			</p>
                       <Form.Group>
                         <label>Hair colour</label>
-                        <Form.Control
-                          value=""
-                          placeholder="Blonde"
-			  onChange={e=>console.log(e.target.value)}
-                          type="text"
-                        ></Form.Control>
+                        <DataSelect
+                          value={formData.hairColor}
+			  name="hairColor"
+			  onChange={e=>setField(e)}
+                          type="select"
+			  data={choices.hair.color}
+                        />
                       </Form.Group>
                       <Form.Group>
                         <label>Hair length</label>
-                        <Form.Control
-                          value=""
-                          placeholder="Long"
-			  onChange={e=>console.log(e.target.value)}
-                          type="text"
-                        ></Form.Control>
+                        <DataSelect
+                          value={formData.length}
+			  name="hairLength"
+			  onChange={e=>setField(e)}
+                          type="select"
+			  data={choices.hair.length}
+                        />
                       </Form.Group>
                       <Form.Group>
                         <label>Eye color</label>
-                        <Form.Control
-                          value=""
-                          placeholder="blue"
-			  onChange={e=>console.log(e.target.value)}
-                          type="text"
-                        ></Form.Control>
+                        <DataSelect
+                          value={formData.length}
+			  name="eyeColor"
+			  onChange={e=>setField(e)}
+                          type="select"
+			  data={choices.eye}
+                        />
                       </Form.Group>
                       <Form.Group>
                         <label>distinguishing marks</label>

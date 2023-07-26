@@ -7,7 +7,8 @@ import End from "./End";
 
 function StepRender({step}){
 	let [formData, setFormData] = useState({
-		origin: "mx"
+		origin: "mx",
+		hairColor: 0
 	});
 	
 	const setField = el => {
