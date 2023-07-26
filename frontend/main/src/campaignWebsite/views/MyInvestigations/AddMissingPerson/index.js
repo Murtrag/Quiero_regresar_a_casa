@@ -19,23 +19,86 @@ import StepRender from "./Steps/index";
 
 
 function AddMissingPerson({step, totalSteps, setStep}) {
+	let [formData, setFormData] = useState({
+		origin: "mx",
+		hairColor: 0
+	});
+
+	
+	const setField = el => {
+		setFormData({
+			...formData,
+			[el.target.name]: el.target.value
+		})
+	};
+
 	let actionButtonText, actionButtonAction;
 	switch(step){
 		case 0:
 			actionButtonText = <>{string.newInvestigation.startButton} {"  "} <i className="nc-icon nc-zoom-split" /></>
-			actionButtonAction=()=>setStep(step + 1)
+				actionButtonAction=()=>setStep(step + 1)
 			break;
 		case totalSteps:
 			actionButtonText = <>Submit {"  "} <i className="nc-icon nc-send" /></>
-			actionButtonAction=()=>setStep(0)
+				actionButtonAction=()=>setStep(0)
 			break;
 		default:
 			actionButtonText = <>Continue {"  "} <i className="nc-icon nc-stre-right" /></>
-			actionButtonAction=()=>setStep(step + 1)
+				actionButtonAction=()=>setStep(step + 1)
 	}
+	const handleSubmit = async (el) => {
+		el.preventDefault();
+		try {
+			const response = await fetch(b_myInvestigationsURL(), {
+				method: 'PATCH',
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
+				},
+				body: JSON.stringify({
+					origin: data.origin,
+					calling_name: data.callingName, // @TODO Add this field to DB
+					full_name: data.fullName, // @TODO Change to two fields names and surnames
+					year_of_birth: data.yearOfBirth,
+					length: data.length,
+					hair_colour: data.hairColor, 
+					hair_length: data.hairLength,
+					eye_colour: data.eyeColor,
+					sex: data.sex,
+					distinguishing_marks: data.distinguishingMarks,
+					description: data.description,
+					//images //
+				})
+			});
+
+			if (response.ok) {
+				Swal.fire({
+					title: string.messageSuccess.title ,
+					text: string.messageSuccess.text,
+					icon: 'success',
+					confirmButtonText: string.messageSuccess.confirmationButtonText,
+				});
+			} else {
+				// Error handle if refused by server
+				response.json().then(data=>{
+					Swal.fire({
+						title: 'Update error',
+						text: `error: ${JSON.stringify(data)}`,
+						icon: 'error'
+					})
+				})
+			}
+		} catch (error) {
+			Swal.fire({
+				title: string.messageErrors.syntaxError.title,
+				text: string.messageErrors.syntaxError.text,
+				icon: 'error'
+			});
+		}
+	};
 	return (
 	  <Card className="strpied-tabled-with-hover">
-	    <StepRender step={step} />
+	    <StepRender setStep={setStem} formData={formData} step={step} />
 	    <Card.Body className="table-full-width table-responsive px-0">
 	      <MKBox mt={4} mb={1}>
 		<Row>
