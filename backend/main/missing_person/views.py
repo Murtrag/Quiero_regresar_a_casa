@@ -40,34 +40,34 @@ class MissingPersonList(mixins.ListModelMixin,
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class MissingPersonDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = MissingPerson.objects.all()
-    serializer_class = MissingPersonSerializer
-    permission_classes = [
-            custom_permissions.IsOwnerOrReadOnly
-            ]
-    authentication_classes = [JWTAuthentication]
+# class MissingPersonDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = MissingPerson.objects.all()
+#     serializer_class = MissingPersonSerializer
+#     permission_classes = [
+#             custom_permissions.IsOwnerOrReadOnly
+#             ]
+#     authentication_classes = [JWTAuthentication]
 
-    def get_object(self):
-        user = self.request.user
-        profile = Profile.objects.get(user=user)
-        return profile
+#     def get_object(self):
+#         user = self.request.user
+#         profile = Profile.objects.get(user=user)
+#         return profile
 
-    def put(self, request, *args, **kwargs): # Should be put in my case
-        profile = self.get_object()
-        serializer = self.get_serializer(profile, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def put(self, request, *args, **kwargs): # Should be put in my case
+#         profile = self.get_object()
+#         serializer = self.get_serializer(profile, data=request.data, partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
                 
-    def get(self, request, *args, **kwargs):
-        profile = self.get_object()
-        serializer = ProfileSerializer(instance=profile)
-        return Response( serializer.data )
+#     def get(self, request, *args, **kwargs):
+#         profile = self.get_object()
+#         serializer = ProfileSerializer(instance=profile)
+#         return Response( serializer.data )
    
 
 

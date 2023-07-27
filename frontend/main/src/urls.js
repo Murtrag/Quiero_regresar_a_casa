@@ -51,7 +51,7 @@ const b_securitySettingsURL = () => backendURL + 'dashboard/security-settings/'
 
 const f_missingPeopleURL = () => frontendURL + 'dashboard/missing-people/';
 const b_missingPeopleListURL = () => backendURL + 'dashboard/missing-people/';
-const b_AddMissingPersonURL = () => backendURL + 'dashboard/missing-people/add/';
+const b_AddMissingPersonURL = () => backendURL + 'dashboard/missing-people/';
 const b_missingPeopleDetailURL = ({ pk }) => backendURL + `dashboard/missing-people/${pk}/`;
 
 

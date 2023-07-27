@@ -43,7 +43,7 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 		el.preventDefault();
 		try {
 			const response = await fetch(b_myInvestigationsURL(), {
-				method: 'PATCH',
+				method: 'PUT',
 				headers: {
 					"Content-Type": "application/json",
 					"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
