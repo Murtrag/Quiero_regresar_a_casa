@@ -1,5 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from "react";
 import string from "strings/myInvestigations";
+import SweetAlert2 from 'react-sweetalert2';
+import Swal from "sweetalert2";
+import { 
+	f_loginURL,
+	b_myInvestigationsURL 
+} from "urls";
 
 import {
 //   Badge,
@@ -26,6 +32,7 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 
 	
 	const setField = el => {
+		console.log('modifyin');
 		setFormData({
 			...formData,
 			[el.target.name]: el.target.value
@@ -42,17 +49,17 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 					"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
 				},
 				body: JSON.stringify({
-					origin: data.origin,
-					calling_name: data.callingName, // @TODO Add this field to DB
-					full_name: data.fullName, // @TODO Change to two fields names and surnames
-					year_of_birth: data.yearOfBirth,
-					length: data.length,
-					hair_colour: data.hairColor, 
-					hair_length: data.hairLength,
-					eye_colour: data.eyeColor,
-					sex: data.sex,
-					distinguishing_marks: data.distinguishingMarks,
-					description: data.description,
+					origin: formData.origin,
+					calling_name: formData.callingName, // @TODO Add this field to DB
+					full_name: formData.fullName, // @TODO Change to two fields names and surnames
+					year_of_birth: formData.yearOfBirth,
+					length: formData.length,
+					hair_colour: formData.hairColor, 
+					hair_length: formData.hairLength,
+					eye_colour: formData.eyeColor,
+					sex: formData.sex,
+					distinguishing_marks: formData.distinguishingMarks,
+					description: formData.description,
 					//images //
 				})
 			});
@@ -100,7 +107,7 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 	}
 	return (
 	  <Card className="strpied-tabled-with-hover">
-	    <StepRender setStep={setStem} formData={formData} step={step} />
+	    <StepRender setField={setField} formData={formData} step={step} />
 	    <Card.Body className="table-full-width table-responsive px-0">
 	      <MKBox mt={4} mb={1}>
 		<Row>

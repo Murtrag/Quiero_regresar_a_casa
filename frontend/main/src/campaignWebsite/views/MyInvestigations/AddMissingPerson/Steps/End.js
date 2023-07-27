@@ -1,11 +1,5 @@
 import React from "react";
 import string from "strings/myInvestigations";
-import SweetAlert2 from 'react-sweetalert2';
-import Swal from "sweetalert2";
-import { 
-	f_loginURL,
-	b_myInvestigationsURL 
-} from "urls";
 import {
 //   Badge,
 //   Button,

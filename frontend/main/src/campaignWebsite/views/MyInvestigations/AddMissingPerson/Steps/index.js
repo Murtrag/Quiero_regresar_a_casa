@@ -6,17 +6,6 @@ import Step3 from "./Step3";
 import End from "./End";
 
 function StepRender({step, setField, formData}){
-	// let [formData, setFormData] = useState({
-	// 	origin: "mx",
-	// 	hairColor: 0
-	// });
-	
-	// const setField = el => {
-	// 	setFormData({
-	// 		...formData,
-	// 		[el.target.name]: el.target.value
-	// 	})
-	// };
 	const props = {
 		setField,
 		formData
