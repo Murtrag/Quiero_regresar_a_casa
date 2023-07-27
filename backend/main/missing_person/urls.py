@@ -11,7 +11,7 @@ from . import views
 urlpatterns = [
         # path('', include(router.urls)),
         path(r'missing-people/', views.MissingPersonList.as_view()),
-        path(r'missing-people/add/', views.MissingPersonList.as_view()),
-        path(r'missing-people/<int:pk>/', views.MissingPersonDetail.as_view())
+        # path(r'missing-people/add/', views.MissingPersonList.as_view()),
+        # path(r'missing-people/<int:pk>/', views.MissingPersonDetail.as_view())
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
