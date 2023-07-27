@@ -4,7 +4,7 @@ import SweetAlert2 from 'react-sweetalert2';
 import Swal from "sweetalert2";
 import { 
 	f_loginURL,
-	b_myInvestigationsURL 
+	b_AddMissingPersonURL 
 } from "urls";
 
 import {
@@ -42,7 +42,7 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 	const handleSubmit = async (el) => {
 		el.preventDefault();
 		try {
-			const response = await fetch(b_myInvestigationsURL(), {
+			const response = await fetch(b_AddMissingPersonURL(), {
 				method: 'PUT',
 				headers: {
 					"Content-Type": "application/json",
