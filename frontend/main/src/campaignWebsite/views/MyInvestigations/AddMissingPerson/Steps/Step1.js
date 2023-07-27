@@ -15,8 +15,9 @@ import {
 	//   Col,
 } from "react-bootstrap";
 
-export default ({setField, formData})=>(
-		<Card.Header>
+export default ({setField, formData})=>{
+		console.log(setField)
+		return <Card.Header>
 			<Card.Title as="h4">Informacje podstawowe o zaginionej osobie</Card.Title>
 			<p className="card-category">
 			Podstawowe kryteria niezmienne dotyczące zaginionej osoby	
@@ -84,4 +85,4 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
 		</Card.Header>
-)
+}

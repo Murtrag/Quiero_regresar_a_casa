@@ -199,7 +199,6 @@ const choices = {
 		["nu","Niue"],
 		["nf","Norfolk Island"],
 		["mp","Northern Mariana Islands"],
-		["mp","Northern Mariana Islands"],
 		["no","Norway"],
 		["om","Oman"],
 		["pk","Pakistan"],
