@@ -8,8 +8,8 @@ class ImageSerializer(serializers.ModelSerializer):
 
 class MissingPersonSerializer(serializers.HyperlinkedModelSerializer):
     images = ImageSerializer(many=True, required=False)
-    # images = serializers.HyperlinkedIdentityField(view_name='test')
-    owner = serializers.ReadOnlyField(source="owner.username")
+    owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
 
     class Meta:
         model = MissingPerson

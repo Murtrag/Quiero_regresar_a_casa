@@ -40,15 +40,9 @@ class MissingPersonList(mixins.ListModelMixin,
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
-    def put(self, request, *args, **kwargs):
-        request.data['owner'] = request.user.id  # Dodajemy pole "owner" z id zalogowanego użytkownika
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-#         return self.create(request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        request.data['owner'] = request.user.id
+        return self.create(request, *args, **kwargs)
 
 # class MissingPersonDetail(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = MissingPerson.objects.all()
