@@ -27,12 +27,20 @@ import StepRender from "./Steps/index";
 function AddMissingPerson({step, totalSteps, setStep}) {
 	let [formData, setFormData] = useState({
 		origin: "mx",
-		hairColor: 0
+		callingName: "",
+		fullName: "",
+		yearOfBirth: "",
+		length: "",
+		hairColor: "0",
+		hairLength: "0",
+		eyeColor: "0",
+		sex: "m",
+		distinguishingMarks: "",
+		description: "",
 	});
 
 	
 	const setField = el => {
-		console.log('modifyin');
 		setFormData({
 			...formData,
 			[el.target.name]: el.target.value

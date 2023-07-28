@@ -56,18 +56,20 @@ export default ({setField, formData})=>(
                       <Form.Group>
                         <label>distinguishing marks</label>
                         <Form.Control
-                          value=""
+                          value={formData.distinguishingMarks}
                           placeholder="tatoo"
-			  onChange={e=>console.log(e.target.value)}
+			  name="distinguishingMarks"
+			  onChange={e=>setField(e)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
                         <label>Description</label>
                         <Form.Control
-                          value=""
+                          value={formData.description}
+                          name="description"
                           placeholder="Here you can write a description about the person"
-			  onChange={e=>console.log(e.target.value)}
+			  onChange={e=>setField(e)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
