@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from . models import MissingPerson, Image
 from rest_framework import serializers
 
