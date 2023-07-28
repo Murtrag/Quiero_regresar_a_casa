@@ -27,16 +27,16 @@ import StepRender from "./Steps/index";
 function AddMissingPerson({step, totalSteps, setStep}) {
 	let [formData, setFormData] = useState({
 		origin: "mx",
-		callingName: "",
-		fullName: "",
-		yearOfBirth: "",
-		length: "",
+		callingName: "Luna",
+		fullName: "Luna",
+		yearOfBirth: "1993",
+		length: "167",
 		hairColor: "0",
 		hairLength: "0",
 		eyeColor: "0",
 		sex: "m",
-		distinguishingMarks: "",
-		description: "",
+		distinguishingMarks: "none",
+		description: "funny",
 	});
 
 	
@@ -51,7 +51,7 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 		el.preventDefault();
 		try {
 			const response = await fetch(b_AddMissingPersonURL(), {
-				method: 'PUT',
+				method: 'POST',
 				headers: {
 					"Content-Type": "application/json",
 					"Authorization": `Bearer ${localStorage.getItem("access_token")}`,
@@ -91,8 +91,8 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 			}
 		} catch (error) {
 			Swal.fire({
-				title: string.messageErrors.syntaxError.title,
-				text: string.messageErrors.syntaxError.text,
+				title: "error",
+				text: error,
 				icon: 'error'
 			});
 		}
