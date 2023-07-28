@@ -19,12 +19,12 @@ import {
 
 export default ({setField, formData})=>(
 		<Card.Header>
-			<Card.Title as="h4">Informacje podstawowe o zaginionej osobie</Card.Title>
+			<Card.Title as="h4">{string.newInvestigation.step1.title}</Card.Title>
 			<p className="card-category">
-			Podstawowe kryteria niezmienne dotyczące zaginionej osoby	
+			{string.newInvestigation.step1.description}
 			</p>
                       <Form.Group>
-                        <label>Hair colour</label>
+                        <label>{string.newInvestigation.step1.fields.hairColor}</label>
                         <DataSelect
                           value={formData.hairColor}
 			  name="hairColor"
@@ -34,7 +34,7 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>Hair length</label>
+                        <label>{string.newInvestigation.step1.fields.hairLength}</label>
                         <DataSelect
                           value={formData.length}
 			  name="hairLength"
@@ -44,7 +44,7 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>Eye color</label>
+                        <label>{string.newInvestigation.step1.fields.eyeColor}</label>
                         <DataSelect
                           value={formData.length}
 			  name="eyeColor"
@@ -54,7 +54,7 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>distinguishing marks</label>
+                        <label>{string.newInvestigation.step1.fields.distinguishingMarks}</label>
                         <Form.Control
                           value={formData.distinguishingMarks}
                           placeholder="tatoo"

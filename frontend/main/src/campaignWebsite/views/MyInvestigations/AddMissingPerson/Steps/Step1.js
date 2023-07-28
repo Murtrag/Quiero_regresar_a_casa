@@ -18,12 +18,12 @@ import {
 export default ({setField, formData})=>{
 		console.log(setField)
 		return <Card.Header>
-			<Card.Title as="h4">Informacje podstawowe o zaginionej osobie</Card.Title>
+			<Card.Title as="h4">{string.newInvestigation.step1.title}</Card.Title>
 			<p className="card-category">
-			Podstawowe kryteria niezmienne dotyczące zaginionej osoby	
+			{string.newInvestigation.step1.description}
 			</p>
                       <Form.Group>
-                        <label>Calling Name</label>
+                        <label>{string.newInvestigation.step1.fields.callingName}</label>
                         <Form.Control
                           value={formData.callingName}
 			  onChange={e=>setField(e)}
@@ -33,7 +33,7 @@ export default ({setField, formData})=>{
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>Full Name</label>
+                        <label>{string.newInvestigation.step1.fields.fullName}</label>
                         <Form.Control
                           value={formData.fullName}
 			  onChange={e=>setField(e)}
@@ -43,7 +43,7 @@ export default ({setField, formData})=>{
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>Year of birth</label>
+                        <label>{string.newInvestigation.step1.fields.yearOfBirth}</label>
                         <Form.Control
                           value={formData.yearOfBirth}
 			  onChange={e=>setField(e)}
@@ -63,8 +63,7 @@ export default ({setField, formData})=>{
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>Sex</label>
-
+                        <label>{string.newInvestigation.step1.fields.yearOfBirth}</label>
                         <DataSelect
                           value={formData.sex}
 			  name="sex"
@@ -75,7 +74,7 @@ export default ({setField, formData})=>{
 
                       </Form.Group>
                       <Form.Group>
-                        <label>Origin</label>
+                        <label>{string.newInvestigation.step1.fields.origin}</label>
                         <DataSelect
                           value={formData.origin}
 			  name="origin"
