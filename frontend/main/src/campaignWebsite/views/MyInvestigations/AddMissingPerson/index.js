@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import string from "strings/myInvestigations";
-import SweetAlert2 from 'react-sweetalert2';
+import SweetAlert2 from "react-sweetalert2";
 import Swal from "sweetalert2";
 import { 
 	f_loginURL,
@@ -73,28 +73,32 @@ function AddMissingPerson({step, totalSteps, setStep}) {
 			});
 
 			if (response.ok) {
+				// Correct server answer
 				Swal.fire({
-					title: string.messageSuccess.title ,
-					text: string.messageSuccess.text,
-					icon: 'success',
-					confirmButtonText: string.messageSuccess.confirmationButtonText,
+					title: string.newInvestigation.messageSuccess.title ,
+					text: string.newInvestigation.messageSuccess.text,
+					icon: "success",
+					confirmButtonText: string.newInvestigation.messageSuccess.confirmationButtonText,
 				});
 			} else {
 				// Error handle if refused by server
 				response.json().then(data=>{
 					Swal.fire({
-						title: 'Update error',
-						text: `error: ${JSON.stringify(data)}`,
-						icon: 'error'
+						title: string.newInvestigation.messageErrors.serverError.title,
+						text: string.newInvestigation.messageErrors.serverError.text(JSON.stringify(data)),
+						icon: "error"
 					})
+					console.error(JSON.stringify(data))
 				})
 			}
 		} catch (error) {
+			// Error handle if syntax error
 			Swal.fire({
-				title: "error",
-				text: error,
+				title: string.newInvestigation.messageErrors.syntaxError.title,
+				text: string.newInvestigation.messageErrors.syntaxError.text,
 				icon: 'error'
 			});
+			console.error(error)
 		}
 	};
 
