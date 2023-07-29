@@ -16,13 +16,20 @@
 
 */
 import React, { Component } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import {
+	useLocation,
+	useNavigate,
+	NavLink
+} from "react-router-dom";
+import { frontendURL } from "urls";
+import { extractPath } from "utils/extractPath";
 
 import { Nav } from "react-bootstrap";
 
 import logo from "assets/images/q-rLogo.png";
 
 function Sidebar({ color, image, routes }) {
+  const navigate = useNavigate();
   const location = useLocation();
   const activeRoute = (routeName) => {
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
@@ -38,14 +45,27 @@ function Sidebar({ color, image, routes }) {
       <div className="sidebar-wrapper">
         <div className="logo d-flex align-items-center justify-content-start">
           <a
-            href="https://www.creative-tim.com?ref=lbd-sidebar"
+	  href={frontendURL}
+	  onClick={el=>{
+		  el.preventDefault()
+		  navigate(extractPath(frontendURL ));
+		  }
+	  }
             className="simple-text logo-mini mx-1"
           >
             <div className="logo-img">
               <img src={require("assets/images/q-rLogo.png")} alt="..." />
             </div>
           </a>
-          <a className="simple-text" href="http://www.creative-tim.com">
+          <a
+		  className="simple-text"
+		  href={frontendURL}
+		  onClick={el=>{
+			  el.preventDefault()
+			  navigate(extractPath(frontendURL ));
+			  }
+	  }
+		  >
            Quiero Regresar 
           </a>
         </div>

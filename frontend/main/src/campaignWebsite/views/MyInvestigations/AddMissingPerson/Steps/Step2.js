@@ -19,12 +19,12 @@ import {
 
 export default ({setField, formData})=>(
 		<Card.Header>
-			<Card.Title as="h4">{string.newInvestigation.step1.title}</Card.Title>
+			<Card.Title as="h4">{string.newInvestigation.step2.title}</Card.Title>
 			<p className="card-category">
-			{string.newInvestigation.step1.description}
+			{string.newInvestigation.step2.description}
 			</p>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.hairColor}</label>
+                        <label>{string.newInvestigation.step2.fields.labels.hairColor}</label>
                         <DataSelect
                           value={formData.hairColor}
 			  name="hairColor"
@@ -34,7 +34,7 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.hairLength}</label>
+                        <label>{string.newInvestigation.step2.fields.labels.hairLength}</label>
                         <DataSelect
                           value={formData.length}
 			  name="hairLength"
@@ -44,7 +44,7 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.eyeColor}</label>
+                        <label>{string.newInvestigation.step2.fields.labels.eyeColor}</label>
                         <DataSelect
                           value={formData.length}
 			  name="eyeColor"
@@ -54,23 +54,26 @@ export default ({setField, formData})=>(
                         />
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.distinguishingMarks}</label>
+                        <label>{string.newInvestigation.step2.fields.labels.distinguishingMarks}</label>
                         <Form.Control
                           value={formData.distinguishingMarks}
-                          placeholder="tatoo"
+                          placeholder={string.newInvestigation.step2.fields.placeholders.distinguishingMarks}
 			  name="distinguishingMarks"
 			  onChange={e=>setField(e)}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>Description</label>
+                        <label>{string.newInvestigation.step2.fields.labels.description}</label>
                         <Form.Control
                           value={formData.description}
+                          cols="80"
                           name="description"
-                          placeholder="Here you can write a description about the person"
+			  style={{minHeight: "62px"}}
+                          placeholder={string.newInvestigation.step2.fields.placeholders.description}
 			  onChange={e=>setField(e)}
-                          type="text"
+                          rows="4"
+                          as="textarea"
                         ></Form.Control>
                       </Form.Group>
 		</Card.Header>

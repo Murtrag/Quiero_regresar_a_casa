@@ -14,19 +14,14 @@ import {
 } from "react-bootstrap";
 
 export default ({setField, formData})=>(
-  // const [login, setLogin] = useState('');
-  // const [login, setLogin] = useState('');
-  // const [login, setLogin] = useState('');
-  // const [login, setLogin] = useState('');
-  // const [login, setLogin] = useState('');
 
 		<Card.Header>
-			<Card.Title as="h4">Images</Card.Title>
+			<Card.Title as="h4">{string.newInvestigation.step3.title}</Card.Title>
 			<p className="card-category">
-			Podstawowe kryteria niezmienne dotyczące zaginionej osoby	
+			{string.newInvestigation.step3.description}
 			</p>
 		      <Form.Group controlId="formFileLg" className="mb-3">
-			<Form.Label>Large file input example</Form.Label>
+			<Form.Label>{string.newInvestigation.step3.fields.labels.image}</Form.Label>
 			<Form.Control type="file" size="lg" />
                       </Form.Group>
 		</Card.Header>

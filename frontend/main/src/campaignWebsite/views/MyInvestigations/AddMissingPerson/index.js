@@ -26,17 +26,17 @@ import StepRender from "./Steps/index";
 
 function AddMissingPerson({step, totalSteps, setStep}) {
 	let [formData, setFormData] = useState({
-		origin: "mx",
-		callingName: "Luna",
-		fullName: "Luna",
-		yearOfBirth: "1993",
-		length: "167",
-		hairColor: "0",
-		hairLength: "0",
-		eyeColor: "0",
-		sex: "m",
-		distinguishingMarks: "none",
-		description: "funny",
+		// origin: "mx",
+		// callingName: "Luna",
+		// fullName: "Luna",
+		// yearOfBirth: "1993",
+		// length: "167",
+		// hairColor: "0",
+		// hairLength: "0",
+		// eyeColor: "0",
+		// sex: "m",
+		// distinguishingMarks: "none",
+		// description: "funny",
 	});
 
 	

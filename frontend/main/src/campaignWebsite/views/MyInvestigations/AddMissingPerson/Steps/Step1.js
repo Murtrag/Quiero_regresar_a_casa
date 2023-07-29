@@ -23,47 +23,47 @@ export default ({setField, formData})=>{
 			{string.newInvestigation.step1.description}
 			</p>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.callingName}</label>
+                        <label>{string.newInvestigation.step1.fields.labels.callingName}</label>
                         <Form.Control
                           value={formData.callingName}
 			  onChange={e=>setField(e)}
 			  name="callingName"
-                          placeholder="The way people are casually call the person"
+                          placeholder={string.newInvestigation.step1.fields.placeholders.callingName}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.fullName}</label>
+                        <label>{string.newInvestigation.step1.fields.labels.fullName}</label>
                         <Form.Control
                           value={formData.fullName}
 			  onChange={e=>setField(e)}
 			  name="fullName"
-                          placeholder="Fu"
+                          placeholder={string.newInvestigation.step1.fields.placeholders.fullName}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.yearOfBirth}</label>
+                        <label>{string.newInvestigation.step1.fields.labels.yearOfBirth}</label>
                         <Form.Control
                           value={formData.yearOfBirth}
 			  onChange={e=>setField(e)}
 			  name="yearOfBirth"
-                          placeholder="1990"
+                          placeholder={string.newInvestigation.step1.fields.placeholders.yearOfBirth}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>Length</label>
+                        <label>{string.newInvestigation.step1.fields.labels.length}</label>
                         <Form.Control
                           value={formData.length}
 			  onChange={e=>setField(e)}
 			  name="length"
-                          placeholder="170"
+                          placeholder={string.newInvestigation.step1.fields.placeholders.length}
                           type="text"
                         ></Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.yearOfBirth}</label>
+                        <label>{string.newInvestigation.step1.fields.labels.sex}</label>
                         <DataSelect
                           value={formData.sex}
 			  name="sex"
@@ -74,7 +74,7 @@ export default ({setField, formData})=>{
 
                       </Form.Group>
                       <Form.Group>
-                        <label>{string.newInvestigation.step1.fields.origin}</label>
+                        <label>{string.newInvestigation.step1.fields.labels.origin}</label>
                         <DataSelect
                           value={formData.origin}
 			  name="origin"
