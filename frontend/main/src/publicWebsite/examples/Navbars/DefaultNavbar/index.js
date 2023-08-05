@@ -43,7 +43,7 @@ import DefaultNavbarMobile from "publicWebsite/examples/Navbars/DefaultNavbar/De
 
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
-import { nlToBr } from "utils/parse";
+import { nlToBr, spaceToNbsp } from "utils/parse";
 
 import {b_navBarURL, f_loginURL, f_logoutURL } from "urls"
 import { connect } from "react-redux";
@@ -286,7 +286,7 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
                   fontWeight="regular"
                   sx={{ transition: "all 300ms linear" }}
                 >
-                  {nlToBr(item.description)}
+                  {nlToBr(spaceToNbsp(item.description))}
                 </MKTypography>
               </MKBox>
             ) : (

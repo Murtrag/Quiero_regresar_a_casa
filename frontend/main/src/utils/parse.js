@@ -18,7 +18,12 @@ function nlToBr(text) {
   ));
 }
 
+function spaceToNbsp(text) {
+	return text.replace(/ /g, '\u00A0');
+}
+
 export {
 	parseArray,
 	nlToBr,
+	spaceToNbsp
 }
