@@ -65,11 +65,13 @@ function Information({children}) {
                 icon={cardFront.props.icon}
                 title={findChild(cardFront.props.children, "title").props.children}
                 description={findChild(cardFront.props.children, "description").props.children}
+	  	color="dark"
               />
               <RotatingCardBack
                 image={bgBack}
                 title={findChild(cardRevers.props.children, "title").props.children}
                 description={findChild(cardRevers.props.children, "description").props.children}
+	  	color="dark"
                 // action={{
                 //   type: "internal",
                 //   route: "/sections/page-sections/page-headers",
@@ -87,6 +89,7 @@ function Information({children}) {
 			  icon={child.props.icon}
 			  title={findChild(child.props.children, "title").props.children}
 			  description={findChild(child.props.children, "desc").props.children}
+			  color="dark"
 			/>
 		      </Grid>
 		  ))
