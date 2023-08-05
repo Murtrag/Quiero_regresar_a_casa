@@ -7,7 +7,7 @@ import  parse from 'html-react-parser';
 //Utils
 import { scrollUp } from "utils/scroll";
 
-import { replaceComponent } from "./tools/components";
+import { replaceComponent } from "utils/replaceComponent";
 
 const Article = () => {
 	const params = useParams();
