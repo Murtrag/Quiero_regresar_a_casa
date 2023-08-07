@@ -1,15 +1,36 @@
 import { connect } from "react-redux";
 import { changeLanguage } from "redux/actions/locale";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import string from "strings/changeLanguage";
+import { splitPathParams, extractPath } from "utils/extractPath";
+import { b_articleDetailURL } from "urls";
 
 const ChangeLanguage = ({changeLanguage})=>{
 	const params = useParams();
+	const location = useLocation();
+	const prevLocation = location.state.from.pathname;
 
 	let [timeOut, setTimeOut] = useState(5);
-	// let previousPage = getPrevPage();
+
+	const getRedirectURL = (path)=>{
+		const prevParams = splitPathParams(path);
+		const paramsObj = {
+				category: prevParams[0],
+				country: prevParams[1],
+				language: prevParams[2],
+				pk: prevParams[3]
+			}
+		if (extractPath(b_articleDetailURL(paramsObj)) === prevLocation){
+			return extractPath(
+				b_articleDetailURL({...paramsObj, language: params.language})
+			);
+		}
+		return path
+	}
+
+
 	var timerId;
 	useEffect(()=>{
 		if (timeOut>0){
@@ -27,7 +48,7 @@ const ChangeLanguage = ({changeLanguage})=>{
 	return <>
 		<h1>{string.page.message.title}</h1>
 		<p>{string.page.message.text(timeOut)}</p>
-		{timeOut===0 && <Navigate to='/' />/* To prev page with new language */}
+		{timeOut===0 && <Navigate to={getRedirectURL(prevLocation)} />/* To prev page with new language */}
 		</>
 }
 

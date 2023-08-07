@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 import { Fragment, useState, useEffect } from "react";
 
 // react-router components
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
@@ -55,6 +55,7 @@ import { connect } from "react-redux";
 function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, relative, center, locale }) {
 
   let [routes, setRoutes] = useState([])
+  const location = useLocation();
 
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
@@ -232,7 +233,11 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
         const routeComponent = {
           component: Link,
-          to: item.route,
+	  onClick: ()=>{console.log('test1')},
+          to: {
+		  pathname: item.route,
+		  state: {from: 'dupa'},
+	  },
         };
 
         return (
@@ -376,7 +381,8 @@ function DefaultNavbar({ brand, routes_, transparent, light, action, sticky, rel
 
                 const routeComponent = {
                   component: Link,
-                  to: item.route,
+		  to: item.route,
+		  state: {from: location}
                 };
 
                 return (
