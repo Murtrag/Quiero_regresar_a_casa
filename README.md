@@ -14,6 +14,9 @@ An important aspect of our project is the inclusion of individuals who wish to h
 
 The goal of Quiero Regresar is to effectively find missing persons, provide support to families in difficult situations, and encourage community involvement in search actions. Our project aims to achieve positive results and contribute to improving safety and collaboration among people.
 
+![image](https://github.com/Murtrag/Quiero_regresar_a_casa/assets/19934843/9b3b9d41-d50d-49c1-aac1-f36fe019e085)
+
+
 ## Technology Stack:
 ### BackEnd
 1. Python 3.11
