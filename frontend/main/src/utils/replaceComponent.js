@@ -6,9 +6,21 @@ import Pages from "publicWebsite/components/widgets/Pages";
 import Testimonials from "publicWebsite/components/widgets/Testimonials";
 import Download from "publicWebsite/components/widgets/Download";
 
+// import InformBlcok form "";
+// import InformBlock from "components/MessageBlock/Warning";
+import WarningBlock from "components/MessageBlock/Warning";
+import DangerBlock from "components/MessageBlock/Danger";
+import SuccessBlock from "components/MessageBlock/Success";
+import InfoBlock from "components/MessageBlock/Info";
+// import BrandCarousel from "";
+
 const permitedComponents = [
 	{ type: 'counters', component: <Counters />},
 	{ type: 'information', component: <Information />},
+	{ type: 'warningblock', component: <WarningBlock />},
+	{ type: 'successblock', component: <SuccessBlock />},
+	{ type: 'dangerblock', component: <DangerBlock />},
+	{ type: 'infoblock', component: <InfoBlock />},
 ];
 
 

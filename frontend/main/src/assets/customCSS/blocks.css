@@ -1,0 +1,92 @@
+.callout-success {
+  background: #9FB2A2;
+  color: #fff;
+}
+
+.callout-warning {
+  background: #B39881;
+  color: #fff;
+}
+
+.callout-danger {
+  background: #AD8E8A;
+  color: #fff;
+}
+
+.callout-info {
+  background: #95AEBB;
+  color: #fff;
+}
+.callout-block {
+  padding: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.callout-block .icon-holder {
+  font-size: 30px;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.callout-block .content {
+  margin-left: 60px;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+.callout-success {
+  color: #fff;
+}
+
+.callout-block .callout-title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.doc-section h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.callout-block .content p:last-child {
+  margin-bottom: 0;
+}
+
+svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -.125em;
+}
+
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
