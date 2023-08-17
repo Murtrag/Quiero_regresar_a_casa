@@ -5,6 +5,25 @@ const backendURL = `${protocolPrefix}83.128.215.51:81/`
 const frontendURL = `${window.location.protocol}//${window.location.host}/`;
 
 
+// class Url{
+// 	constructor=()=>{
+
+// 	}
+// 	getPath = ({...params})=>{
+// 		return self._path
+// 	}
+// 	getUrl = ({...params})=>{
+// 		return self._host + self.getPath(...params);
+// 	}
+	
+// }
+
+// const b_articleDetailURL = new Url(backendURL, )
+
+// backend.seturls({
+
+// })
+
 // public site
 // Articles URLs
 const b_articleDetailURL = ({category, country, language, pk})=>backendURL + `${category}/${country}/${language}/${pk}/`;
