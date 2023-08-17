@@ -41,6 +41,7 @@
 
 .callout-block .content {
   margin-left: 60px;
+  font-size: 1rem;
 }
 
 *, ::after, ::before {
