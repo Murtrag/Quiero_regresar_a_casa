@@ -13,6 +13,7 @@ import DangerBlock from "components/widgets/MessageBlock/Danger";
 import SuccessBlock from "components/widgets/MessageBlock/Success";
 import InfoBlock from "components/widgets/MessageBlock/Info";
 import Carousel from "components/widgets/Carousel";
+import ArtFooter from "components/widgets/ArtFooter";
 
 const permitedComponents = [
 	{ type: 'counters', component: <Counters />},
@@ -22,6 +23,7 @@ const permitedComponents = [
 	{ type: 'dangerblock', component: <DangerBlock />},
 	{ type: 'infoblock', component: <InfoBlock />},
 	{ type: 'carousel', component: <Carousel />},
+	{ type: 'artfooter', component: <ArtFooter />},
 ];
 
 
