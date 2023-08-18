@@ -1,3 +1,4 @@
+import "./style.css";
 import Carousel from 'react-bootstrap/Carousel';
 import {findChild, findChildren } from "utils/findChild";
 
@@ -13,7 +14,7 @@ function CarouselMod({children}) {
 		      const description = findChild(el.props.children, "description")
 		      return <Carousel.Item key={i}>
 			<img
-			  className="d-block w-100"
+			  className="d-block w-100 carousel-img"
 			  {...img.props}
 			/>
 			<Carousel.Caption>
