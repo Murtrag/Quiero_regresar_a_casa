@@ -14,19 +14,23 @@ echo "Throttled status: $throttled"
 
 # Interpret throttled status
 if [[ $throttled == *"0x50005"* ]]; then
-  echo "Undervoltage detected"
+  interpretation+="[Undervoltage detected] "
 fi
 
 if [[ $throttled == *"0x50000"* ]]; then
-  echo "Undervoltage occurred since last reboot"
+  interpretation+="[Undervoltage occurred since last reboot] "
 fi
 
 if [[ $throttled == *"0x10000"* ]]; then
-  echo "Throttling occurred since last reboot"
+  interpretation+="[Throttling occurred since last reboot] "
 fi
 
 if [[ $throttled == *"0x20000"* ]]; then
-  echo "Throttling occurred"
+  interpretation+="[Throttling occurred] "
+fi
+
+if [[ $throttled == *"0x0"* ]]; then
+  interpretation+="[No throttling or undervoltage detected] "
 fi
 
 # CPU usage in percentage
