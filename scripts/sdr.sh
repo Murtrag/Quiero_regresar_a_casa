@@ -8,6 +8,27 @@ echo "CPU Temperature: ${cpu_temp}C"
 cpu_voltage=$(vcgencmd measure_volts | awk -F= '{print $2}')
 echo "CPU Voltage: ${cpu_voltage}V"
 
+# Get throttled status
+throttled=$(vcgencmd get_throttled)
+echo "Throttled status: $throttled"
+
+# Interpret throttled status
+if [[ $throttled == *"0x50005"* ]]; then
+  echo "Undervoltage detected"
+fi
+
+if [[ $throttled == *"0x50000"* ]]; then
+  echo "Undervoltage occurred since last reboot"
+fi
+
+if [[ $throttled == *"0x10000"* ]]; then
+  echo "Throttling occurred since last reboot"
+fi
+
+if [[ $throttled == *"0x20000"* ]]; then
+  echo "Throttling occurred"
+fi
+
 # CPU usage in percentage
 cpu_usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
 echo "CPU Usage: ${cpu_usage}"
@@ -27,7 +48,3 @@ echo "Uptime: ${uptime}"
 # Frequency of ARM CPU
 arm_freq=$(vcgencmd measure_clock arm | awk -F"=" '{print $2/1000000 " MHz"}')
 echo "ARM Frequency: ${arm_freq}"
-
-# List of running processes
-echo "Running Processes:"
-ps aux | awk '{print $11}' | tail -n +2
