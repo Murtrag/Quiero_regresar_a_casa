@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function check_sudo() {
+  if [[ $EUID -ne 0 ]]; then
+    echo "Some commands require root privileges. Please enter your password."
+    sudo -v
+    if [[ $? -ne 0 ]]; then
+      exit 1
+    fi
+  fi
+}
+
+check_sudo
+
 # Temperature of the CPU in Celsius
 cpu_temp=$(vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*')
 echo "CPU Temperature: ${cpu_temp}C"
@@ -12,6 +24,7 @@ echo "CPU Voltage: ${cpu_voltage}V"
 throttled=$(vcgencmd get_throttled)
 
 # Interpret throttled status
+interpretation=""
 if [[ $throttled == *"0x50005"* ]]; then
   interpretation+="[Undervoltage detected] "
 fi
@@ -53,3 +66,4 @@ echo "Uptime: ${uptime}"
 # Frequency of ARM CPU
 arm_freq=$(vcgencmd measure_clock arm | awk -F"=" '{print $2/1000000 " MHz"}')
 echo "ARM Frequency: ${arm_freq}"
+
