@@ -4,7 +4,7 @@ function verify_in_crontab() {
   missing_entries=()
 
   for entry in "${entries[@]}"; do
-    if ! crontab -l | grep -q "$entry"; then
+    if ! crontab -l | grep -Fq "$entry"; then
       echo "Entry \"$entry\" does not exist in crontab."
       missing_entries+=("$entry")
     fi
