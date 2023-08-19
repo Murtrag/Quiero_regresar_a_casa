@@ -3,8 +3,8 @@
 function check_sudo() {
   if [[ $EUID -ne 0 ]]; then
     echo "Some commands require root privileges. Please enter your password."
-    sudo -v
-    if [[ $? -ne 0 ]]; then
+    if ! sudo -v; then
+      echo "Incorrect password. Exiting."
       exit 1
     fi
   fi
