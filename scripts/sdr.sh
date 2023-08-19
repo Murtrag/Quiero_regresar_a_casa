@@ -10,7 +10,6 @@ echo "CPU Voltage: ${cpu_voltage}V"
 
 # Get throttled status
 throttled=$(vcgencmd get_throttled)
-echo "Throttled status: $throttled"
 
 # Interpret throttled status
 if [[ $throttled == *"0x50005"* ]]; then
@@ -32,6 +31,8 @@ fi
 if [[ $throttled == *"0x0"* ]]; then
   interpretation+="[No throttling or undervoltage detected] "
 fi
+
+echo "Throttled status: $throttled $interpretation"
 
 # CPU usage in percentage
 cpu_usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
