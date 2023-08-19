@@ -4,7 +4,7 @@
 
 cd ~/www/Quiero_regresar_a_casa/backend;
 ssh-add ~/.ssh/id_rsa;
-git pull;
+git pull --no-edit;
 docker exec -it backend_app_1 ./main/manage.py migrate;
 # docker restart backend_app_1 &
 docker-compose -f docker-compose.yaml down;

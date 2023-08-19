@@ -4,7 +4,7 @@
 
 cd ~/www/Quiero_regresar_a_casa/frontend;
 ssh-add ~/.ssh/id_rsa;
-git pull;
+git pull --no-edit;
 
 docker-compose -f docker-compose.prod.yaml down;
 docker-compose -f docker-compose.prod.yaml up --build --detach &
