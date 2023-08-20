@@ -12,7 +12,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'Quiero_regresar',
+            'NAME': 'quiero_regresar',
             'USER': 'postgres',
             'PASSWORD': '123PoStGrEs!',
             'HOST': '192.168.1.4',
