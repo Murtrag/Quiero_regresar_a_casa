@@ -11,5 +11,5 @@ ssh-add ~/.ssh/id_rsa;
 git pull --no-edit;
 docker exec -it backend_app_1 ./main/manage.py migrate;
 # docker restart backend_app_1 &
-docker-compose -f docker-compose.yaml down;
-docker-compose -f docker-compose.yaml up --build --detach;
+docker-compose -f docker-compose.prod.yaml down;
+docker-compose -f docker-compose.prod.yaml up --build --detach;
