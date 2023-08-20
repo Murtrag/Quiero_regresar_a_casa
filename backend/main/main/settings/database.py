@@ -15,7 +15,7 @@ else:
             'NAME': 'quiero_volver',
             'USER': 'postgres',
             'PASSWORD': '123PoStGrEs!',
-            'HOST': '192.168.1.2',
+            'HOST': '192.168.1.4',
             'PORT': '5432',
         }
     }
