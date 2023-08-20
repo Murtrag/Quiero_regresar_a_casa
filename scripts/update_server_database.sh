@@ -9,6 +9,6 @@ cd ~/www/Quiero_regresar_a_casa/database;
 ssh-add ~/.ssh/id_rsa;
 git pull --no-edit;
 
-docker-compose -f docker-compose.prod.yaml down;
-docker-compose -f docker-compose.prod.yaml up --build --detach &
+docker-compose -f docker-compose.yaml down;
+docker-compose -f docker-compose.yaml up --build --detach &
 
