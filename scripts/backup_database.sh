@@ -10,7 +10,7 @@ container_name="backend_app_1"
 backup_file="/tmp/data.json"
 
 # Execute the dumpdata command in the container and save it to a file on the remote server
-ssh $remote_server "docker exec $container_name python manage.py dumpdata > $backup_file"
+ssh $remote_server "docker exec $container_name python main/manage.py dumpdata > $backup_file"
 
 # Copy the backup file to the local server
 scp "$remote_server:$backup_file" "~/db_backups/data.json"
