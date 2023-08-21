@@ -1,21 +1,19 @@
 version: "3"
 
 volumes:
-  DB:
+  postgres_data:
 
 services:
-  db:
-    image: postgres
-    # user:  "murtrag:murtrag"
+  postgres:
+    image: postgres:latest
+    container_name: database_app
     ports:
       - "5432:5432"
-    restart: always
     volumes:
-      - DB:/var/lib/postgresql/data:Z
-      # - /home/malvern/www/Quiero_regresar_a_casa/database/db:/var/lib/postgresql/data
-      # - /media/database/data:/home/murtrag/Quiero_regresar_a_casa/database/db:Z
+      - postgres_data:/var/lib/postgresql/data
     environment:
+      POSTGRES_DB: quiero_regresar
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123PoStGrEs!
-      PGDATA: /mnt/db
+
 
