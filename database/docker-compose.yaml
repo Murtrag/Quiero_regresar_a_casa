@@ -11,7 +11,7 @@ services:
       - "5432:5432"
     restart: always
     volumes:
-      - DB:/var/lib/postgresql/data
+      - DB:/var/lib/postgresql/data:Z
       # - /home/malvern/www/Quiero_regresar_a_casa/database/db:/var/lib/postgresql/data
       # - /media/database/data:/home/murtrag/Quiero_regresar_a_casa/database/db:Z
     environment:
