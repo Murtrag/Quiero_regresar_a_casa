@@ -17,5 +17,5 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123PoStGrEs!
-      PGDATA: /home/murtrag/Quiero_regresar_a_casa/database/db
+      PGDATA: /mnt/db
 
