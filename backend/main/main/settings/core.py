@@ -2,7 +2,8 @@ from os import environ
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = environ['SERVER_TYPE'] == 'development'
+
+DEBUG = environ.get('SERVER_TYPE', 'production') == 'development'
 
 TEMPLATES = [
         {
