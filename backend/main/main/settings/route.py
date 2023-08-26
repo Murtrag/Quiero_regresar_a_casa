@@ -9,3 +9,4 @@ STATIC_ROOT = Path.joinpath(BASE_DIR.parent, 'nginx', 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR.parent, 'nginx', 'media')
 
+ROOT_URLCONF = 'main.urls'
