@@ -23,5 +23,7 @@ services:
     environment:
       SERVER_TYPE: 'production'
       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
+    ports:
+      - "8000:8000"
 
 
