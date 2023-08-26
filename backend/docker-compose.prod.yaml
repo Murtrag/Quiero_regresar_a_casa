@@ -24,8 +24,8 @@ services:
       SERVER_TYPE: 'production'
       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
     volumes:
-      - ./main/nginx/static:/code/main/static:rw
-      - ./main/nginx/media:/code/main/media:rw
+      - ./main/nginx/static:/code/main/nginx/static:rw
+      - ./main/nginx/media:/code/main/nginx/media:rw
     ports:
       - "8000:8000"
 
