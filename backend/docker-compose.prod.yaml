@@ -25,5 +25,13 @@ services:
       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
     ports:
       - "8000:8000"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8001:80"
+    depends_on:
+      - app
 
 
