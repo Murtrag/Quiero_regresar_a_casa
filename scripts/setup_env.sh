@@ -13,6 +13,9 @@ function add_alias() {
 # List of aliases to set up
 aliases=(
     "script='cd www/Quiero_regresar_a_casa/scripts/'"
+    "frontend='cd www/Quiero_regresar_a_casa/frontend/'"
+    "backend='cd www/Quiero_regresar_a_casa/backend/'"
+    "db='cd www/Quiero_regresar_a_casa/database/'"
     # Add more aliases here
 )
 
