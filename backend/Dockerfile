@@ -5,5 +5,5 @@ WORKDIR /code
 COPY . /code/
 RUN pip install -r requirements.txt
 # CMD ["python", "main/manage.py", "runserver", "0.0.0.0:8000"]
-CMD ["gunicorn", "main.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8000", "--chdir", "/code/main", "main.wsgi:application"]
 

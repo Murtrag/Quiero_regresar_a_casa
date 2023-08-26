@@ -1,14 +1,27 @@
+# version: "3"
+
+# services:
+#   app:
+#     build: .
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - .:/code/:Z
+#     tty: true
+#     stdin_open: true
+#     environment:
+#       SERVER_TYPE: 'production'
+#       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
 version: "3"
 
 services:
   app:
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/code/:Z
-    tty: true
-    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn -w 2 -b 0.0.0.0:8000 --chdir /code/main main.wsgi:application
     environment:
       SERVER_TYPE: 'production'
       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
+
+
