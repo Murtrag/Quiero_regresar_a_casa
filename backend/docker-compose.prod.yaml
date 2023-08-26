@@ -1,14 +1,6 @@
 version: "3"
 
 services:
-  # db:
-  #   image: postgres
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - DB:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_PASSWORD=postgres
   app:
     build: .
     ports:
@@ -20,7 +12,3 @@ services:
     environment:
       SERVER_TYPE: 'production'
       SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
-    # depends_on:
-    #   - db
-# volumes:
-#   DB:
