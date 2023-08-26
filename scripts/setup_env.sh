@@ -7,12 +7,12 @@ function check_alias() {
 
 # Add alias to .bashrc
 function add_alias() {
-    echo "alias $1='$2'" >> ~/.bashrc
+    echo "alias $1" >> ~/.bashrc
 }
 
 # List of aliases to set up
 aliases=(
-    "script='cd www/Quiero_regresar_a_casa/scripts/;ls -l"
+    "script='cd www/Quiero_regresar_a_casa/scripts/'"
     # Add more aliases here
 )
 
@@ -20,7 +20,7 @@ aliases=(
 for alias in "${aliases[@]}"; do
     check_alias "$alias"
     if [ $? -ne 0 ]; then
-        add_alias $alias
+        add_alias "$alias"
         echo "Added alias: $alias"
     else
         echo "Alias already exists: $alias"
@@ -31,4 +31,3 @@ done
 source ~/.bashrc
 
 echo "Alias setup completed!"
-
