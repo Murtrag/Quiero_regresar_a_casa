@@ -27,7 +27,7 @@ services:
       - ./main/nginx/static:/code/main/nginx/static:rw
       - ./main/nginx/media:/code/main/nginx/media:rw
     ports:
-      - "8000:8000"
+      - "8001:8001"
 
   nginx:
     image: nginx:latest
@@ -36,7 +36,7 @@ services:
       - ./main/nginx/static:/usr/share/nginx/html/static:ro
       - ./main/nginx/media:/usr/share/nginx/html/media:ro
     ports:
-      - "8001:80"
+      - "8000:8000"
     depends_on:
       - app
 

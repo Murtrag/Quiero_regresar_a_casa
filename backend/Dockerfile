@@ -6,5 +6,5 @@ COPY . /code/
 RUN pip install -r requirements.txt
 RUN python main/manage.py collectstatic --noinput
 # CMD ["python", "main/manage.py", "runserver", "0.0.0.0:8000"]
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8000", "--chdir", "/code/main", "main.wsgi:application"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8001", "--chdir", "/code/main", "main.wsgi:application"]
 
