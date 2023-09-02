@@ -1,25 +1,29 @@
 version: "3"
 
 services:
-  # db:
-  #   image: postgres
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - DB:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_PASSWORD=postgres
   app:
-    build: .
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/code/:Z
-    tty: true
-    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn -w 2 -b 0.0.0.0:8001 --chdir /code/main main.wsgi:application
     environment:
       SERVER_TYPE: 'development'
-    # depends_on:
-    #   - db
-# volumes:
-#   DB:
+      SECRET_KEY: 'asdf1234%#@^afffffkajtekLOLA111333!@kijek'
+    volumes:
+      - ./main/nginx/static:/code/main/nginx/static:rw
+      - ./main/nginx/media:/code/main/nginx/media:rw
+    ports:
+      - "8001:8001"
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./main/nginx/static:/usr/share/nginx/html/static:ro
+      - ./main/nginx/media:/usr/share/nginx/html/media:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - app
+
+
