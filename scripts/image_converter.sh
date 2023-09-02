@@ -1,6 +1,7 @@
 #!/bin/bash
 
-input_folder="~/www/Quiero_regresar_a_casa/backend/main/nginx/static/images"
+input_folder="$HOME/www/Quiero_regresar_a_casa/backend/main/nginx/static/images"
+
 target_height=600
 
 list_images() {
