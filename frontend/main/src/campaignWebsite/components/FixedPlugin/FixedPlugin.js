@@ -20,10 +20,10 @@ import React, { Component } from "react";
 
 import { Dropdown, Badge, Button, Form } from "react-bootstrap";
 
-import sideBarImage1 from "assets/images/sidebar-1.jpg";
-import sideBarImage2 from "assets/images/sidebar-2.jpg";
+// import sideBarImage1 from "assets/images/sidebar-1.jpg";
+// import sideBarImage2 from "assets/images/sidebar-2.jpg";
 import sideBarImage3 from "assets/images/sidebar-3.jpg";
-import sideBarImage4 from "assets/images/sidebar-4.jpg";
+// import sideBarImage4 from "assets/images/sidebar-4.jpg";
 
 function FixedPlugin({
   hasImage,
@@ -105,6 +105,7 @@ function FixedPlugin({
             <div className="clearfix"></div>
           </li>
           <li className="header-title">Sidebar Images</li>
+	  {/*
           <li className={image === sideBarImage1 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
@@ -129,6 +130,7 @@ function FixedPlugin({
               <img alt="..." src={sideBarImage2}></img>
             </a>
           </li>
+	  */}
           <li className={image === sideBarImage3 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
@@ -141,6 +143,7 @@ function FixedPlugin({
               <img alt="..." src={sideBarImage3}></img>
             </a>
           </li>
+	  {/*
           <li className={image === sideBarImage4 ? "active" : ""}>
             <a
               className="img-holder switch-trigger d-block"
@@ -153,6 +156,7 @@ function FixedPlugin({
               <img alt="..." src={sideBarImage4}></img>
             </a>
           </li>
+	  */}
           <li className="button-container">
             <div>
               <Button

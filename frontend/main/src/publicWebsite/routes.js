@@ -43,15 +43,10 @@ import Icon from "@mui/material/Icon";
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
 // Pages
-import AboutUs from "publicWebsite/layouts/pages/landing-pages/about-us";
 import ContactUs from "publicWebsite/layouts/pages/landing-pages/contact-us";
-import Author from "publicWebsite/layouts/pages/landing-pages/author";
-import SignIn from "publicWebsite/layouts/pages/authentication/sign-in";
 //@TODO here import registration page 
 
 // Sections
-import PageHeaders from "publicWebsite/layouts/sections/page-sections/page-headers";
-import Features from "publicWebsite/layouts/sections/page-sections/featuers";
 import Navbars from "publicWebsite/layouts/sections/navigation/navbars";
 import NavTabs from "publicWebsite/layouts/sections/navigation/nav-tabs";
 import Pagination from "publicWebsite/layouts/sections/navigation/pagination";
@@ -82,7 +77,6 @@ const routes = [
           {
             name: "about us",
             route: "/pages/landing-pages/about-us",
-            component: <AboutUs />,
           },
           {
             name: "contact us",
@@ -92,7 +86,6 @@ const routes = [
           {
             name: "author",
             route: "/pages/landing-pages/author",
-            component: <Author />,
           },
         ],
       },
@@ -102,7 +95,7 @@ const routes = [
           {
             name: "sign in",
             route: "/pages/authentication/sign-in",
-            component: <SignIn />,
+            component: "",
           },
         ],
       },
@@ -120,12 +113,10 @@ const routes = [
           {
             name: "page headers",
             route: "/sections/page-sections/page-headers",
-            component: <PageHeaders />,
           },
           {
             name: "features",
             route: "/sections/page-sections/features",
-            component: <Features />,
           },
         ],
       },

@@ -16,7 +16,6 @@
 
 */
 import Dashboard from "campaignWebsite/views/Dashboard";
-import UserProfile from "campaignWebsite/views/UserProfile";
 import MyInvestigations from "campaignWebsite/views/MyInvestigations/index";
 import Typography from "campaignWebsite/views/Typography";
 import Icons from "campaignWebsite/views/Icons";
@@ -64,7 +63,6 @@ const dashboardRoutes = [
   {
     name: string.sidebar.userProfile,
     icon: "nc-icon nc-circle-09",
-    component: UserProfile,
     ...convertToRoute(f_userProfileURL())
   },
   {

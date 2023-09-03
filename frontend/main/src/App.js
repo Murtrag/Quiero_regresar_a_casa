@@ -41,7 +41,6 @@ import Maps from "campaignWebsite/views/Maps";
 import MyInvestigations from "campaignWebsite/views/MyInvestigations/index";
 import Typography from "campaignWebsite/views/Typography";
 // import AdminLayout from "campaignWebsite/layouts/Upgrade.js";
-import UserProfile from "campaignWebsite/views/UserProfile/index";
 import AdminLayout from "campaignWebsite/layouts/Admin.js";
 
 // Utils
@@ -70,7 +69,6 @@ export default function App() {
 
 					<Route path="dashboard/" element={<AdminLayout />} >
 						<Route index element={<Dashboard />} />
-						<Route path="user-profile/" element={<UserProfile />} />
 						<Route path="my-investigations/" element={<MyInvestigations />} />
 						<Route path="promotions/" element={<Typography />} />
 						<Route path="notifications/" element={<Notifications />} />
