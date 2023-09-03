@@ -13,4 +13,4 @@ if DEBUG is True:
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx',)
 else:
-    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx',)
+    CORS_ORIGIN_WHITELIST = ('http://quiero-regresar.mx', 'http://quiero-regresar.mx:81',)
