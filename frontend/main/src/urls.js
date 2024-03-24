@@ -1,7 +1,7 @@
 // Protocol
 const protocolPrefix = "http://"
 // Core URLs
-const backendURL = `${protocolPrefix}83.128.215.51:81/`
+const backendURL = `${protocolPrefix}141.224.197.237:81/`
 const frontendURL = `${window.location.protocol}//${window.location.host}/`;
 
 
