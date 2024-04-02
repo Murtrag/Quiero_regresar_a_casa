@@ -5,12 +5,12 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import string from "strings/changeLanguage";
 import { splitPathParams, extractPath } from "utils/extractPath";
-import { b_articleDetailURL } from "urls";
+import { b_articleDetailURL, frontendURL } from "urls";
 
 const ChangeLanguage = ({changeLanguage})=>{
 	const params = useParams();
 	const location = useLocation();
-	const prevLocation = location.state.from.pathname;
+	const prevLocation = location.state.from.pathname || frontendURL;
 
 	let [timeOut, setTimeOut] = useState(5);
 
