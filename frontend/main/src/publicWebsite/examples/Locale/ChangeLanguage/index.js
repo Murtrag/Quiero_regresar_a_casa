@@ -10,7 +10,7 @@ import { b_articleDetailURL, frontendURL } from "urls";
 const ChangeLanguage = ({changeLanguage})=>{
 	const params = useParams();
 	const location = useLocation();
-	const prevLocation = location.state.from.pathname || frontendURL;
+	const prevLocation = location.state?.from?.pathname || frontendURL;
 
 	let [timeOut, setTimeOut] = useState(5);
 

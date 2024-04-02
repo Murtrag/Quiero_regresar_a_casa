@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/material-kit-react/static/css/main.93bf6f79.css",
-    "main.js": "/material-kit-react/static/js/main.2306f7b7.js",
+    "main.js": "/material-kit-react/static/js/main.329d1e07.js",
     "static/media/rotating-card-bg-front.jpeg": "/material-kit-react/static/media/rotating-card-bg-front.bdcdfadc0dacb9bc5f23.jpeg",
     "static/media/missing_boy.png": "/material-kit-react/static/media/missing_boy.7c99c1aedfb976fb3002.png",
     "static/media/bg-presentation.jpg": "/material-kit-react/static/media/bg-presentation.b15dc04de1b16230110b.jpg",
@@ -34,10 +34,10 @@
     "static/media/logo-nasa.svg": "/material-kit-react/static/media/logo-nasa.c5d11f8820bfde5fd64db0074156e06c.svg",
     "index.html": "/material-kit-react/index.html",
     "main.93bf6f79.css.map": "/material-kit-react/static/css/main.93bf6f79.css.map",
-    "main.2306f7b7.js.map": "/material-kit-react/static/js/main.2306f7b7.js.map"
+    "main.329d1e07.js.map": "/material-kit-react/static/js/main.329d1e07.js.map"
   },
   "entrypoints": [
     "static/css/main.93bf6f79.css",
-    "static/js/main.2306f7b7.js"
+    "static/js/main.329d1e07.js"
   ]
 }
